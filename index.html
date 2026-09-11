@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aravena Reformas — Reformas integrales de interiores en Barcelona</title>
+<meta name="description" content="Reformas de cocinas, baños y espacios completos en Barcelona, con diseño y ejecución propias de principio a fin.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,500;9..144,600&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#211F1D;
+    --charcoal:#2B2B2E;
+    --stone:#6E6A62;
+    --paper:#F5F3EE;
+    --paper-dim:#EFEDE6;
+    --line:#D9D2C2;
+    --gold:#A9803F;
+    --gold-soft:#C7A467;
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Manrope', sans-serif;
+    font-size:16px;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,.brand-word{
+    font-family:'Fraunces', serif;
+    color:var(--ink);
+    margin:0;
+    font-weight:500;
+  }
+  a{color:inherit;}
+  img,svg{display:block;max-width:100%;}
+  .wrap{max-width:1100px;margin:0 auto;padding:0 28px;}
+  section{padding:96px 0;}
+  .hairline{border-top:1px solid var(--line);}
+
+  :focus-visible{
+    outline:2px solid var(--gold);
+    outline-offset:3px;
+  }
+
+  /* Header */
+  header{
+    position:sticky; top:0; z-index:20;
+    background:rgba(245,243,238,0.92);
+    backdrop-filter:blur(6px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav-row{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:16px 0;
+  }
+  .brand{display:flex; align-items:center; gap:10px; text-decoration:none;}
+  .brand svg{width:30px; height:auto;}
+  .brand-word{font-size:19px; letter-spacing:0.3px;}
+  nav.links{display:flex; align-items:center; gap:32px;}
+  nav.links a{
+    text-decoration:none; color:var(--charcoal); font-size:15px; font-weight:500;
+    padding:4px 0; border-bottom:1px solid transparent;
+  }
+  nav.links a:hover{border-bottom-color:var(--gold);}
+  .cta{
+    display:inline-block;
+    background:var(--gold);
+    color:var(--paper);
+    font-weight:600;
+    font-size:14.5px;
+    padding:11px 22px;
+    text-decoration:none;
+    border:1px solid var(--gold);
+    transition:background 0.15s ease, color 0.15s ease;
+  }
+  .cta:hover{background:transparent; color:var(--gold);}
+  .cta-ghost{
+    display:inline-block;
+    color:var(--charcoal);
+    font-weight:500;
+    font-size:15px;
+    text-decoration:none;
+    border-bottom:1px solid var(--gold-soft);
+    padding-bottom:2px;
+  }
+  .menu-btn{
+    display:none;
+    background:none; border:1px solid var(--line); padding:8px 14px;
+    font-family:'Manrope',sans-serif; font-size:14px; color:var(--charcoal);
+    cursor:pointer;
+  }
+
+  /* Hero */
+  .hero{padding:88px 0 100px;}
+  .hero .wrap{display:grid; grid-template-columns:1.1fr 0.9fr; gap:56px; align-items:center;}
+  .hero h1{font-size:44px; line-height:1.18; max-width:15ch;}
+  .hero p{color:var(--stone); font-size:17px; max-width:46ch; margin:22px 0 32px;}
+  .hero-actions{display:flex; align-items:center; gap:26px; flex-wrap:wrap;}
+  .hero-mark{justify-self:center;}
+  .hero-mark svg{width:100%; max-width:340px;}
+
+  svg .draw{stroke-dasharray:100; stroke-dashoffset:100; animation:draw 1s ease forwards;}
+  .d0{animation-delay:0s;} .d1{animation-delay:.15s;} .d2{animation-delay:.3s;}
+  .d3{animation-delay:.42s;} .d4{animation-delay:.54s;} .d5{animation-delay:.66s;}
+  .d6{animation-delay:.78s;}
+  @keyframes draw{to{stroke-dashoffset:0;}}
+  .reveal{opacity:0; transform:translateY(6px); animation:reveal .7s ease forwards; animation-delay:1.55s;}
+  .reveal.late{animation-delay:1.8s;}
+  @keyframes reveal{to{opacity:1; transform:translateY(0);}}
+  @media (prefers-reduced-motion:reduce){
+    svg .draw{stroke-dashoffset:0; animation:none;}
+    .reveal{opacity:1; transform:none; animation:none;}
+  }
+
+  /* Section headings */
+  .section-head{max-width:56ch; margin-bottom:48px;}
+  .section-head h2{font-size:30px;}
+  .section-head p{color:var(--stone); margin-top:12px; font-size:16px;}
+
+  /* Services */
+  .service-row{
+    display:grid; grid-template-columns:44px 1fr;
+    gap:24px; align-items:start;
+    padding:28px 0;
+    border-top:1px solid var(--line);
+  }
+  .services-list .service-row:last-child{border-bottom:1px solid var(--line);}
+  .service-row svg{width:34px; height:34px;}
+  .service-row h3{font-size:19px; margin-bottom:8px; font-weight:600; font-family:'Manrope',sans-serif;}
+  .service-row p{margin:0; color:var(--stone); max-width:56ch;}
+
+  /* Process */
+  .process{background:var(--paper-dim);}
+  .process-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:36px;}
+  .step{border-top:2px solid var(--gold); padding-top:18px;}
+  .step .num{font-family:'Fraunces',serif; font-size:26px; color:var(--gold);}
+  .step h3{font-size:17px; font-weight:600; font-family:'Manrope',sans-serif; margin:10px 0 8px;}
+  .step p{margin:0; color:var(--stone); font-size:15px;}
+
+  /* Projects */
+  .project-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:28px;}
+  .project-frame{
+    position:relative;
+    border:1px solid var(--line);
+    padding:30px 20px 22px;
+    display:flex; flex-direction:column; align-items:center; gap:20px;
+    transition:border-color .15s ease;
+  }
+  .project-frame svg{width:56px; height:56px;}
+  .project-frame .corner{
+    position:absolute; width:14px; height:14px; opacity:0; transition:opacity .15s ease;
+  }
+  .project-frame:hover .corner{opacity:1;}
+  .corner.tl{top:-1px; left:-1px; border-top:2px solid var(--gold); border-left:2px solid var(--gold);}
+  .corner.br{bottom:-1px; right:-1px; border-bottom:2px solid var(--gold); border-right:2px solid var(--gold);}
+  .project-meta{text-align:center;}
+  .project-meta .name{font-family:'Fraunces',serif; font-size:18px;}
+  .project-meta .place{color:var(--stone); font-size:14px; margin-top:4px;}
+
+  /* Contact */
+  .contact-grid{display:grid; grid-template-columns:0.8fr 1.2fr; gap:64px;}
+  .contact-info p{margin:0 0 6px; color:var(--stone);}
+  .contact-info .label{color:var(--ink); font-weight:600; margin-top:22px;}
+  .contact-info .label:first-child{margin-top:0;}
+  form{display:flex; flex-direction:column; gap:18px;}
+  .field{display:flex; flex-direction:column; gap:6px;}
+  .field label{font-size:14px; color:var(--stone);}
+  .field input, .field textarea{
+    font-family:'Manrope',sans-serif; font-size:15px;
+    background:transparent; border:none; border-bottom:1px solid var(--line);
+    padding:10px 2px; color:var(--ink); resize:vertical;
+  }
+  .field input:focus, .field textarea:focus{border-bottom-color:var(--gold);}
+  form .cta{align-self:flex-start; border:none; cursor:pointer; margin-top:6px;}
+  .form-note{font-size:14px; color:var(--stone); margin-top:4px;}
+  .form-note.success{color:var(--gold);}
+
+  footer{border-top:1px solid var(--line); padding:48px 0;}
+  .footer-row{display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:20px;}
+  .footer-brand{display:flex; align-items:center; gap:10px;}
+  .footer-brand svg{width:22px;}
+  footer .fine{color:var(--stone); font-size:14px;}
+  footer a.social{text-decoration:none; border-bottom:1px solid var(--gold-soft);}
+
+  @media (max-width:880px){
+    .hero .wrap{grid-template-columns:1fr; gap:40px;}
+    .hero-mark{order:-1; max-width:220px; margin:0 auto;}
+    .hero h1{font-size:34px; max-width:none;}
+    .process-grid{grid-template-columns:repeat(2,1fr); row-gap:32px;}
+    .project-grid{grid-template-columns:repeat(2,1fr);}
+    .contact-grid{grid-template-columns:1fr; gap:40px;}
+  }
+  @media (max-width:620px){
+    nav.links{
+      position:absolute; top:100%; left:0; right:0;
+      background:var(--paper); border-bottom:1px solid var(--line);
+      flex-direction:column; align-items:flex-start; gap:0; padding:8px 28px 18px;
+      display:none;
+    }
+    nav.links.open{display:flex;}
+    nav.links a{width:100%; padding:12px 0; border-bottom:1px solid var(--line);}
+    .menu-btn{display:inline-block;}
+    .nav-row .cta{display:none;}
+    section{padding:64px 0;}
+    .process-grid{grid-template-columns:1fr;}
+    .project-grid{grid-template-columns:1fr;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav-row">
+    <a class="brand" href="#top">
+      <svg viewBox="0 0 120 110" aria-hidden="true">
+        <polygon points="63,18 25,95 37,95" fill="#2B2B2E"/>
+        <polygon points="63,18 101,95 89,95" fill="#2B2B2E"/>
+        <rect x="44" y="60" width="38" height="6" fill="#2B2B2E"/>
+        <polygon points="84,53 101,68 101,95 68,95 68,68" fill="#A9803F"/>
+      </svg>
+      <span class="brand-word">Aravena Reformas</span>
+    </a>
+    <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="navLinks">Menú</button>
+    <nav class="links" id="navLinks">
+      <a href="#servicios">Servicios</a>
+      <a href="#proceso">Proceso</a>
+      <a href="#proyectos">Proyectos</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
+    <a class="cta" href="#contacto">Pedir presupuesto</a>
+  </div>
+</header>
+
+<main id="top">
+
+  <section class="hero">
+    <div class="wrap">
+      <div>
+        <h1>Reformas de interiores con la precisión de un plano.</h1>
+        <p>Cocinas, baños y espacios completos, ejecutados en Barcelona con el mismo rigor con el que se traza cada línea.</p>
+        <div class="hero-actions">
+          <a class="cta" href="#contacto">Pedir presupuesto</a>
+          <a class="cta-ghost" href="#proyectos">Ver proyectos</a>
+        </div>
+      </div>
+      <div class="hero-mark">
+        <svg viewBox="0 0 380 350" aria-hidden="true">
+          <circle class="draw d0" pathLength="100" cx="180" cy="190" r="140" fill="none" stroke="#A9803F" stroke-width="1" opacity="0.85"/>
+          <line class="draw d1" pathLength="100" x1="60" y1="330" x2="335" y2="110" stroke="#A9803F" stroke-width="1" opacity="0.7"/>
+          <line class="draw d2" pathLength="100" x1="200" y1="30" x2="200" y2="65" stroke="#A9803F" stroke-width="1" opacity="0.8"/>
+          <line class="draw d2" pathLength="100" x1="150" y1="140" x2="150" y2="220" stroke="#A9803F" stroke-width="0.8" opacity="0.55"/>
+          <line class="draw d3" pathLength="100" x1="45" y1="320" x2="330" y2="320" stroke="#A9803F" stroke-width="1" opacity="0.7"/>
+          <line class="draw d3" pathLength="100" x1="45" y1="315" x2="45" y2="325" stroke="#A9803F" stroke-width="1" opacity="0.7"/>
+          <line class="draw d3" pathLength="100" x1="330" y1="315" x2="330" y2="325" stroke="#A9803F" stroke-width="1" opacity="0.7"/>
+          <polygon class="reveal" points="200,58 80,300 118,300" fill="#2B2B2E"/>
+          <polygon class="reveal" points="200,58 320,300 282,300" fill="#2B2B2E"/>
+          <rect class="reveal" x="140" y="190" width="120" height="20" fill="#2B2B2E"/>
+          <polygon class="reveal late" points="268,170 320,215 320,300 215,300 215,215" fill="#A9803F"/>
+          <line class="draw d4" pathLength="100" x1="320" y1="215" x2="320" y2="150" stroke="#A9803F" stroke-width="1.5"/>
+          <line class="draw d4" pathLength="100" x1="268" y1="170" x2="305" y2="105" stroke="#A9803F" stroke-width="1" opacity="0.75"/>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <section id="servicios">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>Qué reformamos</h2>
+        <p>Cada proyecto se adapta al espacio, al presupuesto y al ritmo de vida de quien lo habita.</p>
+      </div>
+      <div class="services-list">
+        <div class="service-row">
+          <svg viewBox="0 0 40 40" aria-hidden="true"><rect x="6" y="10" width="20" height="20" fill="none" stroke="#A9803F" stroke-width="1.4"/><rect x="16" y="18" width="18" height="14" fill="none" stroke="#2B2B2E" stroke-width="1.4"/></svg>
+          <div>
+            <h3>Cocinas</h3>
+            <p>Distribución, encimeras y electrodomésticos integrados para cocinar y recibir sin fricciones.</p>
+          </div>
+        </div>
+        <div class="service-row">
+          <svg viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="13" fill="none" stroke="#2B2B2E" stroke-width="1.4"/><path d="M13 20 A7 7 0 0 1 27 20" fill="none" stroke="#A9803F" stroke-width="1.4"/></svg>
+          <div>
+            <h3>Baños</h3>
+            <p>Impermeabilización, grifería y acabados pensados para durar sin perder elegancia.</p>
+          </div>
+        </div>
+        <div class="service-row">
+          <svg viewBox="0 0 40 40" aria-hidden="true"><polyline points="7,30 20,10 33,30" fill="none" stroke="#2B2B2E" stroke-width="1.4"/><rect x="14" y="20" width="12" height="10" fill="none" stroke="#A9803F" stroke-width="1.4"/></svg>
+          <div>
+            <h3>Espacios completos</h3>
+            <p>Pisos y casas reformados de principio a fin, desde la estructura hasta el último detalle.</p>
+          </div>
+        </div>
+        <div class="service-row">
+          <svg viewBox="0 0 40 40" aria-hidden="true"><polygon points="20,6 34,20 20,34 6,20" fill="none" stroke="#2B2B2E" stroke-width="1.4"/><polygon points="20,14 28,20 20,26 12,20" fill="none" stroke="#A9803F" stroke-width="1.2"/></svg>
+          <div>
+            <h3>Diseño a medida</h3>
+            <p>Planos, materiales y mobiliario definidos contigo antes de tocar una sola pared.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="proceso" class="process">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>Cómo trabajamos</h2>
+        <p>Cuatro fases, siempre en el mismo orden, para que sepas qué esperar en cada momento.</p>
+      </div>
+      <div class="process-grid">
+        <div class="step">
+          <div class="num">1</div>
+          <h3>Consulta</h3>
+          <p>Visitamos el espacio y escuchamos qué necesitas y cómo vives en él.</p>
+        </div>
+        <div class="step">
+          <div class="num">2</div>
+          <h3>Diseño</h3>
+          <p>Trazamos los planos, elegimos materiales y cerramos el presupuesto.</p>
+        </div>
+        <div class="step">
+          <div class="num">3</div>
+          <h3>Ejecución</h3>
+          <p>Coordinamos a los oficios y te informamos en cada fase de la obra.</p>
+        </div>
+        <div class="step">
+          <div class="num">4</div>
+          <h3>Entrega</h3>
+          <p>Revisamos cada detalle contigo antes de darte las llaves.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="proyectos">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>Proyectos recientes</h2>
+        <p>Una muestra de reformas entregadas en los últimos dos años.</p>
+      </div>
+      <div class="project-grid">
+        <div class="project-frame">
+          <span class="corner tl"></span><span class="corner br"></span>
+          <svg viewBox="0 0 40 40" aria-hidden="true"><polyline points="7,30 20,10 33,30" fill="none" stroke="#2B2B2E" stroke-width="1.4"/><rect x="14" y="20" width="12" height="10" fill="none" stroke="#A9803F" stroke-width="1.4"/></svg>
+          <div class="project-meta">
+            <div class="name">Ático Eixample</div>
+            <div class="place">Barcelona · 2025</div>
+          </div>
+        </div>
+        <div class="project-frame">
+          <span class="corner tl"></span><span class="corner br"></span>
+          <svg viewBox="0 0 40 40" aria-hidden="true"><rect x="6" y="10" width="20" height="20" fill="none" stroke="#A9803F" stroke-width="1.4"/><rect x="16" y="18" width="18" height="14" fill="none" stroke="#2B2B2E" stroke-width="1.4"/></svg>
+          <div class="project-meta">
+            <div class="name">Casa Sarrià</div>
+            <div class="place">Barcelona · 2024</div>
+          </div>
+        </div>
+        <div class="project-frame">
+          <span class="corner tl"></span><span class="corner br"></span>
+          <svg viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="13" fill="none" stroke="#2B2B2E" stroke-width="1.4"/><path d="M13 20 A7 7 0 0 1 27 20" fill="none" stroke="#A9803F" stroke-width="1.4"/></svg>
+          <div class="project-meta">
+            <div class="name">Loft Gràcia</div>
+            <div class="place">Barcelona · 2024</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contacto">
+    <div class="wrap contact-grid">
+      <div class="contact-info">
+        <h2 style="font-size:28px; margin-bottom:20px;">Hablemos de tu reforma</h2>
+        <p class="label">Teléfono</p>
+        <p><a href="tel:+34930000000">+34 93 000 00 00</a></p>
+        <p class="label">Correo</p>
+        <p><a href="mailto:hola@aravenareformas.com">hola@aravenareformas.com</a></p>
+        <p class="label">Estudio</p>
+        <p>Carrer de Mallorca, Barcelona</p>
+        <p class="label">Horario</p>
+        <p>Lunes a viernes, 9:00–18:00</p>
+      </div>
+      <form id="contactForm">
+        <div class="field">
+          <label for="name">Nombre</label>
+          <input id="name" name="name" type="text" required>
+        </div>
+        <div class="field">
+          <label for="email">Correo</label>
+          <input id="email" name="email" type="email" required>
+        </div>
+        <div class="field">
+          <label for="message">Cuéntanos tu proyecto</label>
+          <textarea id="message" name="message" rows="4" required></textarea>
+        </div>
+        <button class="cta" type="submit">Enviar mensaje</button>
+        <p class="form-note" id="formNote">Al enviar aceptas nuestra <a href="privacidad.html" style="border-bottom:1px solid #C7A467; text-decoration:none;">política de privacidad</a>.</p>
+      </form>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap footer-row">
+    <div class="footer-brand">
+      <svg viewBox="0 0 120 110" aria-hidden="true">
+        <polygon points="63,18 25,95 37,95" fill="#2B2B2E"/>
+        <polygon points="63,18 101,95 89,95" fill="#2B2B2E"/>
+        <rect x="44" y="60" width="38" height="6" fill="#2B2B2E"/>
+        <polygon points="84,53 101,68 101,95 68,95 68,68" fill="#A9803F"/>
+      </svg>
+      <span class="fine">© 2026 Aravena Reformas · Barcelona</span>
+    </div>
+    <div style="display:flex; gap:24px; align-items:center;">
+      <a class="social" href="privacidad.html">Política de privacidad</a>
+      <a class="social" href="#" target="_blank" rel="noopener">@aravenareformas</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  var menuBtn = document.getElementById('menuBtn');
+  var navLinks = document.getElementById('navLinks');
+  menuBtn.addEventListener('click', function(){
+    var open = navLinks.classList.toggle('open');
+    menuBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    menuBtn.textContent = open ? 'Cerrar' : 'Menú';
+  });
+  navLinks.querySelectorAll('a').forEach(function(a){
+    a.addEventListener('click', function(){
+      navLinks.classList.remove('open');
+      menuBtn.setAttribute('aria-expanded', 'false');
+      menuBtn.textContent = 'Menú';
+    });
+  });
+
+  var form = document.getElementById('contactForm');
+  var note = document.getElementById('formNote');
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    note.textContent = 'Gracias, te contactaremos en menos de 24 horas.';
+    note.classList.add('success');
+    form.reset();
+  });
+</script>
+
+</body>
+</html>
