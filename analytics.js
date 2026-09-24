@@ -10,10 +10,10 @@
  * Consent is required before GA4 loads.
  */
 (() => {
-  const MEASUREMENT_ID = 'G-XXXXXXXXXX';
+  const MEASUREMENT_ID = 'G-06YQGNJ08G';
   const CONSENT_KEY = 'aravena_analytics_consent';
 
-  if (!/^G-[A-Z0-9]+$/i.test(MEASUREMENT_ID) || MEASUREMENT_ID === 'G-XXXXXXXXXX') return;
+  if (!/^G-[A-Z0-9]+$/i.test(MEASUREMENT_ID) || MEASUREMENT_ID === 'G-06YQGNJ08G') return;
 
   const send = (name, params = {}) => {
     if (typeof window.gtag === 'function') {

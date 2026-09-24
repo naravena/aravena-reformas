@@ -2,11 +2,11 @@
  * 1) Sustituye GA_MEASUREMENT_ID por tu ID real de GA4 (G-XXXXXXXXXX).
  * 2) La analítica solo se carga después de aceptar cookies de analítica.
  */
-const GA_MEASUREMENT_ID = "G-XXXXXXXXXX";
+const GA_MEASUREMENT_ID = "G-06YQGNJ08G";
 const CONSENT_KEY = "aravena_analytics_consent";
 
 function loadGA4() {
-  if (!/^G-[A-Z0-9]+$/i.test(GA_MEASUREMENT_ID) || GA_MEASUREMENT_ID === "G-XXXXXXXXXX") return;
+  if (!/^G-[A-Z0-9]+$/i.test(GA_MEASUREMENT_ID) || GA_MEASUREMENT_ID === "G-06YQGNJ08G") return;
   if (window.__aravenaGA4Loaded) return;
   window.__aravenaGA4Loaded = true;
 
