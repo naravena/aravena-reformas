@@ -6,6 +6,7 @@
  * - whatsapp_click
  * - phone_click
  * - email_click
+ * - qr_visit
  *
  * Consent is required before GA4 loads.
  */
@@ -15,12 +16,37 @@
 
   if (!/^G-[A-Z0-9]+$/i.test(MEASUREMENT_ID) || MEASUREMENT_ID === 'G-XXXXXXXXXX') return;
 
+  const getUtmParams = () => {
+    const params = new URLSearchParams(location.search);
+    return {
+      utm_source: params.get('utm_source') || undefined,
+      utm_medium: params.get('utm_medium') || undefined,
+      utm_campaign: params.get('utm_campaign') || undefined,
+      utm_content: params.get('utm_content') || undefined,
+      utm_term: params.get('utm_term') || undefined
+    };
+  };
+
   const send = (name, params = {}) => {
     if (typeof window.gtag === 'function') {
       window.gtag('event', name, {
         page_path: location.pathname,
         page_title: document.title,
+        ...getUtmParams(),
         ...params
+      });
+    }
+  };
+
+  const trackQrVisit = () => {
+    const params = new URLSearchParams(location.search);
+    if (
+      params.get('utm_source') === 'tarjeta' &&
+      params.get('utm_medium') === 'qr' &&
+      params.get('utm_campaign') === 'tarjeta_visita'
+    ) {
+      send('qr_visit', {
+        qr_code: params.get('utm_content') || 'tarjeta'
       });
     }
   };
@@ -36,6 +62,8 @@
       page_title: document.title,
       page_location: window.location.href
     });
+
+    trackQrVisit();
 
     const script = document.createElement('script');
     script.async = true;
