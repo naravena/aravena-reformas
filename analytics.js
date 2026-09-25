@@ -18,13 +18,30 @@
 
   const getUtmParams = () => {
     const params = new URLSearchParams(location.search);
-    return {
-      utm_source: params.get('utm_source') || undefined,
-      utm_medium: params.get('utm_medium') || undefined,
-      utm_campaign: params.get('utm_campaign') || undefined,
-      utm_content: params.get('utm_content') || undefined,
-      utm_term: params.get('utm_term') || undefined
-    };
+    const keys = ['utm_source','utm_medium','utm_campaign','utm_content','utm_term'];
+    const current = {};
+    let hasUtm = false;
+    keys.forEach((key) => {
+      const value = params.get(key);
+      if (value) { current[key] = value; hasUtm = true; }
+    });
+
+    if (hasUtm) {
+      try { sessionStorage.setItem('aravena_utm', JSON.stringify(current)); } catch (_) {}
+    }
+
+    try {
+      const stored = JSON.parse(sessionStorage.getItem('aravena_utm') || '{}');
+      return {
+        utm_source: current.utm_source || stored.utm_source || undefined,
+        utm_medium: current.utm_medium || stored.utm_medium || undefined,
+        utm_campaign: current.utm_campaign || stored.utm_campaign || undefined,
+        utm_content: current.utm_content || stored.utm_content || undefined,
+        utm_term: current.utm_term || stored.utm_term || undefined
+      };
+    } catch (_) {
+      return current;
+    }
   };
 
   const send = (name, params = {}) => {
