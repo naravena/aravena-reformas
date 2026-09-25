@@ -13,7 +13,7 @@
   const MEASUREMENT_ID = 'G-06YQGNJ08G';
   const CONSENT_KEY = 'aravena_analytics_consent';
 
-  if (!/^G-[A-Z0-9]+$/i.test(MEASUREMENT_ID) || MEASUREMENT_ID === 'G-06YQGNJ08G') return;
+  if (!/^G-[A-Z0-9]+$/i.test(MEASUREMENT_ID) || MEASUREMENT_ID === 'G-XXXXXXXXXX') return;
 
   const send = (name, params = {}) => {
     if (typeof window.gtag === 'function') {
