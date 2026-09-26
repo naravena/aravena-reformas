@@ -43,7 +43,7 @@ body {
   margin: 0;
   background: var(--cream);
   color: var(--text);
-  font-family: system-ui, -apple-system, "Segoe UI", Arial, sans-serif;
+  font-family: "Montserrat", Arial, sans-serif;
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
 }
@@ -82,7 +82,8 @@ h1, h2, h3, p {
 }
 
 h1, h2 {
-  letter-spacing: -.035em;
+  font-weight: 700;
+  letter-spacing: -.025em;
 }
 
 .eyebrow {
@@ -138,14 +139,14 @@ body.page-home .brand {
 }
 
 body.page-home .brand-mark {
-  font-family: "Montserrat Thin", serif;
+  font-family: "Montserrat", Arial, sans-serif;
   width: 38px;
   height: 38px;
   flex: none;
 }
 
 body.page-home .brand-name {
-  font-family: "Montserrat Thin", serif;
+  font-family: "Montserrat", Arial, sans-serif;
   font-size: 14px;
   font-weight: 800;
   letter-spacing: .08em;
@@ -154,7 +155,7 @@ body.page-home .brand-name {
 }
 
 body.page-home .brand-name span {
-  font-family: "Montserrat Thin", serif;
+  font-family: "Montserrat", Arial, sans-serif;
   display: block;
   margin-top: 4px;
   color: var(--gold-light);
@@ -579,6 +580,7 @@ body.page-projects main {
 body.page-service h1,
 body.page-contact h1,
 body.page-projects h1 {
+  font-weight: 700;
   font-size: clamp(38px, 6vw, 62px);
   line-height: 1.04;
   letter-spacing: -.04em;
@@ -708,6 +710,7 @@ body.page-privacy main {
 }
 
 body.page-privacy h1 {
+  font-weight: 700;
   font-size: 40px;
   line-height: 1.05;
   letter-spacing: -.04em;
