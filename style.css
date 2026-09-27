@@ -1066,7 +1066,34 @@ body.page-privacy footer {
   }
 }
 
-/* ==========================================================================
+
+/* Mejor contraste para texto de apoyo y acentos. */
+:root {
+  --muted: #5f5c55;
+}
+
+html[data-theme="light"] {
+  --accent-text: #765700;
+}
+
+html[data-theme="dark"] {
+  --accent-text: #e5b343;
+  --muted: #aaa69e;
+}
+
+.eyebrow,
+.service-num,
+.step b {
+  color: var(--accent-text);
+}
+
+html[data-theme="light"] .hero .lead,
+html[data-theme="light"] .why .section-head p,
+html[data-theme="light"] .why-item p,
+html[data-theme="light"] .contact-copy {
+  color: #5f5c55;
+}
+\n/* ==========================================================================
    Accesibilidad
    ========================================================================== */
 
