@@ -211,6 +211,9 @@ html[data-theme="light"] body.page-contact .box {
 
 /* --- 1. Variables & Root --- */
 :root {
+  --gold-accessible: #765700;
+  --gold-accessible-hover: #624900;
+  --gold-focus: #005fcc;
   --black: #111313;
   --black-soft: #1b1d1c;
   --gold: #c9972f;
@@ -1060,5 +1063,97 @@ body.page-privacy footer {
   body.page-contact main,
   body.page-projects main {
     padding: 48px 0;
+  }
+}
+
+
+/* Mejor contraste para texto de apoyo y acentos. */
+:root {
+  --muted: #5f5c55;
+}
+
+html[data-theme="light"] {
+  --accent-text: #765700;
+}
+
+html[data-theme="dark"] {
+  --accent-text: #e5b343;
+  --muted: #aaa69e;
+}
+
+.eyebrow,
+.service-num,
+.step b {
+  color: var(--accent-text);
+}
+
+html[data-theme="light"] .hero .lead,
+html[data-theme="light"] .why .section-head p,
+html[data-theme="light"] .why-item p,
+html[data-theme="light"] .contact-copy {
+  color: #5f5c55;
+}
+\n/* ==========================================================================
+   Accesibilidad
+   ========================================================================== */
+
+/* Skip link: permite saltar directamente al contenido con teclado/lector de pantalla. */
+.skip-link {
+  position: fixed;
+  top: 10px;
+  left: 10px;
+  z-index: 1000;
+  transform: translateY(-150%);
+  padding: 10px 14px;
+  border-radius: 6px;
+  background: var(--black);
+  color: var(--white);
+  font-weight: 700;
+  text-decoration: none;
+  box-shadow: 0 2px 10px rgba(0,0,0,.25);
+}
+
+.skip-link:focus {
+  transform: translateY(0);
+}
+
+/* Nunca ocultar el indicador de foco para usuarios de teclado. */
+:where(a, button, input, select, textarea, summary):focus-visible {
+  outline: 3px solid var(--gold-focus);
+  outline-offset: 3px;
+}
+
+:where(a, button, input, select, textarea, summary):focus:not(:focus-visible) {
+  outline: none;
+}
+
+/* El dorado original (#c9972f) no ofrece suficiente contraste con texto blanco
+   cuando se utiliza como fondo. Este tono se usa en controles con texto blanco. */
+.btn-gold,
+.nav-cta,
+body.page-service .btn,
+body.page-contact a.btn {
+  background: var(--gold-accessible);
+}
+
+.btn-gold:hover,
+.nav-cta:hover,
+body.page-service .btn:hover,
+body.page-contact a.btn:hover {
+  background: var(--gold-accessible-hover);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .01ms !important;
+    scroll-behavior: auto !important;
   }
 }
