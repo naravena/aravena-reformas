@@ -1,3 +1,169 @@
+/* --- Selector de tema --- */
+.theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  min-height: 38px;
+  padding: 0 11px;
+  border: 1px solid var(--toggle-border, rgba(255,255,255,.2));
+  border-radius: 8px;
+  background: var(--toggle-bg, rgba(255,255,255,.05));
+  color: var(--toggle-text, inherit);
+  font: inherit;
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background .2s ease, border-color .2s ease, color .2s ease;
+}
+
+.theme-toggle:hover {
+  background: var(--toggle-hover, rgba(255,255,255,.1));
+}
+
+.theme-icon {
+  font-size: 16px;
+  line-height: 1;
+}
+
+html[data-theme="light"] {
+  --black: #f7f5ed;
+  --black-soft: #ebe7dc;
+  --cream: #f4f1e8;
+  --cream-dark: #ebe7dc;
+  --text: #171817;
+  --muted: #66635c;
+  --line: #d2ccbe;
+  --white: #111313;
+  --toggle-border: #d2ccbe;
+  --toggle-bg: rgba(17,19,19,.04);
+  --toggle-text: #171817;
+  --toggle-hover: rgba(17,19,19,.08);
+}
+
+html[data-theme="dark"] {
+  --black: #111313;
+  --black-soft: #1b1d1c;
+  --cream: #171918;
+  --cream-dark: #1e2120;
+  --text: #f2efe7;
+  --muted: #aaa69e;
+  --line: #373a37;
+  --white: #f7f5ed;
+  --toggle-border: #454945;
+  --toggle-bg: rgba(255,255,255,.04);
+  --toggle-text: #f2efe7;
+  --toggle-hover: rgba(255,255,255,.1);
+}
+
+html[data-theme="light"] body {
+  background: var(--cream);
+  color: var(--text);
+}
+
+html[data-theme="light"] body.page-home header {
+  background: rgba(247,245,237,.96);
+  border-bottom-color: var(--line);
+}
+
+html[data-theme="light"] body.page-home .brand {
+  color: var(--text);
+}
+
+html[data-theme="light"] body.page-home nav a {
+  color: var(--text);
+}
+
+html[data-theme="light"] body.page-home .menu {
+  border-color: var(--line);
+  color: var(--text);
+}
+
+html[data-theme="light"] .hero,
+html[data-theme="light"] .why,
+html[data-theme="light"] .contact {
+  background: #e9e5db;
+  color: var(--text);
+}
+
+html[data-theme="light"] .hero .lead,
+html[data-theme="light"] .why .section-head p,
+html[data-theme="light"] .why-item p,
+html[data-theme="light"] .contact-copy {
+  color: var(--muted);
+}
+
+html[data-theme="light"] .btn-outline {
+  border-color: #aaa69d;
+  color: var(--text);
+}
+
+html[data-theme="light"] .contact-info a {
+  color: var(--text);
+}
+
+html[data-theme="light"] body.page-service header,
+html[data-theme="light"] body.page-contact header,
+html[data-theme="light"] body.page-projects header,
+html[data-theme="light"] body.page-privacy header {
+  background: #f7f5ed;
+  color: var(--text);
+  border-bottom-color: var(--line);
+}
+
+html[data-theme="light"] body.page-service header a,
+html[data-theme="light"] body.page-contact header a,
+html[data-theme="light"] body.page-projects header a,
+html[data-theme="light"] body.page-privacy header a {
+  color: var(--text);
+}
+
+html[data-theme="light"] body.page-contact nav a,
+html[data-theme="light"] body.page-projects nav a {
+  color: var(--muted);
+}
+
+html[data-theme="light"] body.page-service nav a {
+  color: var(--muted);
+}
+
+html[data-theme="light"] body.page-privacy .back {
+  color: var(--text);
+}
+
+html[data-theme="light"] body.page-home footer {
+  background: #e2ded4;
+  color: var(--muted);
+}
+
+html[data-theme="dark"] body.page-home footer {
+  background: #0b0d0c;
+}
+
+html[data-theme="dark"] body.page-service header,
+html[data-theme="dark"] body.page-contact header,
+html[data-theme="dark"] body.page-projects header,
+html[data-theme="dark"] body.page-privacy header {
+  background: var(--black);
+}
+
+html[data-theme="light"] .step,
+html[data-theme="light"] body.page-contact .box {
+  background: rgba(255,255,255,.5);
+}
+
+@media (max-width: 900px) {
+  html[data-theme="light"] body.page-home nav {
+    background: #f7f5ed;
+    border-color: var(--line);
+  }
+
+  html[data-theme="light"] body.page-home nav a {
+    border-bottom-color: var(--line);
+  }
+}
+
+/* ========================================================================== */
 /* --- Montserrat local --- */
 @font-face {
   font-family: "Montserrat";
