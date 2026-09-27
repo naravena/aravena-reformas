@@ -216,14 +216,33 @@
 <script>
   const menuBtn = document.getElementById('menuBtn');
   const nav = document.getElementById('mainNav');
+  const navLinks = nav.querySelectorAll('a');
+
+  const setMenuState = (open, returnFocus = false) => {
+    nav.classList.toggle('open', open);
+    menuBtn.setAttribute('aria-expanded', String(open));
+    menuBtn.setAttribute('aria-label', open ? 'Cerrar menú de navegación' : 'Abrir menú de navegación');
+
+    if (open) {
+      navLinks[0]?.focus();
+    } else if (returnFocus) {
+      menuBtn.focus();
+    }
+  };
+
   menuBtn.addEventListener('click', () => {
-    const open = nav.classList.toggle('open');
-    menuBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    setMenuState(!nav.classList.contains('open'));
   });
-  nav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
-    nav.classList.remove('open');
-    menuBtn.setAttribute('aria-expanded','false');
-  }));
+
+  navLinks.forEach((link) => {
+    link.addEventListener('click', () => setMenuState(false));
+  });
+
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape' && nav.classList.contains('open')) {
+      setMenuState(false, true);
+    }
+  });
 </script>
 </body>
 </html>
