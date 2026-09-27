@@ -788,6 +788,15 @@
     applyLanguage(safeGetLanguage());
   };
 
+
+  document.addEventListener('click', (event) => {
+    if (!event.target.closest('.menu')) return;
+    const lang = safeGetLanguage();
+    const t = T[lang].common;
+    setText('.menu', t.menu);
+    setAttr('.menu', 'aria-label', document.querySelector('.menu')?.getAttribute('aria-expanded') === 'true' ? t.menuClose : t.menuOpen);
+  });
+
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', init, { once: true });
   } else {
