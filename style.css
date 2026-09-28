@@ -1193,3 +1193,38 @@ body.page-contact a.btn:hover {
     scroll-behavior: auto !important;
   }
 }
+
+/* --- SEO content enhancements --- */
+.breadcrumbs {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  margin: 0 0 28px;
+  font-size: 13px;
+  color: var(--muted);
+}
+.breadcrumbs a {
+  color: inherit;
+  text-underline-offset: 3px;
+}
+.breadcrumbs span[aria-hidden="true"] {
+  opacity: .55;
+}
+body.page-service h2,
+body.page-projects h2,
+body.page-contact h2 {
+  margin-top: 48px;
+  margin-bottom: 12px;
+}
+body.page-service p,
+body.page-projects p,
+body.page-contact p {
+  max-width: 78ch;
+}
+body.page-service .grid {
+  margin-bottom: 18px;
+}
+body.page-service .card p {
+  max-width: 55ch;
+}
