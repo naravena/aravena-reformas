@@ -66,7 +66,8 @@ html[data-theme="light"] body.page-home header {
   border-bottom-color: var(--line);
 }
 
-html[data-theme="light"] body.page-home .brand {
+html[data-theme="light"] body.page-home .brand,
+html[data-theme="light"] .brand {
   color: var(--text);
 }
 
@@ -131,7 +132,8 @@ html[data-theme="light"] body.page-privacy .back {
   color: var(--text);
 }
 
-html[data-theme="light"] body.page-home footer {
+html[data-theme="light"] body.page-home footer,
+html[data-theme="light"] footer {
   background: #e2ded4;
   color: var(--muted);
 }
@@ -307,6 +309,7 @@ a {
 
 img {
   max-width: 100%;
+  height: auto;
   display: block;
 }
 
@@ -376,7 +379,7 @@ body.page-home .nav {
   gap: 22px;
 }
 
-body.page-home .brand {
+.brand {
   display: flex;
   align-items: center;
   gap: 11px;
@@ -384,14 +387,14 @@ body.page-home .brand {
   color: #fff;
 }
 
-body.page-home .brand-mark {
+.brand-mark {
   font-family: "Montserrat", Arial, sans-serif;
   width: 38px;
   height: 38px;
   flex: none;
 }
 
-body.page-home .brand-name {
+.brand-name {
   font-family: "Montserrat", Arial, sans-serif;
   font-size: 14px;
   font-weight: 800;
@@ -400,7 +403,7 @@ body.page-home .brand-name {
   line-height: 1.05;
 }
 
-body.page-home .brand-name span {
+.brand-name span {
   font-family: "Montserrat", Arial, sans-serif;
   display: block;
   margin-top: 4px;
@@ -524,9 +527,13 @@ body.page-home h2 {
 }
 
 .hero-brand {
+  display: block;
+  width: 100%;
   max-width: 480px;
+  height: auto;
   margin: auto;
   border-radius: 22px;
+  object-fit: contain;
 }
 
 .intro {
@@ -748,7 +755,8 @@ body.page-home h2 {
   font-weight: 700;
 }
 
-body.page-home footer {
+body.page-home footer,
+footer {
   background: #0b0d0c;
   color: #8e8b84;
   padding: 24px 0;
@@ -774,6 +782,26 @@ body.page-projects header {
   background: var(--black);
   color: #fff;
   padding: 20px 0;
+}
+
+.header-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+body.page-service header .wrap,
+body.page-contact header .wrap,
+body.page-projects header .wrap {
+  position: relative;
+}
+
+body.page-service header > .wrap > .theme-toggle,
+body.page-contact header > .wrap > .theme-toggle {
+  position: absolute;
+  top: 0;
+  right: 0;
 }
 
 body.page-service header a,
@@ -833,7 +861,9 @@ body.page-projects h1 {
 }
 
 /* --- 8. Páginas de Servicios (Alisado, Pintura, Muebles, Pladur, Reformas) --- */
-body.page-service h1 {
+body.page-service h1,
+body.page-projects h1,
+body.page-contact h1 {
   margin: 12px 0 22px;
 }
 
@@ -843,7 +873,8 @@ body.page-service h2 {
   margin-top: 52px;
 }
 
-body.page-service .lead {
+body.page-service .lead,
+body.page-projects .lead {
   font-size: 19px;
   color: var(--muted);
   max-width: 760px;
@@ -871,7 +902,8 @@ body.page-service .card p {
   color: var(--muted);
 }
 
-body.page-service .cta {
+body.page-service .cta,
+body.page-projects .cta {
   margin-top: 52px;
   padding: 28px;
   background: var(--black);
@@ -879,7 +911,8 @@ body.page-service .cta {
   border-radius: 12px;
 }
 
-body.page-service .btn {
+body.page-service .btn,
+body.page-projects .btn {
   display: inline-flex;
   margin-top: 15px;
   padding: 13px 20px;
@@ -911,9 +944,32 @@ body.page-contact a.btn {
 
 /* --- 10. Página de Proyectos --- */
 body.page-projects .note {
-  padding: 25px;
-  border-top: 2px solid var(--gold);
+  margin-top: 32px;
+  padding: 24px 28px;
+  border-left: 3px solid var(--gold);
+  background: rgba(255, 255, 255, .35);
+  border-radius: 0 10px 10px 0;
   color: var(--muted);
+}
+
+html[data-theme="light"] body.page-projects .note {
+  background: #ebe7dc;
+}
+
+html[data-theme="dark"] body.page-projects .note {
+  background: var(--black-soft);
+}
+
+body.page-projects .note h3 {
+  margin: 0 0 8px;
+  font-size: 18px;
+  color: var(--text);
+}
+
+body.page-projects .note p {
+  margin: 0;
+  font-size: 15px;
+  line-height: 1.6;
 }
 
 /* --- 11. Política de Privacidad --- */
@@ -1129,7 +1185,7 @@ html[data-theme="light"] .why-item p,
 html[data-theme="light"] .contact-copy {
   color: #5f5c55;
 }
-\n/* ==========================================================================
+/* ==========================================================================
    Accesibilidad
    ========================================================================== */
 
