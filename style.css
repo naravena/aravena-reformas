@@ -1284,3 +1284,437 @@ body.page-service .grid {
 body.page-service .card p {
   max-width: 55ch;
 }
+
+
+/* ==========================================================================
+   Responsive + contraste — revisión móvil
+   ========================================================================== */
+
+/* El color de texto siempre se adapta al fondo del tema. */
+html[data-theme="light"] body.page-privacy header,
+html[data-theme="light"] body.page-privacy .brand,
+html[data-theme="light"] body.page-privacy .back {
+  color: var(--text);
+}
+
+html[data-theme="light"] body.page-privacy .brand,
+html[data-theme="light"] body.page-privacy .back {
+  color: var(--text);
+}
+
+html[data-theme="dark"] body.page-privacy .notice {
+  background: var(--black-soft);
+  color: var(--muted);
+}
+
+html[data-theme="light"] body.page-privacy .notice {
+  background: var(--cream-dark);
+  color: var(--muted);
+}
+
+html[data-theme="dark"] body.page-contact .box {
+  background: var(--black-soft);
+  color: var(--text);
+}
+
+html[data-theme="light"] body.page-contact .box {
+  background: #ebe7dc;
+  color: var(--text);
+}
+
+html[data-theme="dark"] body.page-projects .note {
+  color: var(--muted);
+}
+
+/* Evita texto blanco heredado en bloques claros. */
+html[data-theme="light"] body.page-service main,
+html[data-theme="light"] body.page-contact main,
+html[data-theme="light"] body.page-projects main,
+html[data-theme="light"] body.page-privacy main {
+  color: var(--text);
+}
+
+html[data-theme="light"] body.page-service .cta,
+html[data-theme="light"] body.page-projects .cta {
+  color: var(--white);
+}
+
+html[data-theme="light"] body.page-service .cta strong,
+html[data-theme="light"] body.page-projects .cta strong {
+  color: var(--white);
+}
+
+/* Cabeceras secundarias: controles y navegación coherentes con ambos temas. */
+html[data-theme="light"] body.page-service header,
+html[data-theme="light"] body.page-contact header,
+html[data-theme="light"] body.page-projects header,
+html[data-theme="light"] body.page-privacy header {
+  background: #f7f5ed;
+  color: var(--text);
+  border-bottom-color: var(--line);
+}
+
+html[data-theme="dark"] body.page-service header,
+html[data-theme="dark"] body.page-contact header,
+html[data-theme="dark"] body.page-projects header,
+html[data-theme="dark"] body.page-privacy header {
+  background: var(--black);
+  color: var(--text);
+}
+
+html[data-theme="light"] body.page-service header a,
+html[data-theme="light"] body.page-contact header a,
+html[data-theme="light"] body.page-projects header a,
+html[data-theme="light"] body.page-privacy header a {
+  color: var(--text);
+}
+
+html[data-theme="dark"] body.page-service header a,
+html[data-theme="dark"] body.page-contact header a,
+html[data-theme="dark"] body.page-projects header a,
+html[data-theme="dark"] body.page-privacy header a {
+  color: var(--white);
+}
+
+html[data-theme="light"] body.page-service nav a,
+html[data-theme="light"] body.page-contact nav a,
+html[data-theme="light"] body.page-projects nav a {
+  color: var(--muted);
+}
+
+html[data-theme="dark"] body.page-service nav a,
+html[data-theme="dark"] body.page-contact nav a,
+html[data-theme="dark"] body.page-projects nav a {
+  color: #d2d0ca;
+}
+
+/* Los controles nunca heredan un color incorrecto del header. */
+html[data-theme="light"] .theme-toggle,
+html[data-theme="light"] .language-switcher {
+  color: var(--text);
+}
+
+html[data-theme="dark"] .theme-toggle,
+html[data-theme="dark"] .language-switcher {
+  color: var(--text);
+}
+
+/* ==========================================================================
+   Móvil
+   ========================================================================== */
+
+@media (max-width: 900px) {
+  .wrap,
+  body.page-service .wrap,
+  body.page-contact .wrap,
+  body.page-projects .wrap {
+    width: min(var(--max), calc(100% - 32px));
+  }
+
+  /* Home: cabecera compacta sin desbordamiento. */
+  body.page-home .nav {
+    min-height: 64px;
+    gap: 8px;
+  }
+
+  body.page-home .brand {
+    min-width: 0;
+    flex: 1 1 auto;
+  }
+
+  body.page-home .brand-name {
+    font-size: 12px;
+    letter-spacing: .06em;
+  }
+
+  body.page-home .brand-name span {
+    font-size: 8px;
+    letter-spacing: .12em;
+  }
+
+  body.page-home .menu {
+    flex: none;
+  }
+
+  body.page-home .theme-toggle,
+  body.page-home .language-switcher {
+    flex: none;
+  }
+
+  /* Páginas interiores: cabecera en dos filas y navegación desplazable. */
+  body.page-service header > .wrap,
+  body.page-contact header > .wrap,
+  body.page-projects header > .wrap {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto auto;
+    align-items: center;
+    gap: 10px;
+  }
+
+  body.page-service header > .wrap > .theme-toggle,
+  body.page-contact header > .wrap > .theme-toggle {
+    position: static;
+  }
+
+  body.page-service header nav,
+  body.page-contact header nav,
+  body.page-projects header nav {
+    grid-column: 1 / -1;
+    width: 100%;
+    margin-top: 4px;
+    padding: 2px 0 4px;
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    overflow-y: hidden;
+    gap: 20px;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+
+  body.page-service header nav::-webkit-scrollbar,
+  body.page-contact header nav::-webkit-scrollbar,
+  body.page-projects header nav::-webkit-scrollbar {
+    display: none;
+  }
+
+  body.page-service header nav a,
+  body.page-contact header nav a,
+  body.page-projects header nav a {
+    flex: 0 0 auto;
+    white-space: nowrap;
+    padding: 4px 0;
+  }
+
+  body.page-service main,
+  body.page-contact main,
+  body.page-projects main {
+    padding: 44px 0 58px;
+  }
+
+  body.page-service h1,
+  body.page-contact h1,
+  body.page-projects h1 {
+    font-size: clamp(34px, 9vw, 48px);
+    line-height: 1.06;
+  }
+
+  body.page-service h2,
+  body.page-projects h2,
+  body.page-contact h2 {
+    font-size: clamp(25px, 7vw, 30px);
+    line-height: 1.12;
+    margin-top: 38px;
+  }
+
+  body.page-service .lead,
+  body.page-projects .lead {
+    font-size: 17px;
+  }
+
+  body.page-service .cta,
+  body.page-projects .cta {
+    padding: 22px;
+    margin-top: 40px;
+  }
+
+  body.page-service .cta .btn,
+  body.page-projects .cta .btn,
+  body.page-contact a.btn {
+    width: 100%;
+    text-align: center;
+  }
+
+  body.page-privacy .nav {
+    width: min(1120px, calc(100% - 28px));
+    min-height: 0;
+    padding: 14px 0;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto auto;
+    gap: 10px;
+  }
+
+  body.page-privacy .brand {
+    min-width: 0;
+    font-size: 12px;
+  }
+
+  body.page-privacy .back {
+    grid-column: 1 / -1;
+    justify-self: start;
+    font-size: 12px;
+  }
+
+  body.page-privacy main {
+    width: min(var(--max), calc(100% - 28px));
+    padding: 46px 0 64px;
+  }
+
+  body.page-privacy h1 {
+    font-size: clamp(32px, 9vw, 42px);
+  }
+
+  body.page-privacy p,
+  body.page-privacy li {
+    font-size: 14px;
+  }
+
+  .breadcrumbs {
+    margin-bottom: 22px;
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 600px) {
+  body.page-home .nav {
+    gap: 6px;
+  }
+
+  body.page-home .brand-mark {
+    width: 34px;
+    height: 34px;
+  }
+
+  /* El texto de los controles ocupa demasiado espacio en pantallas estrechas. */
+  .theme-toggle {
+    min-width: 38px;
+    width: 38px;
+    padding: 0;
+  }
+
+  .theme-toggle .theme-label {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+  }
+
+  .language-switcher {
+    padding: 2px;
+  }
+
+  .language-switcher button {
+    min-width: 27px;
+    min-height: 28px;
+    padding: 0 5px;
+    font-size: 10px;
+  }
+
+  body.page-home .menu {
+    min-height: 36px;
+    padding: 7px 9px;
+    font-size: 12px;
+  }
+
+  body.page-home nav {
+    top: 64px;
+    left: 14px;
+    right: 14px;
+  }
+
+  body.page-home h1 {
+    font-size: clamp(36px, 11vw, 48px);
+    line-height: 1.03;
+  }
+
+  body.page-home h2 {
+    font-size: clamp(29px, 8vw, 38px);
+  }
+
+  .hero {
+    padding: 46px 0 54px;
+  }
+
+  .section {
+    padding: 54px 0;
+  }
+
+  .hero .lead {
+    font-size: 15px;
+    line-height: 1.55;
+  }
+
+  .hero-brand {
+    max-width: 300px;
+    border-radius: 16px;
+  }
+
+  .buttons {
+    gap: 10px;
+  }
+
+  .buttons .btn {
+    width: 100%;
+  }
+
+  .service-grid,
+  .why-grid,
+  .process-grid,
+  .intro-points {
+    grid-template-columns: 1fr;
+  }
+
+  .contact-info {
+    gap: 18px;
+    flex-direction: column;
+  }
+
+  body.page-service header > .wrap,
+  body.page-contact header > .wrap,
+  body.page-projects header > .wrap {
+    grid-template-columns: minmax(0, 1fr) auto auto;
+    gap: 7px;
+  }
+
+  body.page-service header,
+  body.page-contact header,
+  body.page-projects header {
+    padding: 14px 0;
+  }
+
+  body.page-service header > .wrap > a,
+  body.page-contact header > .wrap > a,
+  body.page-projects header > .wrap > a {
+    font-size: 12px;
+    letter-spacing: .04em;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  body.page-service header nav,
+  body.page-contact header nav,
+  body.page-projects header nav {
+    gap: 17px;
+    font-size: 12px;
+  }
+
+  body.page-privacy .nav {
+    grid-template-columns: minmax(0, 1fr) auto auto;
+  }
+
+  body.page-privacy .brand {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  body.page-privacy .back {
+    margin-top: 2px;
+  }
+
+  body.page-privacy .notice {
+    padding: 14px 15px;
+    font-size: 13px;
+  }
+
+  body.page-privacy section {
+    margin-bottom: 28px;
+  }
+
+  body.page-privacy footer {
+    padding: 26px 14px;
+  }
+}
