@@ -1718,3 +1718,32 @@ html[data-theme="dark"] .language-switcher {
     padding: 26px 14px;
   }
 }
+
+
+/* Evita desbordamientos horizontales provocados por URLs, correos o textos largos. */
+body.page-service main,
+body.page-contact main,
+body.page-projects main,
+body.page-privacy main {
+  overflow-wrap: anywhere;
+}
+
+@media (max-width: 600px) {
+  body.page-home .nav-cta {
+    display: none;
+  }
+
+  body.page-home .brand {
+    max-width: calc(100% - 132px);
+  }
+
+  body.page-contact .box {
+    padding: 20px;
+  }
+
+  body.page-contact .box a:not(.btn),
+  body.page-privacy main a {
+    overflow-wrap: anywhere;
+    word-break: break-word;
+  }
+}
