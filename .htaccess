@@ -1,0 +1,9 @@
+RewriteEngine On
+
+# Dominio canónico: HTTPS + sin www
+RewriteCond %{HTTPS} !=on [OR]
+RewriteCond %{HTTP_HOST} ^www\.aravenareformas\.es$ [NC]
+RewriteRule ^ https://aravenareformas.es%{REQUEST_URI} [R=301,L]
+
+# URL antigua eliminada: conservar la autoridad y llevar a la página de pintura
+RewriteRule ^pintura-muebles-malaga/?$ /pintura-malaga/ [R=301,L]
