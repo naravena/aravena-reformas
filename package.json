@@ -1,0 +1,15 @@
+{
+  "name": "aravena-reformas",
+  "version": "1.0.0",
+  "description": "Aravena Reformas website - Reformas y pintura en Málaga",
+  "private": true,
+  "scripts": {
+    "test": "echo \"No tests specified\""
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@vercel/analytics": "^1.3.1"
+  }
+}
