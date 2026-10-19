@@ -1181,7 +1181,10 @@ html[data-theme="dark"] {
 
 html[data-theme="light"] .hero .lead,
 html[data-theme="light"] .why .section-head p,
-html[data-theme="light"] .why-item p,
+html[data-theme="light"] .why-item p {
+  color: #c7c4bd;
+}
+
 html[data-theme="light"] .contact-copy {
   color: #5f5c55;
 }
@@ -1749,65 +1752,10 @@ body.page-privacy main {
 }
 
 
-/* --- Servicio destacado: pintura Airless en la página principal --- */
-.airless-featured {
-  background: var(--black);
-  color: #fff;
-}
-.airless-featured .eyebrow {
-  color: var(--gold);
-}
-.airless-featured-grid {
-  display: grid;
-  grid-template-columns: minmax(0, 1.15fr) minmax(280px, .85fr);
-  gap: 48px;
-  align-items: center;
-}
-.airless-featured-copy h2 {
-  max-width: 720px;
-  margin: 0 0 18px;
-}
-.airless-featured-copy p {
-  color: #c7c4bd;
-  margin: 0 0 16px;
-}
-.airless-featured .btn.btn-outline {
-  color: #fff;
-  border-color: rgba(255, 255, 255, .4);
-}
-.airless-benefits {
-  display: grid;
-  gap: 22px;
-}
-.airless-benefit {
-  border-top: 2px solid var(--gold);
-  padding-top: 14px;
-}
-.airless-benefit h3 {
-  margin: 0 0 7px;
-  font-size: 18px;
-  color: #fff;
-}
-.airless-benefit p {
-  margin: 0;
-  font-size: 14px;
-  color: #c7c4bd;
-}
-@media (max-width: 900px) {
-  .airless-featured-grid {
-    grid-template-columns: 1fr;
-    gap: 32px;
-  }
-  .airless-benefits {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 18px;
-  }
-}
-@media (max-width: 600px) {
-  .airless-benefits {
-    grid-template-columns: 1fr;
-  }
-  .airless-featured .buttons .btn {
-    width: 100%;
-  }
+
+
+/* Accents on dark hero/sections must remain readable in light theme. */
+.hero .eyebrow,
+.why .eyebrow {
+  color: #e5b343;
 }
