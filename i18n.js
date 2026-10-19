@@ -11,7 +11,10 @@
       common: {
         skip: 'Saltar al contenido principal',
         home: 'Inicio',
+        reforms: 'Reformas',
         painting: 'Pintura',
+        airless: 'Pintura Airless',
+        pladur: 'Pladur',
         smoothing: 'Alisado',
         furniture: 'Muebles',
         projects: 'Proyectos',
@@ -74,8 +77,8 @@
         service4Text: 'Soluciones de pladur para divisiones, trasdosados, techos y mejoras interiores.',
         service5Title: 'Reparación y preparación',
         service5Text: 'Masillado, reparación de superficies y trabajos previos antes del acabado.',
-        service6Title: 'Pintura de muebles y cocinas',
-        service6Text: 'Renovación y acabado de mobiliario y cocinas según el estado y el material.',
+        service6Title: 'Pintura Airless en Málaga',
+        service6Text: 'Aplicación de pintura por pulverización a alta presión en paredes y techos amplios, cuando el espacio lo permite.'
         whyEyebrow: 'Nuestra forma de trabajar',
         whyTitle: 'La tranquilidad de una obra bien organizada.',
         whyLead: 'No se trata solo de hacer el trabajo, sino de saber qué se hace en cada fase y cuidar el resultado final.',
@@ -191,6 +194,21 @@
         quoteTitle: '¿Necesitas presupuesto?',
         quoteText: 'Cuéntanos qué trabajo necesitas realizar y, si puedes, envíanos fotografías del espacio. Valoraremos el proyecto y te indicaremos los siguientes pasos.'
       },
+      airless: {
+        eyebrow: 'Pintura Airless · Málaga',
+        title: 'Pintura Airless en Málaga para paredes y techos',
+        lead: 'Valoramos si la pulverización Airless es adecuada para cada espacio. Revisamos el soporte, preparamos las superficies y protegemos el entorno antes de aplicar.',
+        card1Title: 'Superficies amplias',
+        card1Text: 'Puede agilizar la aplicación en paredes y techos de viviendas vacías o espacios en reforma.',
+        card2Title: 'Acabado uniforme',
+        card2Text: 'La boquilla, la pintura y la técnica deben ser adecuadas para conseguir una capa regular.',
+        card3Title: 'Preparación del soporte',
+        card3Text: 'Las grietas, golpes y otras irregularidades deben tratarse antes de pintar.',
+        card4Title: 'Protección del entorno',
+        card4Text: 'La pulverización puede generar sobrepulverización; proteger las zonas cercanas es esencial.',
+        quoteTitle: '¿Quieres presupuesto para pintura Airless?',
+        quoteText: 'Cuéntanos qué superficie necesitas pintar y, si puedes, envíanos fotografías para valorar el trabajo.'
+      },
       contacto: {
         eyebrow: 'Málaga · Presupuesto',
         title: 'Contacto y presupuesto',
@@ -247,7 +265,10 @@
       common: {
         skip: 'Skip to main content',
         home: 'Home',
+        reforms: 'Renovations',
         painting: 'Painting',
+        airless: 'Airless painting',
+        pladur: 'Plasterboard',
         smoothing: 'Wall smoothing',
         furniture: 'Furniture',
         projects: 'Projects',
@@ -310,8 +331,8 @@
         service4Text: 'Plasterboard solutions for partitions, linings, ceilings and interior improvements.',
         service5Title: 'Repair and preparation',
         service5Text: 'Filling, surface repairs and preliminary work before finishing.',
-        service6Title: 'Furniture and kitchen painting',
-        service6Text: 'Furniture and kitchen renovation and finishing according to condition and material.',
+        service6Title: 'Airless painting in Málaga',
+        service6Text: 'High-pressure spray application for broad wall and ceiling surfaces when suitable for the space.'
         whyEyebrow: 'How we work',
         whyTitle: 'The peace of mind of a well-organised project.',
         whyLead: 'It is not only about doing the work, but knowing what happens at each stage and taking care of the final result.',
@@ -427,6 +448,21 @@
         quoteTitle: 'Need a quote?',
         quoteText: 'Tell us what work you need and, if possible, send us photos of the space. We will assess the project and explain the next steps.'
       },
+      airless: {
+        eyebrow: 'Airless painting · Málaga',
+        title: 'Airless painting in Málaga for walls and ceilings',
+        lead: 'We assess whether Airless spraying is suitable for each space. We inspect and prepare surfaces and protect the surrounding area before application.',
+        card1Title: 'Broad surfaces',
+        card1Text: 'It can speed up application on walls and ceilings in empty homes or renovation projects.',
+        card2Title: 'Even finish',
+        card2Text: 'The nozzle, paint and technique must suit the job to achieve a consistent coating.',
+        card3Title: 'Surface preparation',
+        card3Text: 'Cracks, dents and other irregularities need treatment before painting.',
+        card4Title: 'Protecting the space',
+        card4Text: 'Spraying can create overspray, so nearby surfaces must be protected carefully.',
+        quoteTitle: 'Need an Airless painting quote?',
+        quoteText: 'Tell us which surfaces you need painted and, if possible, send photos so we can assess the work.'
+      },
       contacto: {
         eyebrow: 'Málaga · Quote',
         title: 'Contact and quote',
@@ -506,6 +542,10 @@
       es: ['Pintar muebles y cocinas en Málaga | Aravena Reformas', 'Pintura de muebles y cocinas en Málaga. Preparación, tratamiento y acabado del mobiliario según su estado y material.'],
       en: ['Furniture and kitchen painting in Málaga | Aravena Reformas', 'Furniture and kitchen painting in Málaga. Preparation, treatment and finishing according to condition and material.']
     },
+    airless: {
+      es: ['Pintura Airless en Málaga | Aravena Reformas', 'Pintura Airless en Málaga para paredes y techos. Preparación de superficies, protección del entorno y valoración del método adecuado.'],
+      en: ['Airless painting in Málaga | Aravena Reformas', 'Airless painting in Málaga for walls and ceilings. Surface preparation, protection and assessment of the right application method.']
+    },
     contacto: {
       es: ['Contacto y presupuesto | Aravena Reformas en Málaga', 'Contacta con Aravena Reformas y Pintura en Málaga para solicitar presupuesto. WhatsApp, teléfono y correo.'],
       en: ['Contact and quotes | Aravena Reformas in Málaga', 'Contact Aravena Reformas y Pintura in Málaga for a quote. WhatsApp, phone and email.']
@@ -524,6 +564,7 @@
     const path = location.pathname;
     if (path === '/' || path === '/index.html') return 'home';
     if (path.includes('/reformas-malaga')) return 'reformas';
+    if (path.includes('/pintura-airless-malaga')) return 'airless';
     if (path.includes('/pintura-malaga')) return 'pintura';
     if (path.includes('/alisado-paredes-malaga')) return 'alisado';
     if (path.includes('/pladur-malaga')) return 'pladur';
@@ -550,6 +591,15 @@
   const setTextAll = (selector, values) => {
     document.querySelectorAll(selector).forEach((el, index) => {
       if (values[index] != null) el.textContent = values[index];
+    });
+  };
+
+  const setTextAllPreservingLinks = (selector, values) => {
+    document.querySelectorAll(selector).forEach((el, index) => {
+      if (values[index] == null) return;
+      const link = el.querySelector('a');
+      if (link) link.textContent = values[index];
+      else el.textContent = values[index];
     });
   };
 
@@ -600,21 +650,28 @@
     const body = document.body;
     if (body.classList.contains('page-home')) {
       setText('.brand-name span', t.brandDescriptor);
-      setText('#mainNav a:nth-child(1)', t.services);
-      setText('#mainNav a:nth-child(2)', t.projects);
-      setText('#mainNav a:nth-child(3)', t.process);
-      setText('#mainNav a:nth-child(4)', t.contact);
+      setText('#mainNav [data-nav="services"]', t.services);
+      setText('#mainNav [data-nav="projects"]', t.projects);
+      setText('#mainNav [data-nav="process"]', t.process);
+      setText('#mainNav [data-nav="contact"]', t.contact);
       setText('.menu', t.menu);
       setAttr('.menu', 'aria-label', t.menuOpen);
       setText('.nav-cta', t.quote);
       setAttr('.brand-mark', 'alt', T[lang].home.logoAlt);
     } else if (body.classList.contains('page-service') || body.classList.contains('page-contact') || body.classList.contains('page-projects')) {
-      setText('header nav a:nth-child(1)', t.home);
-      setText('header nav a:nth-child(2)', t.painting);
-      setText('header nav a:nth-child(3)', t.smoothing);
-      setText('header nav a:nth-child(4)', t.furniture);
-      setText('header nav a:nth-child(5)', t.projects);
-      setText('header nav a:last-child', t.contact);
+      const navLabels = [
+        ['/', t.home],
+        ['/reformas-malaga/', t.reforms],
+        ['/pintura-malaga/', t.painting],
+        ['/pintura-airless-malaga/', t.airless],
+        ['/alisado-paredes-malaga/', t.smoothing],
+        ['/pladur-malaga/', t.pladur],
+        ['/proyectos/', t.projects],
+        ['/contacto/', t.contact]
+      ];
+      navLabels.forEach(([href, label]) => {
+        setText('header nav a[href="' + href + '"]', label);
+      });
     }
 
     setText('.theme-label', themeIsDark() ? t.themeLight : t.themeDark);
@@ -649,7 +706,7 @@
     setText('#servicios .eyebrow', t.servicesEyebrow);
     setText('#servicios h2', t.servicesTitle);
     setText('#servicios .section-head p', t.servicesLead);
-    setTextAll('#servicios .service h3', [t.service1Title, t.service2Title, t.service3Title, t.service4Title, t.service5Title, t.service6Title]);
+    setTextAllPreservingLinks('#servicios .service h3', [t.service1Title, t.service2Title, t.service3Title, t.service4Title, t.service5Title, t.service6Title]);
     setTextAll('#servicios .service p', [t.service1Text, t.service2Text, t.service3Text, t.service4Text, t.service5Text, t.service6Text]);
 
     setText('.why .eyebrow', t.whyEyebrow);
@@ -694,8 +751,7 @@
     setText('main .lead', t.lead);
     setTextAll('main .card h3', [t.card1Title, t.card2Title, t.card3Title, t.card4Title]);
     setTextAll('main .card p', [t.card1Text, t.card2Text, t.card3Text, t.card4Text]);
-    setText('main h2', t.quoteTitle);
-    setText('main .wrap > p:not(.lead)', t.quoteText);
+    setText('main .cta strong', t.quoteTitle);
     setText('main .cta .btn', T[lang].common.quoteButton);
 
     const ctaTextNode = Array.from(document.querySelectorAll('.cta')).flatMap((cta) =>
