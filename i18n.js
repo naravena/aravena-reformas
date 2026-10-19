@@ -757,7 +757,7 @@
     const ctaTextNode = Array.from(document.querySelectorAll('.cta')).flatMap((cta) =>
       Array.from(cta.childNodes)
     ).find((node) => node.nodeType === Node.TEXT_NODE && node.textContent.trim());
-    if (ctaTextNode) ctaTextNode.textContent = t.directQuote || T[lang].common.directQuote;
+    if (ctaTextNode) ctaTextNode.textContent = t.quoteText || t.directQuote || T[lang].common.directQuote;
   };
 
   const applyContact = (lang) => {
