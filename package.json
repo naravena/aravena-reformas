@@ -4,12 +4,19 @@
   "description": "Aravena Reformas website - Reformas y pintura en Málaga",
   "private": true,
   "scripts": {
-    "test": "echo \"No tests specified\""
+    "test": "npm run test:static && npm run test:e2e",
+    "test:static": "node --test tests/static-site.test.js",
+    "test:e2e": "playwright test",
+    "test:production": "node tests/production-smoke.mjs"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
     "@vercel/analytics": "^1.3.1"
+  },
+  "devDependencies": {
+    "@axe-core/playwright": "^4.10.2",
+    "@playwright/test": "^1.55.0"
   }
 }
