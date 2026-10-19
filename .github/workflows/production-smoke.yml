@@ -1,0 +1,32 @@
+name: Production website smoke tests
+on:
+  schedule:
+    - cron: '23 5 * * *'
+  workflow_dispatch:
+    inputs:
+      base_url:
+        description: 'Website URL to check (defaults to production)'
+        required: false
+        type: string
+        default: 'https://aravenareformas.es'
+permissions:
+  contents: read
+concurrency:
+  group: production-smoke
+  cancel-in-progress: true
+jobs:
+  smoke:
+    name: Verify published website
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    env:
+      BASE_URL: ${{ inputs.base_url || 'https://aravenareformas.es' }}
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Check public pages, SEO and Airless links
+        run: node tests/production-smoke.mjs
