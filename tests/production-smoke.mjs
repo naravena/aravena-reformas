@@ -26,8 +26,9 @@ const paint = await (await fetch(new URL('/pintura-malaga/', base), { signal: Ab
 assert.match(paint, /href=["']\/pintura-airless-malaga\/["']/i, 'Painting page does not link to Airless');
 const sitemapResponse = await fetch(new URL('/sitemap.xml', base), { signal: AbortSignal.timeout(20000) });
 assert.equal(sitemapResponse.status, 200, 'sitemap.xml unavailable');
-assert.match(await sitemapResponse.text(), /<loc>https:\/\/aravenareformas\.es\/pintura-airless-malaga\/<\/loc>/, 'Airless URL missing from sitemap');
+const sitemap = await sitemapResponse.text();
+assert.match(sitemap, /<loc>https:\\/\\/www\\.aravenareformas\\.es\\/pintura-airless-malaga\\/<\\/loc>\\s*<lastmod>\\d{4}-\\d{2}-\\d{2}<\\/lastmod>/, 'Airless URL or lastmod missing from sitemap');
 const robotsResponse = await fetch(new URL('/robots.txt', base), { signal: AbortSignal.timeout(20000) });
 assert.equal(robotsResponse.status, 200, 'robots.txt unavailable');
-assert.match(await robotsResponse.text(), /Sitemap:\s*https:\/\/aravenareformas\.es\/sitemap\.xml/i, 'robots.txt does not advertise sitemap');
+assert.match(await robotsResponse.text(), /Sitemap:\\s*https:\\/\\/www\\.aravenareformas\\.es\\/sitemap\\.xml/i, 'robots.txt does not advertise sitemap');
 console.log('Production smoke checks passed.');

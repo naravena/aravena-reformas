@@ -65,7 +65,8 @@ test('sitemap contains unique canonical URLs and every indexable service page', 
   assert.equal(new Set(urls).size, urls.length, 'Duplicate URLs in sitemap');
   for (const route of ROUTES) assert.ok(urls.includes(SITE + route.url), 'Sitemap missing ' + route.url);
   for (const url of urls) {
-    assert.match(sitemap, new RegExp('<loc>' + url.replace(/[.*+?^${}()|[\\]\\]/g, '\\  for (const url of urls) {
+    const entry = sitemap.split('<loc>' + url + '</loc>')[1] || '';
+    assert.match(entry, /^\\s*<lastmod>\\d{4}-\\d{2}-\\d{2}<\\/lastmod>/, 'Missing lastmod for ' + url);
     const parsed = new URL(url);') + '</loc>\\s*<lastmod>\\d{4}-\\d{2}-\\d{2}</lastmod>'), 'Missing lastmod for ' + url);
     const parsed = new URL(url);
     assert.equal(parsed.origin, SITE, 'Unexpected sitemap origin');
