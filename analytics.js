@@ -120,7 +120,7 @@
     '<strong>Analítica de la web</strong>' +
     '<p style="margin:7px 0 12px;color:#d0cec7">Podemos usar analítica para conocer visitas y acciones como clics en WhatsApp, teléfono y correo. Es opcional.</p>' +
     '<div style="display:flex;gap:8px;flex-wrap:wrap">' +
-    '<button id="aravenaAccept" type="button" style="padding:9px 14px;border:0;border-radius:7px;background:#c9972f;color:#fff;font-weight:700">Aceptar</button>' +
+    '<button id="aravenaAccept" type="button" style="padding:9px 14px;border:0;border-radius:7px;background:#c9972f;color:#171817;font-weight:700">Aceptar</button>' +
     '<button id="aravenaReject" type="button" style="padding:9px 14px;border:1px solid #666;border-radius:7px;background:transparent;color:#fff">Rechazar</button>' +
     '</div>';
 
