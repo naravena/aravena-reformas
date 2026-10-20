@@ -57,7 +57,7 @@ test('local links, scripts, stylesheets and images resolve to files in the repos
   }
   assert.deepEqual(failures, [], failures.join('\n'));
 });
-test('sitemap contains unique canonical URLs and every indexable service page', () => {
+test('sitemap contains unique canonical URLs, lastmod and every indexable service page', () => {
   const sitemap = fs.readFileSync(path.join(ROOT, 'sitemap.xml'), 'utf8');
   assert.match(sitemap, /^<\?xml\s+version=["']1\.0["']/i);
   const urls = [...sitemap.matchAll(/<loc>(https:\/\/[^<]+)<\/loc>/g)].map(m => m[1]);
@@ -66,8 +66,10 @@ test('sitemap contains unique canonical URLs and every indexable service page', 
   for (const route of ROUTES) assert.ok(urls.includes(SITE + route.url), 'Sitemap missing ' + route.url);
   for (const url of urls) {
     const entry = sitemap.split('<loc>' + url + '</loc>')[1] || '';
-    assert.match(entry, /^\\s*<lastmod>\\d{4}-\\d{2}-\\d{2}<\\/lastmod>/, 'Missing lastmod for ' + url);
-    const parsed = new URL(url);') + '</loc>\\s*<lastmod>\\d{4}-\\d{2}-\\d{2}</lastmod>'), 'Missing lastmod for ' + url);
+    const lastmod = entry.trimStart().split('</lastmod>')[0];
+    assert.ok(lastmod.startsWith('<lastmod>'), 'Missing lastmod for ' + url);
+    const date = lastmod.slice('<lastmod>'.length);
+    assert.ok(/^\d{4}-\d{2}-\d{2}$/.test(date), 'Invalid lastmod for ' + url);
     const parsed = new URL(url);
     assert.equal(parsed.origin, SITE, 'Unexpected sitemap origin');
     assert.ok(fs.existsSync(expectedFile(parsed.pathname)), 'Sitemap URL has no local file: ' + url);
