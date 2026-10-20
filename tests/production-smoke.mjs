@@ -1,13 +1,13 @@
 import assert from 'node:assert/strict';
-const base = new URL(process.env.BASE_URL || 'https://aravenareformas.es');
+const base = new URL(process.env.BASE_URL || 'https://www.aravenareformas.es');
 const routes = [
-  { path: '/', canonical: 'https://aravenareformas.es/' },
-  { path: '/reformas-malaga/', canonical: 'https://aravenareformas.es/reformas-malaga/' },
-  { path: '/pintura-malaga/', canonical: 'https://aravenareformas.es/pintura-malaga/' },
-  { path: '/pintura-airless-malaga/', canonical: 'https://aravenareformas.es/pintura-airless-malaga/' },
-  { path: '/alisado-paredes-malaga/', canonical: 'https://aravenareformas.es/alisado-paredes-malaga/' },
-  { path: '/pladur-malaga/', canonical: 'https://aravenareformas.es/pladur-malaga/' },
-  { path: '/contacto/', canonical: 'https://aravenareformas.es/contacto/' }
+  { path: '/', canonical: 'https://www.aravenareformas.es/' },
+  { path: '/reformas-malaga/', canonical: 'https://www.aravenareformas.es/reformas-malaga/' },
+  { path: '/pintura-malaga/', canonical: 'https://www.aravenareformas.es/pintura-malaga/' },
+  { path: '/pintura-airless-malaga/', canonical: 'https://www.aravenareformas.es/pintura-airless-malaga/' },
+  { path: '/alisado-paredes-malaga/', canonical: 'https://www.aravenareformas.es/alisado-paredes-malaga/' },
+  { path: '/pladur-malaga/', canonical: 'https://www.aravenareformas.es/pladur-malaga/' },
+  { path: '/contacto/', canonical: 'https://www.aravenareformas.es/contacto/' }
 ];
 for (const route of routes) {
   const response = await fetch(new URL(route.path, base), { redirect: 'follow', signal: AbortSignal.timeout(20000) });

@@ -3,7 +3,7 @@ const assert = require('node:assert/strict');
 const fs = require('node:fs');
 const path = require('node:path');
 const ROOT = path.resolve(__dirname, '..');
-const SITE = 'https://aravenareformas.es';
+const SITE = 'https://www.aravenareformas.es';
 const ROUTES = [
   { url: '/', file: 'index.html' },
   { url: '/reformas-malaga/', file: 'reformas-malaga/index.html' },
@@ -65,6 +65,8 @@ test('sitemap contains unique canonical URLs and every indexable service page', 
   assert.equal(new Set(urls).size, urls.length, 'Duplicate URLs in sitemap');
   for (const route of ROUTES) assert.ok(urls.includes(SITE + route.url), 'Sitemap missing ' + route.url);
   for (const url of urls) {
+    assert.match(sitemap, new RegExp('<loc>' + url.replace(/[.*+?^${}()|[\\]\\]/g, '\\  for (const url of urls) {
+    const parsed = new URL(url);') + '</loc>\\s*<lastmod>\\d{4}-\\d{2}-\\d{2}</lastmod>'), 'Missing lastmod for ' + url);
     const parsed = new URL(url);
     assert.equal(parsed.origin, SITE, 'Unexpected sitemap origin');
     assert.ok(fs.existsSync(expectedFile(parsed.pathname)), 'Sitemap URL has no local file: ' + url);
