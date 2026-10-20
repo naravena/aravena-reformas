@@ -1759,3 +1759,38 @@ body.page-privacy main {
 .why .eyebrow {
   color: #e5b343;
 }
+
+/* Accesibilidad: contraste WCAG AA para textos y acentos en ambos temas. */
+html[data-theme="light"] .brand-name > span,
+html[data-theme="light"] .hero .eyebrow,
+html[data-theme="light"] .why .eyebrow {
+  color: #624900;
+}
+
+html[data-theme="light"] .hero .lead,
+html[data-theme="light"] .why .section-head p,
+html[data-theme="light"] .why-item p {
+  color: #4f4d47;
+}
+
+html[data-theme="light"] body.page-home footer,
+html[data-theme="light"] footer {
+  color: #4f4d47;
+}
+
+html[data-theme="light"] .footer a {
+  color: #383832;
+}
+
+html[data-theme="dark"] body.page-home footer,
+html[data-theme="dark"] footer {
+  color: #d2d0ca;
+}
+
+html[data-theme="dark"] .footer a {
+  color: #f2efe7;
+}
+
+#aravenaAccept {
+  color: #171817 !important;
+}
