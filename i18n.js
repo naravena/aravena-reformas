@@ -78,7 +78,7 @@
         service5Title: 'Reparación y preparación',
         service5Text: 'Masillado, reparación de superficies y trabajos previos antes del acabado.',
         service6Title: 'Pintura Airless en Málaga',
-        service6Text: 'Aplicación de pintura por pulverización a alta presión en paredes y techos amplios, cuando el espacio lo permite.'
+        service6Text: 'Aplicación de pintura por pulverización a alta presión en paredes y techos amplios, cuando el espacio lo permite.',
         whyEyebrow: 'Nuestra forma de trabajar',
         whyTitle: 'La tranquilidad de una obra bien organizada.',
         whyLead: 'No se trata solo de hacer el trabajo, sino de saber qué se hace en cada fase y cuidar el resultado final.',
@@ -332,7 +332,7 @@
         service5Title: 'Repair and preparation',
         service5Text: 'Filling, surface repairs and preliminary work before finishing.',
         service6Title: 'Airless painting in Málaga',
-        service6Text: 'High-pressure spray application for broad wall and ceiling surfaces when suitable for the space.'
+        service6Text: 'High-pressure spray application for broad wall and ceiling surfaces when suitable for the space.',
         whyEyebrow: 'How we work',
         whyTitle: 'The peace of mind of a well-organised project.',
         whyLead: 'It is not only about doing the work, but knowing what happens at each stage and taking care of the final result.',
