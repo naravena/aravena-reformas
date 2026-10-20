@@ -1794,3 +1794,9 @@ html[data-theme="dark"] .footer a {
 #aravenaAccept {
   color: #171817 !important;
 }
+
+
+/* El texto dorado de contacto también debe contrastar en el tema claro. */
+html[data-theme="light"] .contact-info strong {
+  color: #624900;
+}
