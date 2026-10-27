@@ -5,6 +5,11 @@
  */
 (function() {
   'use strict';
+
+  // Vercel provides /_vercel/insights/script.js only on a configured Vercel deployment.
+  // Do not request that endpoint from local static-server tests or local development.
+  if (/^(localhost|127\.0\.0\.1|\[::1\])$/i.test(window.location.hostname)) return;
+
   
   // Initialize the queue
   function initQueue() {

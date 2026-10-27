@@ -207,7 +207,8 @@
         card4Title: 'Protección del entorno',
         card4Text: 'La pulverización puede generar sobrepulverización; proteger las zonas cercanas es esencial.',
         quoteTitle: '¿Quieres presupuesto para pintura Airless?',
-        quoteText: 'Cuéntanos qué superficie necesitas pintar y, si puedes, envíanos fotografías para valorar el trabajo.'
+        quoteText: 'Cuéntanos qué superficie necesitas pintar y, si puedes, envíanos fotografías para valorar el trabajo.',
+        sectionTitles: ['Cuándo puede resultar útil', 'La preparación sigue siendo imprescindible', '¿Airless o rodillo?', 'Pintura de techos y superficies amplias', 'Qué influye en el presupuesto', 'Preguntas frecuentes']
       },
       contacto: {
         eyebrow: 'Málaga · Presupuesto',
@@ -461,7 +462,8 @@
         card4Title: 'Protecting the space',
         card4Text: 'Spraying can create overspray, so nearby surfaces must be protected carefully.',
         quoteTitle: 'Need an Airless painting quote?',
-        quoteText: 'Tell us which surfaces you need painted and, if possible, send photos so we can assess the work.'
+        quoteText: 'Tell us which surfaces you need painted and, if possible, send photos so we can assess the work.',
+        sectionTitles: ['When Airless can be useful', 'Surface preparation is still essential', 'Airless or roller?', 'Painting ceilings and large surfaces', 'What affects the quote', 'Frequently asked questions']
       },
       contacto: {
         eyebrow: 'Málaga · Quote',
@@ -706,8 +708,24 @@
     setText('#servicios .eyebrow', t.servicesEyebrow);
     setText('#servicios h2', t.servicesTitle);
     setText('#servicios .section-head p', t.servicesLead);
-    setTextAllPreservingLinks('#servicios .service h3', [t.service1Title, t.service2Title, t.service3Title, t.service4Title, t.service5Title, t.service6Title]);
-    setTextAll('#servicios .service p', [t.service1Text, t.service2Text, t.service3Text, t.service4Text, t.service5Text, t.service6Text]);
+    // Map translations to the service URL so content remains correct if cards are reordered.
+    const serviceTranslationsByPath = {
+      '/reformas-malaga/': [t.service1Title, t.service1Text],
+      '/pintura-malaga/': [t.service2Title, t.service2Text],
+      '/alisado-paredes-malaga/': [t.service3Title, t.service3Text],
+      '/pladur-malaga/': [t.service4Title, t.service4Text],
+      '/reparacion-paredes-malaga/': [t.service5Title, t.service5Text],
+      '/pintura-airless-malaga/': [t.service6Title, t.service6Text]
+    };
+    document.querySelectorAll('#servicios .service').forEach((card) => {
+      const link = card.querySelector('h3 a[href]');
+      if (!link) return;
+      const translation = serviceTranslationsByPath[new URL(link.href, window.location.origin).pathname];
+      if (!translation) return;
+      link.textContent = translation[0];
+      const description = card.querySelector('p');
+      if (description) description.textContent = translation[1];
+    });
 
     setText('.why .eyebrow', t.whyEyebrow);
     setText('.why h2', t.whyTitle);
@@ -751,6 +769,7 @@
     setText('main .lead', t.lead);
     setTextAll('main .card h3', [t.card1Title, t.card2Title, t.card3Title, t.card4Title]);
     setTextAll('main .card p', [t.card1Text, t.card2Text, t.card3Text, t.card4Text]);
+    if (Array.isArray(t.sectionTitles)) setTextAll('main h2', t.sectionTitles);
     setText('main .cta strong', t.quoteTitle);
     setText('main .cta .btn', T[lang].common.quoteButton);
 
