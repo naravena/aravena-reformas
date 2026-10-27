@@ -27,8 +27,10 @@ const sitemapUrls = [...sitemap.matchAll(/<loc>(https:\/\/[^<]+)<\/loc>/g)].map(
 assert.deepEqual(sitemapUrls, routes.map(route => route.canonical).sort(), 'Production sitemap must exactly cover all indexable routes');
 for (const sitemapUrl of sitemapUrls) {
   const entry = sitemap.split('<loc>' + sitemapUrl + '</loc>')[1] || '';
-  const lastmod = entry.trimStart().split('</lastmod>')[0];
-  assert.match(lastmod, /^<lastmod>\d{4}-\d{2}-\d{2}<\/lastmod>/, 'Missing/invalid lastmod: ' + sitemapUrl);
+  const match = entry.trimStart().match(/^<lastmod>(\d{4}-\d{2}-\d{2})<\/lastmod>/);
+  assert.ok(match, 'Missing/invalid lastmod: ' + sitemapUrl);
+  const date = new Date(match[1] + 'T00:00:00Z');
+  assert.equal(date.toISOString().slice(0, 10), match[1], 'Invalid calendar date in lastmod: ' + sitemapUrl);
 }
 for (const route of routes) {
   const response = await fetch(new URL(route.path, base), { redirect: 'follow', signal: AbortSignal.timeout(20000) });
