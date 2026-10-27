@@ -20,6 +20,16 @@ const routes = [
   { path: '/tipos-placas-pladur-malaga/', canonical: 'https://www.aravenareformas.es/tipos-placas-pladur-malaga/' },
   { path: '/guias-pintura-reformas-malaga/', canonical: 'https://www.aravenareformas.es/guias-pintura-reformas-malaga/' }
 ];
+const sitemapResponse = await fetch(new URL('/sitemap.xml', base), { signal: AbortSignal.timeout(20000) });
+assert.equal(sitemapResponse.status, 200, 'sitemap.xml unavailable');
+const sitemap = await sitemapResponse.text();
+const sitemapUrls = [...sitemap.matchAll(/<loc>(https:\/\/[^<]+)<\/loc>/g)].map(m => m[1]).sort();
+assert.deepEqual(sitemapUrls, routes.map(route => route.canonical).sort(), 'Production sitemap must exactly cover all indexable routes');
+for (const sitemapUrl of sitemapUrls) {
+  const entry = sitemap.split('<loc>' + sitemapUrl + '</loc>')[1] || '';
+  const lastmod = entry.trimStart().split('</lastmod>')[0];
+  assert.match(lastmod, /^<lastmod>\d{4}-\d{2}-\d{2}<\/lastmod>/, 'Missing/invalid lastmod: ' + sitemapUrl);
+}
 for (const route of routes) {
   const response = await fetch(new URL(route.path, base), { redirect: 'follow', signal: AbortSignal.timeout(20000) });
   assert.equal(response.status, 200, route.path + ' returned HTTP ' + response.status);
@@ -34,8 +44,6 @@ for (const route of routes) {
   assert.ok(html.includes('<link rel="canonical" href="' + route.canonical + '"'), 'Canonical mismatch: ' + route.path);
   console.log('PASS ' + route.path + ' -> HTTP ' + response.status);
 }
-const sitemapUrls = [...sitemap.matchAll(/<loc>(https:\/\/[^<]+)<\/loc>/g)].map(m => m[1]).sort();
-assert.deepEqual(sitemapUrls, routes.map(route => route.canonical).sort(), 'Production sitemap must exactly cover all indexable routes');
 for (const path of ['/proyectos/', '/privacidad.html']) {
   const response = await fetch(new URL(path, base), { signal: AbortSignal.timeout(20000) });
   assert.equal(response.status, 200, path + ' returned HTTP ' + response.status);
@@ -49,10 +57,6 @@ assert.match(home, /<article class="service">[\s\S]*?href=["']\/pintura-airless-
 assert.doesNotMatch(home, /class=["']airless-featured["']/i, 'Airless should be an ordinary service card');
 const paint = await (await fetch(new URL('/pintura-malaga/', base), { signal: AbortSignal.timeout(20000) })).text();
 assert.match(paint, /href=["']\/pintura-airless-malaga\/["']/i, 'Painting page does not link to Airless');
-const sitemapResponse = await fetch(new URL('/sitemap.xml', base), { signal: AbortSignal.timeout(20000) });
-assert.equal(sitemapResponse.status, 200, 'sitemap.xml unavailable');
-const sitemap = await sitemapResponse.text();
-assert.ok(sitemap.includes('<loc>https://www.aravenareformas.es/pintura-airless-malaga/</loc><lastmod>'), 'Airless URL or lastmod missing from sitemap');
 const robotsResponse = await fetch(new URL('/robots.txt', base), { signal: AbortSignal.timeout(20000) });
 assert.equal(robotsResponse.status, 200, 'robots.txt unavailable');
 const robotsText = await robotsResponse.text();
