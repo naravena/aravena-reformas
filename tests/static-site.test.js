@@ -152,3 +152,11 @@ test('robots.txt does not block paths that need a crawlable noindex directive', 
   const robots = fs.readFileSync(path.join(ROOT, 'robots.txt'), 'utf8');
   assert.doesNotMatch(robots, /^Disallow:\s*\/plantillas\/\s*$/m);
 });
+
+
+test('privacy translations cover all static policy paragraphs', () => {
+  const i18n = fs.readFileSync(path.join(ROOT, 'i18n.js'), 'utf8');
+  assert.match(i18n, /const paragraphs = \[t\.p1,[^\]]*t\.p23\]/);
+  assert.match(i18n, /p23: 'Esta política podrá actualizarse/);
+  assert.match(i18n, /p23: 'This policy may be updated/);
+});

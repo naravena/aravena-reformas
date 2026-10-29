@@ -197,3 +197,17 @@ test('service-page cards stack in a single aligned column on mobile widths', asy
   expect(new Set(boxes.map((box) => box.left)).size).toBe(1);
   expect(new Set(boxes.map((box) => box.width)).size).toBe(1);
 });
+
+
+test('privacy copy keeps analytics, consent, provider and security paragraphs aligned in both languages', async ({ page }) => {
+  await page.goto('/privacidad.html');
+  const sections = page.locator('main section');
+  const analytics = sections.nth(7);
+  await expect(analytics.locator('p')).toHaveCount(4);
+  await expect(analytics.locator('p').nth(1)).toContainText('Un clic en WhatsApp no confirma');
+  await expect(sections.nth(8).locator('p')).toContainText('Se aplicarán medidas técnicas');
+
+  await page.locator('[data-language="en"]').click();
+  await expect(analytics.locator('p').nth(1)).toContainText('A click on WhatsApp does not confirm');
+  await expect(sections.nth(8).locator('p')).toContainText('Appropriate technical and organisational measures');
+});

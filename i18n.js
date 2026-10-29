@@ -256,10 +256,11 @@
         p16: 'Para ejercer estos derechos puede escribir a <a href="mailto:info@aravenareformas.es">info@aravenareformas.es</a>, indicando el derecho que desea ejercer y aportando la información necesaria para identificar la solicitud.',
         p17: 'También puede presentar una reclamación ante la Agencia Española de Protección de Datos si considera que el tratamiento no se ajusta a la normativa aplicable.',
         p18: 'Si la persona usuaria acepta el aviso de preferencias, la web activa Google Analytics 4, el píxel de medición publicitaria de OpenAI y Vercel Web Analytics para medir visitas e interacciones con los medios de contacto.',
-        p19: 'Google, OpenAI y Vercel pueden tratar datos técnicos y de interacción conforme a sus respectivas políticas y condiciones. La analítica opcional no se activa si la persona usuaria rechaza el aviso.',
-        p20: 'La persona usuaria puede rechazar la analítica desde el aviso de preferencias. Si la acepta, la preferencia se guarda en el navegador para evitar mostrar repetidamente el aviso.',
-        p21: 'Se aplicarán medidas técnicas y organizativas adecuadas a los datos tratados, atendiendo a la naturaleza del tratamiento y a los riesgos que puedan existir.',
-        p22: 'Esta política podrá actualizarse cuando cambien la actividad del sitio, los tratamientos realizados o la normativa aplicable. La fecha de actualización aparecerá al inicio de la página.'
+        p19: 'Un clic en WhatsApp no confirma que se haya enviado un mensaje; un clic en teléfono no confirma que se haya realizado o contestado una llamada; y un clic en correo no confirma que se haya enviado un mensaje. La web no incorpora actualmente un formulario propio que permita confirmar automáticamente la recepción de una solicitud de presupuesto.',
+        p20: 'La persona usuaria puede rechazar las herramientas de analítica y medición publicitaria desde el aviso de preferencias. Si las acepta, la preferencia se guarda en el navegador; para cambiarla, puede borrar los datos del sitio y cargarlo de nuevo.',
+        p21: 'Google, OpenAI y Vercel pueden tratar datos técnicos y de interacción conforme a sus respectivas políticas y condiciones.',
+        p22: 'Se aplicarán medidas técnicas y organizativas adecuadas a los datos tratados, atendiendo a la naturaleza del tratamiento y a los riesgos que puedan existir.',
+        p23: 'Esta política podrá actualizarse cuando cambien la actividad del sitio, los tratamientos realizados o la normativa aplicable. La fecha de actualización aparecerá al inicio de la página.'
       }
     },
     en: {
@@ -511,10 +512,11 @@
         p16: 'To exercise these rights, write to <a href="mailto:info@aravenareformas.es">info@aravenareformas.es</a>, stating which right you wish to exercise and providing the information needed to identify the request.',
         p17: 'You may also lodge a complaint with the Spanish Data Protection Agency if you consider that the processing does not comply with applicable law.',
         p18: 'If the user accepts the preferences notice, the website enables Google Analytics 4, the OpenAI advertising measurement pixel and Vercel Web Analytics to measure visits and interactions with contact methods.',
-        p19: 'Google, OpenAI and Vercel may process technical and interaction data under their respective policies and terms. Optional analytics remains inactive if the user rejects the notice.',
-        p20: 'The user can reject analytics through the preferences notice. If accepted, the preference is stored in the browser so the notice is not shown repeatedly.',
-        p21: 'Appropriate technical and organisational measures will be applied to the data processed, taking into account the nature of the processing and the risks involved.',
-        p22: 'This policy may be updated when the website activity, processing operations or applicable law change. The update date will appear at the top of the page.'
+        p19: 'A click on WhatsApp does not confirm that a message was sent; a click on the phone link does not confirm that a call was made or answered; and a click on the email link does not confirm that an email was sent. The website does not currently include its own form to confirm receipt of a quote request automatically.',
+        p20: 'The user can reject optional analytics and advertising measurement through the preferences notice. If accepted, the choice is stored in the browser; to change it, the user can clear the site data and reload the website.',
+        p21: 'Google, OpenAI and Vercel may process technical and interaction data under their respective policies and terms.',
+        p22: 'Appropriate technical and organisational measures will be applied to the data processed, taking into account the nature of the processing and the risks involved.',
+        p23: 'This policy may be updated when the website activity, processing operations or applicable law change. The update date will appear at the top of the page.'
       }
     }
   };
@@ -827,7 +829,7 @@
     const headings = [t.h1,t.h2,t.h3,t.h4,t.h5,t.h6,t.h7,t.h8,t.h9,t.h10];
     setTextAll('main section h2', headings);
 
-    const paragraphs = [t.p1,t.p2,t.p3,t.p4,t.p5,t.p6,t.p7,t.p8,t.p9,t.p10,t.p11,t.p12,t.p13,t.p14,t.p15,t.p16,t.p17,t.p18,t.p19,t.p20,t.p21,t.p22];
+    const paragraphs = [t.p1,t.p2,t.p3,t.p4,t.p5,t.p6,t.p7,t.p8,t.p9,t.p10,t.p11,t.p12,t.p13,t.p14,t.p15,t.p16,t.p17,t.p18,t.p19,t.p20,t.p21,t.p22,t.p23];
     document.querySelectorAll('main section p').forEach((el, index) => {
       if (paragraphs[index] != null) el.innerHTML = paragraphs[index];
     });
