@@ -150,31 +150,35 @@ test('homepage and Airless page pass axe-core checks for serious and critical is
 });
 
 
-test('new service and guide pages keep their own content when i18n runs', async ({ page }) => {
-  const routes = [
-    '/pintar-techos-malaga/',
-    '/pintar-puertas-malaga/',
-    '/pintar-muebles-cocina-malaga/',
-    '/reparacion-paredes-malaga/',
-    '/falsos-techos-pladur-malaga/',
-    '/tabiques-pladur-malaga/',
-    '/cuanto-cuesta-pintar-piso-malaga/',
-    '/tipos-pintura-paredes-techos/',
-    '/preparar-paredes-antes-de-pintar/',
-    '/tipos-placas-pladur-malaga/',
-    '/guias-pintura-reformas-malaga/'
-  ];
-
-  for (const route of routes) {
-    await page.goto(route);
-    const initialH1 = (await page.locator('main h1').innerText()).trim();
-    const initialTitle = await page.title();
-    expect(initialH1).not.toBe('Reformas y pintura en Málaga');
-    expect(initialTitle).not.toBe('Reformas y pintura en Málaga | Aravena Reformas');
-    await page.locator('[data-language="en"]').click();
-    await expect(page.locator('main h1')).toHaveText(initialH1);
-    await expect(page).toHaveTitle(initialTitle);
-  }
+test('new service and guide pages translate their content and metadata into English', async ({ page }) => {
+ const routes = [
+  {path:'/pintar-techos-malaga/',h1:'Painting ceilings in Málaga: preparation and finish',title:'Ceiling painting in Málaga | Aravena Reformas',lead:'Painting a ceiling requires assessing the surface, height, lighting and protection needed for the rest of the room. Light can reveal small imperfections, so preparation should be planned before work begins.'},
+  {path:'/pintar-puertas-malaga/',h1:'Painting interior doors in Málaga',title:'Painting interior doors in Málaga | Aravena Reformas',lead:'Painting interior doors can refresh a home without replacing every door leaf. Before choosing a finish, identify the material, existing paint adhesion, edge condition and how each door is used.'},
+  {path:'/pintar-muebles-cocina-malaga/',h1:'Painting kitchen cabinets in Málaga',title:'Painting kitchen cabinets in Málaga | Aravena Reformas',lead:'Painting kitchen cabinet fronts can refresh their appearance without replacing every unit. The result depends on the material, accumulated grease, adhesion of the existing finish and preparation.'},
+  {path:'/reparacion-paredes-malaga/',h1:'Wall repairs before painting in Málaga',title:'Wall repairs before painting in Málaga | Aravena Reformas',lead:'Small imperfections may still show through after painting. We assess the surface first and distinguish minor surface repairs from damage whose underlying cause needs investigation.'},
+  {path:'/falsos-techos-pladur-malaga/',h1:'Plasterboard suspended ceilings in Málaga',title:'Plasterboard suspended ceilings in Málaga | Aravena Reformas',lead:'A plasterboard suspended ceiling creates a new interior plane and can provide solutions for certain finishes. Before choosing a system, we check available height, framework, wall junctions and existing services.'},
+  {path:'/tabiques-pladur-malaga/',h1:'Plasterboard partition walls in Málaga for interior reorganisation',title:'Plasterboard partition walls in Málaga | Aravena Reformas',lead:'A plasterboard partition can help reorganise a home without building a traditional masonry wall. The solution depends on room use, dimensions, substrate and the performance requirements of the project.'},
+  {path:'/cuanto-cuesta-pintar-piso-malaga/',h1:'How much does it cost to paint a flat in Málaga?',title:'How much does it cost to paint a flat in Málaga? | Aravena Reformas',lead:'There is no single price that applies to every flat. Two homes of the same size may need different work if one has walls in good condition while the other needs repairs, smoothing or extra protection. This guide explains what to compare before accepting a quote.'},
+  {path:'/tipos-pintura-paredes-techos/',h1:'Types of paint for walls and ceilings: how to choose',title:'Types of paint for interior walls and ceilings | Aravena Reformas',lead:'The right paint is not chosen by colour alone. Consider the substrate, how the room is used, cleaning frequency, lighting and desired look. Always check the technical data sheet for the specific product.'},
+  {path:'/preparar-paredes-antes-de-pintar/',h1:'How to prepare walls before painting',title:'How to prepare walls before painting | Practical guide',lead:'Preparation affects paint adhesion and the final appearance. Before starting, inspect the existing coating and choose treatments for the substrate; not every wall needs the same process.'},
+  {path:'/tipos-placas-pladur-malaga/',h1:'Types of plasterboard and what they are used for',title:'Types of plasterboard and their uses | Málaga',lead:'Choosing plasterboard depends on the room conditions and the performance required of the complete system. Colour should not be the only guide: check the product name and manufacturer specifications.'},
+  {path:'/guias-pintura-reformas-malaga/',h1:'Painting, materials and interior renovation guides',title:'Painting and renovation guides in Málaga | Aravena Reformas',lead:'Practical information to understand painting and interior finishing work, choose materials and prepare a quote request. These guides complement our service pages and do not replace an assessment of a home.'}
+ ];
+ for(const route of routes){
+  await page.goto(route.path);
+  await page.locator('[data-language="es"]').click();
+  const esH1=(await page.locator('main h1').innerText()).trim();
+  const esTitle=await page.title();
+  await page.locator('[data-language="en"]').click();
+  await expect(page.locator('html')).toHaveAttribute('lang','en');
+  await expect(page.locator('main h1')).toHaveText(route.h1);
+  await expect(page.locator('main .lead')).toHaveText(route.lead);
+  await expect(page).toHaveTitle(route.title);
+  await expect(page.locator('meta[name="description"]')).toHaveAttribute('content',/.+/);
+  await page.locator('[data-language="es"]').click();
+  await expect(page.locator('main h1')).toHaveText(esH1);
+  await expect(page).toHaveTitle(esTitle);
+ }
 });
 
 test('service-page cards stack in a single aligned column on mobile widths', async ({ page }) => {
