@@ -564,6 +564,511 @@
     }
   };
 
+  const NEW_PAGE_SHARED_TEXT_EN = {
+  "Inicio": "Home",
+  "Pintura en Málaga": "Painting in Málaga",
+  "Pladur en Málaga": "Plasterboard in Málaga"
+};
+  const NEW_PAGE_TRANSLATIONS = {
+  "/pintar-techos-malaga/": {
+    "titleEs": "Pintar techos en Málaga | Aravena Reformas",
+    "titleEn": "Ceiling painting in Málaga | Aravena Reformas",
+    "descriptionEs": "Pintura de techos en Málaga: preparación, protección de la estancia y elección del acabado según el soporte.",
+    "descriptionEn": "Ceiling painting in Málaga: surface preparation, room protection and finish selection for each type of ceiling.",
+    "nodes": {
+      "Pintar techos en Málaga: preparación y acabado": "Painting ceilings in Málaga: preparation and finish",
+      "Pintura de techos · Málaga": "Ceiling painting · Málaga",
+      "Pintar un techo requiere valorar el soporte, la altura, la iluminación y la protección del resto de la estancia. La luz puede hacer visibles pequeñas imperfecciones, por lo que la preparación debe planificarse antes de empezar.": "Painting a ceiling requires assessing the surface, height, lighting and protection needed for the rest of the room. Light can reveal small imperfections, so preparation should be planned before work begins.",
+      "¿Necesitas pintar los techos de una vivienda?": "Need the ceilings in your home painted?",
+      "Indica las estancias, la altura aproximada y el estado del techo.": "Tell us which rooms need painting, the approximate ceiling height and its current condition.",
+      "Pedir presupuesto": "Request a quote",
+      "Qué revisar antes de pintar": "What to check before painting",
+      "Comprobamos si la pintura está firme, si hay desconchados, pequeñas grietas, manchas o reparaciones anteriores. También se valora el acceso y qué elementos deben protegerse: suelos, paredes, muebles y luminarias.": "We check whether the existing paint is sound and look for flaking, small cracks, stains or previous repairs. We also assess access and what needs protecting, including floors, walls, furniture and light fittings.",
+      "Preparación y protección": "Preparation and protection",
+      "Retirar o proteger objetos que puedan estorbar.": "Remove or protect items that may get in the way.",
+      "Proteger superficies que no se pintarán.": "Protect surfaces that will not be painted.",
+      "Retirar pintura suelta y reparar los defectos acordados.": "Remove loose paint and repair the agreed defects.",
+      "Elegir imprimación y pintura compatibles con el soporte.": "Choose a primer and paint compatible with the surface.",
+      "Aplicar y revisar el acabado con iluminación adecuada.": "Apply the paint and check the finish under suitable lighting.",
+      "Qué acabado elegir": "Choosing a finish",
+      "La elección depende del estado de la superficie, la luz y el uso. Un acabado mate suele producir menos reflejos; la resistencia a la limpieza depende del producto concreto. Consulta la guía de": "The choice depends on the surface condition, lighting and room use. A matt finish usually produces less glare; washability depends on the product. See our guide to",
+      "tipos de pintura para paredes y techos": "paint types for walls and ceilings",
+      "Si hay manchas de humedad": "If there are damp stains",
+      "Antes de pintar hay que determinar si el origen sigue activo. Pintar encima no soluciona una fuga o entrada de agua. Los daños importantes deben revisarse antes de cerrar el presupuesto.": "Before painting, check whether the source of damp is still active. Painting over a leak or water ingress will not fix it. Significant damage should be assessed before finalising the quote.",
+      "¿Rodillo o Airless?": "Roller or Airless?",
+      "Ambos métodos pueden ser adecuados según la estancia, el soporte y la protección posible. Consulta": "Either method may be suitable depending on the room, surface and how well the area can be protected. See",
+      "pintura Airless en Málaga": "Airless painting in Málaga",
+      "para conocer sus ventajas y límites.": "to learn about its benefits and limitations.",
+      "Qué influye en el coste": "What affects the cost",
+      "Superficie, altura, acceso, mobiliario, estado del soporte, reparaciones y número de manos. Conviene concretar si se incluyen protección, imprimación, pintura y limpieza.": "The price depends on the area, height, access, furniture, surface condition, repairs and number of coats. Confirm whether protection, primer, paint and cleaning are included.",
+      "Preguntas frecuentes": "Frequently asked questions",
+      "¿Hay que pintar también las paredes?": "Do the walls also need painting?",
+      "No necesariamente, pero deben protegerse y revisarse los encuentros.": "Not necessarily, but they should be protected and the wall-to-ceiling junctions checked.",
+      "¿Se puede pintar un techo con gotelé?": "Can a textured ceiling be painted?",
+      "Si el acabado está firme puede valorarse. Para eliminar el relieve, consulta": "It may be possible if the existing finish is sound. To remove the texture, see",
+      "alisado de paredes": "wall smoothing",
+      "¿Cuánto se tarda?": "How long does it take?",
+      "Depende de la superficie, altura, reparaciones, protección y secado de los productos.": "It depends on the area, height, repairs, protection and drying times of the products.",
+      "Para renovar también las paredes, consulta": "To refresh the walls as well, see",
+      "pintura de interiores": "interior painting"
+    }
+  },
+  "/pintar-puertas-malaga/": {
+    "titleEs": "Pintar puertas en Málaga | Aravena Reformas",
+    "titleEn": "Painting interior doors in Málaga | Aravena Reformas",
+    "descriptionEs": "Pintura de puertas interiores y marcos en Málaga. Valoración del material, preparación y acabado según el estado.",
+    "descriptionEn": "Interior door and frame painting in Málaga. Material assessment, surface preparation and a suitable finish.",
+    "nodes": {
+      "Pintar puertas interiores en Málaga": "Painting interior doors in Málaga",
+      "Pintura de puertas · Málaga": "Door painting · Málaga",
+      "Pintar puertas interiores puede cambiar el aspecto de una vivienda sin sustituir todas las hojas. Antes de elegir el acabado hay que conocer el material, la adherencia de la pintura anterior, el estado de los cantos y el uso de cada puerta.": "Painting interior doors can refresh a home without replacing every door leaf. Before choosing a finish, identify the material, existing paint adhesion, edge condition and how each door is used.",
+      "¿Quieres renovar las puertas de tu vivienda?": "Would you like to refresh your interior doors?",
+      "Envíanos fotografías e indica cuántas hojas y marcos quieres pintar.": "Send us photos and tell us how many door leaves and frames you want painted.",
+      "Consultar por WhatsApp": "Ask us on WhatsApp",
+      "Qué puertas se pueden valorar": "Which doors can be assessed?",
+      "La viabilidad depende de si la puerta es de madera pintada, MDF, laminada u otro acabado. Las superficies lisas o de baja adherencia pueden requerir preparación específica; no todos los soportes aceptan el mismo sistema.": "Feasibility depends on whether the door is painted wood, MDF, laminate or another finish. Smooth surfaces or those with poor adhesion may need specific preparation; the same paint system does not suit every substrate.",
+      "Hojas de puerta": "Door leaves",
+      "Revisión de superficie, golpes, cantos y acabado existente.": "We check the surface, dents, edges and existing finish.",
+      "Marcos y jambas": "Frames and door jambs",
+      "Se valora su estado y cómo proteger los elementos contiguos.": "We assess their condition and how to protect adjacent elements.",
+      "Color y acabado": "Colour and finish",
+      "Elección de producto y nivel de brillo según material y uso.": "The product and sheen level are chosen according to the material and its use.",
+      "Proceso habitual": "Typical process",
+      "Revisar material y adherencia del acabado anterior.": "Check the material and adhesion of the existing finish.",
+      "Proteger el entorno y valorar si hay que retirar herrajes.": "Protect the surrounding area and decide whether hardware needs removing.",
+      "Limpiar y lijar o matizar la superficie de forma adecuada.": "Clean and sand or key the surface as appropriate.",
+      "Aplicar imprimación cuando sea necesaria.": "Apply primer where required.",
+      "Aplicar el acabado y respetar los tiempos de secado y curado del fabricante.": "Apply the finish and follow the manufacturer’s drying and curing times.",
+      "Qué cambia el presupuesto": "What affects the quote",
+      "Número de puertas, estado, relieves, marcos, soporte, cambio de color y si se trabaja instalado o desmontado. Debe quedar claro si se pintan una o ambas caras, marcos y otros elementos.": "The number and condition of doors, profiles, frames, substrate, colour change and whether they are painted in place or removed all affect the quote. It should specify whether one or both sides, frames and other elements are included.",
+      "Cuidados después de pintar": "Care after painting",
+      "El secado al tacto no siempre implica que el acabado haya alcanzado su resistencia final. Conviene seguir las instrucciones del producto y evitar golpes o limpiezas agresivas durante el curado.": "A surface that feels dry to the touch may not have reached its final strength. Follow the product instructions and avoid knocks or harsh cleaning while it cures.",
+      "Preguntas frecuentes": "Frequently asked questions",
+      "¿Se puede pintar una puerta laminada?": "Can a laminate door be painted?",
+      "En algunos casos, pero hay que comprobar el material y la adherencia antes de elegir el sistema.": "In some cases, yes, but the material and adhesion must be checked before choosing a system.",
+      "¿Pintar incluye los marcos?": "Does door painting include the frames?",
+      "Solo si se incluyen de forma expresa en el alcance del presupuesto.": "Only if the frames are explicitly included in the quote.",
+      "¿Pintar es mejor que cambiar?": "Is painting better than replacing a door?",
+      "Depende del estado y funcionamiento. La pintura renueva la apariencia, pero no corrige daños importantes ni problemas de cierre.": "It depends on the door’s condition and operation. Painting refreshes its appearance but will not fix major damage or closing problems.",
+      "También puedes consultar": "You can also explore",
+      "pintura de muebles de cocina": "kitchen cabinet painting",
+      "y": "and",
+      "pintura interior": "interior painting"
+    }
+  },
+  "/pintar-muebles-cocina-malaga/": {
+    "titleEs": "Pintar muebles de cocina en Málaga | Aravena Reformas",
+    "titleEn": "Painting kitchen cabinets in Málaga | Aravena Reformas",
+    "descriptionEs": "Renovación de muebles de cocina con pintura en Málaga. Valoramos material, estado, preparación y acabado posible.",
+    "descriptionEn": "Kitchen cabinet painting in Málaga. We assess materials, condition, preparation needs and possible finishes.",
+    "nodes": {
+      "Pintar muebles de cocina en Málaga": "Painting kitchen cabinets in Málaga",
+      "Renovación de muebles · Málaga": "Cabinet refresh · Málaga",
+      "Pintar los frentes de los muebles de cocina puede renovar su aspecto sin sustituir todos los módulos. El resultado depende del material, la grasa acumulada, la adherencia del acabado existente y la preparación previa.": "Painting kitchen cabinet fronts can refresh their appearance without replacing every unit. The result depends on the material, accumulated grease, adhesion of the existing finish and preparation.",
+      "¿Quieres cambiar el aspecto de tus muebles de cocina?": "Would you like to refresh your kitchen cabinets?",
+      "Envía fotos de puertas y cajones e indica, si lo sabes, el material y el acabado actual.": "Send photos of the doors and drawers and, if known, tell us the material and current finish.",
+      "Consultar viabilidad": "Check feasibility",
+      "Qué elementos pueden valorarse": "Which elements can be assessed?",
+      "El alcance puede incluir puertas y frentes de cajón, laterales visibles y paneles compatibles, si se acuerda. Encimeras, interiores, electrodomésticos, herrajes y trabajos de carpintería no se consideran incluidos por defecto.": "The agreed scope may include doors, drawer fronts, visible sides and compatible panels. Worktops, cabinet interiors, appliances, hardware and carpentry are not included by default.",
+      "Por qué importa el material": "Why the material matters",
+      "Madera pintada": "Previously painted wood",
+      "Puede necesitar reparar daños, lijar y preparar zonas deterioradas.": "Damaged areas may need repair, sanding and preparation.",
+      "MDF o superficies selladas": "MDF or sealed surfaces",
+      "Hay que comprobar la adherencia y valorar si requiere imprimación.": "Adhesion must be checked and primer may be required.",
+      "Laminados": "Laminate finishes",
+      "Requieren evaluación, porque no todos los recubrimientos aceptan el mismo acabado.": "They need assessment because not every coating will accept the same finish.",
+      "Preparación antes de pintar": "Preparation before painting",
+      "Definir qué frentes y paneles se renovarán.": "Define which fronts and panels will be refreshed.",
+      "Limpiar y desengrasar a fondo según el material.": "Clean and degrease thoroughly according to the material.",
+      "Preparar la superficie mediante lijado o matizado compatible.": "Prepare the surface by sanding or keying it with a compatible method.",
+      "Aplicar imprimación si el sistema elegido lo necesita.": "Apply primer if required by the chosen system.",
+      "Aplicar el acabado y respetar los tiempos de curado.": "Apply the finish and allow the specified curing time.",
+      "Qué resultado puedes esperar": "What results can you expect?",
+      "La pintura cambia el aspecto, pero no repara bisagras, cantos rotos, hinchazones ni daños por agua. Antes de presupuestar hay que confirmar qué elementos pueden pintarse y qué reparaciones quedan fuera del alcance.": "Paint changes the appearance but does not repair hinges, broken edges, swelling or water damage. Before quoting, confirm which elements can be painted and which repairs fall outside the scope.",
+      "Qué influye en el precio": "What affects the price",
+      "Número y tamaño de frentes, perfiles, material, estado, acabado, desmontaje y protección de la cocina. Algunas superficies pueden requerir revisión presencial.": "The number and size of fronts, profiles, material, condition, finish, removal and kitchen protection all affect the price. Some surfaces may need an in-person assessment.",
+      "Preguntas frecuentes": "Frequently asked questions",
+      "¿Se puede renovar sin cambiar los muebles?": "Can cabinets be refreshed without replacing them?",
+      "Si los frentes están en condiciones adecuadas, pintarlos puede ser una alternativa. Primero hay que valorar soporte y estado.": "If the fronts are in suitable condition, painting them may be an alternative. The surface and condition must be assessed first.",
+      "¿La pintura resiste la limpieza?": "Will the paint withstand cleaning?",
+      "Depende del sistema, producto, aplicación y curado. Deben seguirse las instrucciones del fabricante.": "It depends on the system, product, application and curing. Follow the manufacturer’s instructions.",
+      "¿Incluye cambiar encimera o tiradores?": "Does it include replacing the worktop or handles?",
+      "No se incluyen automáticamente; deben acordarse y presupuestarse por separado.": "They are not automatically included; they must be agreed and quoted separately.",
+      "Si quieres pintar también paredes y techos, consulta": "If you also want the walls and ceilings painted, see",
+      "pintura de interiores": "interior painting",
+      "o": "or",
+      "reformas parciales de interiores": "partial interior renovations"
+    }
+  },
+  "/reparacion-paredes-malaga/": {
+    "titleEs": "Reparación de paredes antes de pintar en Málaga",
+    "titleEn": "Wall repairs before painting in Málaga | Aravena Reformas",
+    "descriptionEs": "Preparación y reparación superficial de paredes en Málaga: agujeros, pequeñas grietas, desconchados y lijado antes de pintar.",
+    "descriptionEn": "Wall preparation and minor repairs in Málaga, including holes, small cracks, flaking paint and sanding before painting.",
+    "nodes": {
+      "Reparación de paredes antes de pintar en Málaga": "Wall repairs before painting in Málaga",
+      "Preparación de superficies · Málaga": "Surface preparation · Málaga",
+      "Las pequeñas imperfecciones pueden seguir viéndose después de aplicar pintura. Antes de empezar, valoramos el estado del soporte y distinguimos las reparaciones superficiales de los daños que requieren estudiar su causa.": "Small imperfections may still show through after painting. We assess the surface first and distinguish minor surface repairs from damage whose underlying cause needs investigation.",
+      "¿Tus paredes tienen agujeros, golpes o desconchados?": "Do your walls have holes, dents or flaking paint?",
+      "Envíanos fotografías de las zonas dañadas y cuéntanos el tamaño del trabajo.": "Send us photos of the damaged areas and tell us about the size of the job.",
+      "Consultar por WhatsApp": "Ask us on WhatsApp",
+      "Reparaciones superficiales que se pueden valorar": "Surface repairs we can assess",
+      "Agujeros y golpes": "Holes and dents",
+      "Pequeños defectos localizados que pueden rellenarse y lijarse antes del acabado.": "Small localised defects that can be filled and sanded before finishing.",
+      "Desconchados": "Flaking paint",
+      "Se revisa la adherencia y se retiran las partes sueltas antes de preparar el soporte.": "We check adhesion and remove loose material before preparing the surface.",
+      "Pequeñas fisuras": "Small cracks",
+      "Se evalúan antes de decidir el tratamiento; no todas las grietas tienen el mismo origen.": "They are assessed before deciding on treatment; not all cracks have the same cause.",
+      "Qué no debe ocultarse con pintura": "What should not be covered up with paint",
+      "Humedad activa, filtraciones, grietas que aumentan, deformaciones y desprendimientos extensos requieren estudiar la causa. Una reparación superficial puede no ser suficiente y no debe presentarse como solución estructural o de impermeabilización.": "Active damp, leaks, widening cracks, deformation and extensive detachment require investigation of the cause. A surface repair may not be enough and must not be presented as a structural or waterproofing solution.",
+      "Fases de preparación": "Preparation stages",
+      "Revisar zona dañada y estado de la pintura.": "Inspect the damaged area and condition of the paint.",
+      "Retirar material suelto y limpiar.": "Remove loose material and clean the area.",
+      "Aplicar un material de reparación compatible.": "Apply a compatible repair material.",
+      "Dejar secar, lijar y revisar la uniformidad.": "Allow it to dry, sand and check the surface is even.",
+      "Aplicar imprimación o pintura según el soporte y el alcance.": "Apply primer or paint according to the surface and agreed scope.",
+      "Reparación localizada o alisado completo": "Local repair or full wall smoothing",
+      "Si el defecto es puntual, puede bastar una reparación localizada. Si el gotelé o la irregularidad están extendidos por toda la estancia, puede convenir valorar el": "A local repair may be enough for an isolated defect. If textured finish or unevenness extends across the room, it may be worth assessing",
+      "alisado de paredes": "wall smoothing",
+      "Cómo influye en el presupuesto": "What affects the quote",
+      "Importan el número y tamaño de defectos, la altura, el estado de las capas, los materiales y si la pintura final está incluida. Conviene separar la reparación de la aplicación de pintura.": "The number and size of defects, height, condition of existing layers, materials and whether final painting is included all matter. It is useful to separate repairs from painting in the quote.",
+      "Preguntas frecuentes": "Frequently asked questions",
+      "¿Se puede pintar directamente sobre una grieta?": "Can you paint directly over a crack?",
+      "No sin valorar primero el tipo de grieta y su estabilidad.": "Not without first assessing the type of crack and whether it is stable.",
+      "¿La reparación incluye pintar toda la pared?": "Does the repair include painting the whole wall?",
+      "Solo si se especifica en el presupuesto.": "Only if specified in the quote.",
+      "¿Cuándo se puede pintar después de masillar?": "When can you paint after filling?",
+      "Depende del producto, del espesor y de las condiciones de secado. Sigue las instrucciones del fabricante.": "It depends on the product, thickness and drying conditions. Follow the manufacturer’s instructions.",
+      "Consulta también": "You can also read",
+      "la guía de preparación de paredes": "the wall preparation guide",
+      "y": "and",
+      "pintura interior": "interior painting"
+    }
+  },
+  "/falsos-techos-pladur-malaga/": {
+    "titleEs": "Falsos techos de pladur en Málaga | Aravena Reformas",
+    "titleEn": "Plasterboard suspended ceilings in Málaga | Aravena Reformas",
+    "descriptionEs": "Falsos techos de pladur en Málaga. Valoración del espacio, estructura, encuentros y preparación del acabado final.",
+    "descriptionEn": "Plasterboard suspended ceilings in Málaga. Assessing available height, framework, junctions and final finish preparation.",
+    "nodes": {
+      "Falsos techos de pladur en Málaga": "Plasterboard suspended ceilings in Málaga",
+      "Falsos techos · Málaga": "Suspended ceilings · Málaga",
+      "Un falso techo de placa de yeso laminado crea un nuevo plano interior y puede resolver determinados acabados. Antes de elegir el sistema hay que revisar la altura disponible, la estructura, los encuentros con las paredes y las instalaciones existentes.": "A plasterboard suspended ceiling creates a new interior plane and can provide solutions for certain finishes. Before choosing a system, we check available height, framework, wall junctions and existing services.",
+      "¿Quieres instalar o renovar un falso techo?": "Would you like to install or renew a suspended ceiling?",
+      "Indica medidas aproximadas, altura y objetivo del trabajo.": "Tell us the approximate dimensions, available height and what you want to achieve.",
+      "Consultar presupuesto": "Request a quote",
+      "Qué revisar antes de instalar": "What to check before installation",
+      "Altura libre": "Clear height",
+      "El espacio disponible condiciona la solución y la pérdida de altura aceptable.": "Available space determines the solution and how much height can be lost.",
+      "Estructura y soporte": "Framework and substrate",
+      "El sistema de fijación debe ser adecuado a las condiciones del proyecto.": "The fixing system must be suitable for the project conditions.",
+      "Instalaciones": "Services and installations",
+      "Hay que identificar luminarias, registros y otras instalaciones para definir el trabajo.": "Lighting, access panels and other services must be identified to define the work.",
+      "Acabado": "Finish",
+      "Tratamiento de juntas, encuentros, preparación y pintura deben quedar especificados.": "Joint and junction treatment, preparation and painting should all be specified.",
+      "Fases habituales": "Typical stages",
+      "Medir la estancia y revisar el soporte.": "Measure the room and inspect the substrate.",
+      "Definir placa, estructura, juntas y registros necesarios.": "Specify boards, framework, joints and required access panels.",
+      "Montar el sistema de acuerdo con las especificaciones aplicables.": "Install the system in accordance with applicable specifications.",
+      "Tratar juntas y encuentros y preparar la superficie.": "Treat joints and junctions and prepare the surface.",
+      "Realizar la pintura final si está incluida.": "Carry out final painting if included.",
+      "Elegir placas y materiales": "Choosing boards and materials",
+      "Las placas se seleccionan según el entorno y las prestaciones que requiera el conjunto. Consulta": "Boards are selected according to the environment and performance required of the complete system. See",
+      "tipos de placas de pladur": "types of plasterboard",
+      "y": "and",
+      "trabajos de pladur en Málaga": "plasterboard services in Málaga",
+      "Precio de un falso techo": "Cost of a suspended ceiling",
+      "Influyen metros cuadrados, forma de la estancia, altura, soporte, estructura, tipo de placa, encuentros y acabado. Luminarias, instalaciones y pintura deben identificarse por separado para comparar presupuestos.": "The price depends on area, room shape, height, substrate, framework, board type, junctions and finish. Lighting, services and painting should be itemised separately when comparing quotes.",
+      "Preguntas frecuentes": "Frequently asked questions",
+      "¿Se puede instalar cualquier luminaria?": "Can any light fitting be installed?",
+      "Hay que comprobar peso, tipo de luminaria, estructura y requisitos eléctricos. Las conexiones deben tratarse dentro del alcance profesional correspondiente.": "The weight, fitting type, framework and electrical requirements must be checked. Electrical connections must be handled within the appropriate professional scope.",
+      "¿Una placa aísla por sí sola?": "Does a board provide insulation on its own?",
+      "El resultado depende del sistema completo, los materiales, los encuentros y la ejecución.": "Performance depends on the complete system, materials, junctions and installation.",
+      "¿Incluye pintura?": "Is painting included?",
+      "Solo si el presupuesto contempla juntas, preparación e imprimación y pintura final.": "Only if the quote includes joint treatment, preparation, primer and final paint.",
+      "Si quieres crear una división, consulta": "If you want to create a partition, see",
+      "tabiques de pladur": "plasterboard partition walls"
+    }
+  },
+  "/tabiques-pladur-malaga/": {
+    "titleEs": "Tabiques de pladur en Málaga | Aravena Reformas",
+    "titleEn": "Plasterboard partition walls in Málaga | Aravena Reformas",
+    "descriptionEs": "Tabiques interiores de pladur en Málaga para reorganizar espacios. Valoración de medidas, estructura y acabado.",
+    "descriptionEn": "Plasterboard partition walls in Málaga to reorganise interior spaces. Assessment of dimensions, framework and finish.",
+    "nodes": {
+      "Tabiques de pladur en Málaga para reorganizar interiores": "Plasterboard partition walls in Málaga for interior reorganisation",
+      "Tabiques interiores · Málaga": "Interior partitions · Málaga",
+      "Un tabique de placa de yeso laminado puede ayudar a reorganizar una vivienda sin construir una pared tradicional. La solución depende del uso de la estancia, las dimensiones, el soporte y las prestaciones que requiere el proyecto.": "A plasterboard partition can help reorganise a home without building a traditional masonry wall. The solution depends on room use, dimensions, substrate and the performance requirements of the project.",
+      "¿Quieres dividir o reorganizar una estancia?": "Would you like to divide or reorganise a room?",
+      "Cuéntanos qué espacios quieres separar, las medidas y si debe incorporarse una puerta.": "Tell us which spaces you want to separate, the dimensions and whether a door is needed.",
+      "Consultar por WhatsApp": "Ask us on WhatsApp",
+      "Qué hay que decidir": "What needs to be decided",
+      "Distribución": "Layout",
+      "Dimensiones, ubicación y relación con puertas, ventanas y recorridos.": "Dimensions, position and how the partition relates to doors, windows and circulation.",
+      "Tipo de placa": "Board type",
+      "La selección depende de las condiciones del espacio y prestaciones requeridas.": "The choice depends on room conditions and required performance.",
+      "Aislamiento y cargas": "Insulation and loads",
+      "Si se necesitan prestaciones específicas o colgar cargas, hay que definir el sistema y sus refuerzos.": "If specific performance or wall-mounted loads are required, the system and reinforcement must be planned.",
+      "Acabado final": "Final finish",
+      "Tratamiento de juntas, preparación y pintura si se ha incluido.": "Joint treatment, preparation and painting if included.",
+      "Fases habituales": "Typical stages",
+      "Medir y revisar suelo, paredes y techo.": "Measure and inspect the floor, walls and ceiling.",
+      "Definir trazado, estructura y tipo de placa.": "Define the layout, framework and board type.",
+      "Coordinar puertas e instalaciones antes de cerrar el tabique.": "Coordinate doors and services before closing the partition.",
+      "Montar placas y tratar juntas y encuentros.": "Install boards and treat joints and junctions.",
+      "Preparar la superficie para el acabado acordado.": "Prepare the surface for the agreed finish.",
+      "Tipos de placa y materiales": "Board types and materials",
+      "Hay placas diseñadas para condiciones diferentes. La selección debe seguir especificaciones técnicas, no solo el color o el nombre comercial. Consulta": "Boards are designed for different conditions. Selection should follow technical specifications, not just colour or brand name. See",
+      "tipos de placas de pladur": "types of plasterboard",
+      "Presupuesto de un tabique": "Partition wall quote",
+      "Depende de longitud y altura, diseño, estructura, placas, huecos, encuentros y acabado. El presupuesto debe detallar qué incluye el montaje y si contempla preparación y pintura.": "It depends on length and height, design, framework, boards, openings, junctions and finish. The quote should specify what installation includes and whether preparation and painting are covered.",
+      "Preguntas frecuentes": "Frequently asked questions",
+      "¿Se pueden colgar muebles?": "Can furniture be mounted on it?",
+      "Debe planificarse según peso, fijación y refuerzos necesarios. No todos los puntos son adecuados para cualquier carga.": "This must be planned according to weight, fixing method and required reinforcement. Not every point can support every load.",
+      "¿Se puede pintar después?": "Can it be painted afterwards?",
+      "Sí, cuando juntas y superficies estén preparadas adecuadamente. Consulta": "Yes, once joints and surfaces are properly prepared. See",
+      "pintura interior": "interior painting",
+      "¿Es igual que una pared de ladrillo?": "Is it the same as a brick wall?",
+      "Son sistemas diferentes. La opción adecuada depende de uso, soporte y requisitos del proyecto.": "They are different systems. The right option depends on use, substrate and project requirements.",
+      "Para trabajos de techo, consulta": "For ceiling work, see",
+      "falsos techos de pladur": "plasterboard suspended ceilings",
+      "o la página de": "or our page on",
+      "pladur en Málaga": "plasterboard in Málaga"
+    }
+  },
+  "/cuanto-cuesta-pintar-piso-malaga/": {
+    "titleEs": "Cuánto cuesta pintar un piso en Málaga: factores",
+    "titleEn": "How much does it cost to paint a flat in Málaga? | Aravena Reformas",
+    "descriptionEs": "Qué influye en el precio de pintar un piso en Málaga: metros, preparación, materiales, mobiliario y qué debe incluir el presupuesto.",
+    "descriptionEn": "How much does it cost to paint a flat in Málaga? Key factors include surface area, preparation, materials, furniture and what the quote should include.",
+    "nodes": {
+      "Cuánto cuesta pintar un piso en Málaga": "How much does it cost to paint a flat in Málaga?",
+      "Guía de presupuestos · Pintura": "Quote guide · Painting",
+      "No existe una cifra única válida para todos los pisos. Dos viviendas de la misma superficie pueden necesitar trabajos diferentes si una tiene paredes en buen estado y otra requiere reparación, alisado o protección adicional. Esta guía explica qué comparar antes de aceptar un presupuesto.": "There is no single price that applies to every flat. Two homes of the same size may need different work if one has walls in good condition while the other needs repairs, smoothing or extra protection. This guide explains what to compare before accepting a quote.",
+      "Factores que más influyen en el coste": "The main factors affecting cost",
+      "Superficie incluida": "Area included",
+      "Hay que distinguir los metros cuadrados de vivienda de los metros reales de pared y techo que se pintarán.": "The floor area of the home is different from the actual wall and ceiling area that will be painted.",
+      "Estado de las paredes": "Condition of the walls",
+      "Grietas superficiales, agujeros, desconchados o gotelé pueden aumentar la preparación.": "Surface cracks, holes, flaking paint or textured finishes can increase preparation work.",
+      "Muebles y protección": "Furniture and protection",
+      "La distribución y el volumen de mobiliario pueden cambiar el tiempo necesario para proteger el espacio.": "The layout and amount of furniture can affect the time needed to protect the space.",
+      "Pintura y acabado": "Paint and finish",
+      "Producto, cambio de color, número de manos y acabado influyen en el alcance.": "Product, colour change, number of coats and finish all affect the scope.",
+      "Qué debe aclarar el presupuesto": "What the quote should clarify",
+      "Qué estancias, paredes, techos y elementos se pintan.": "Which rooms, walls, ceilings and elements will be painted.",
+      "Si se incluye protección y movimiento de muebles.": "Whether protection and moving furniture are included.",
+      "Qué reparaciones previas se contemplan.": "Which preparation and repair tasks are included.",
+      "Qué productos o acabados se proponen y cuántas manos se prevén.": "Which products and finishes are proposed and how many coats are planned.",
+      "Si materiales y trabajos complementarios están incluidos.": "Whether materials and additional work are included.",
+      "Por qué el precio por metro cuadrado puede confundir": "Why a price per square metre can be misleading",
+      "Un presupuesto puede incluir solo aplicación y otro puede añadir protección, reparación, imprimación y materiales. Para comparar, confirma que ambos describen el mismo alcance y condiciones.": "One quote may cover application only, while another includes protection, repairs, primer and materials. To compare them, make sure both describe the same scope and conditions.",
+      "Qué información preparar antes de pedir precio": "What to prepare before requesting a quote",
+      "Indica las estancias, si se pintan paredes y techos, altura aproximada, si hay muebles, color actual y acabado deseado. Las fotos ayudan a orientar la consulta, aunque pueden no sustituir una revisión.": "Tell us which rooms are included, whether walls and ceilings will be painted, approximate height, whether there is furniture, the current colour and desired finish. Photos help us understand the job, although they may not replace an inspection.",
+      "¿Hay que alisar antes de pintar?": "Do walls need smoothing before painting?",
+      "No siempre. Si la superficie está lisa y estable puede bastar una preparación localizada. Con gotelé o irregularidades extendidas puede valorarse el": "Not always. If the surface is smooth and sound, local preparation may be enough. If texture or unevenness extends across the room, we can assess",
+      "alisado de paredes": "wall smoothing",
+      "; para daños puntuales, consulta": "; for localised damage, see",
+      "reparación superficial": "minor wall repairs",
+      "Elegir la pintura adecuada": "Choosing the right paint",
+      "El producto depende del soporte, el uso, la limpieza y el acabado buscado. Consulta": "The product depends on the surface, room use, cleaning needs and desired finish. See",
+      "tipos de pintura para paredes y techos": "types of paint for walls and ceilings",
+      "¿Quieres valorar la pintura de tu piso?": "Would you like a quote to paint your flat?",
+      "Indica las estancias, superficies y estado actual.": "Tell us which rooms and surfaces are included and their current condition.",
+      "Solicitar presupuesto": "Request a quote"
+    }
+  },
+  "/tipos-pintura-paredes-techos/": {
+    "titleEs": "Tipos de pintura para paredes y techos interiores",
+    "titleEn": "Types of paint for interior walls and ceilings | Aravena Reformas",
+    "descriptionEs": "Cómo elegir pintura para paredes y techos: acabado mate o satinado, facilidad de limpieza, soporte y uso de cada estancia.",
+    "descriptionEn": "How to choose wall and ceiling paint: matt or satin finish, cleanability, surface type and room use.",
+    "nodes": {
+      "Tipos de pintura para paredes y techos: cómo elegir": "Types of paint for walls and ceilings: how to choose",
+      "Guía de materiales · Pintura": "Materials guide · Painting",
+      "La pintura adecuada no se elige solo por el color. Hay que considerar el soporte, el uso de la estancia, la frecuencia de limpieza, la luz y el acabado visual. Revisa siempre la ficha técnica del producto concreto.": "The right paint is not chosen by colour alone. Consider the substrate, room use, cleaning frequency, lighting and desired look. Always check the technical data sheet for the specific product.",
+      "Pinturas al agua para interior": "Water-based interior paints",
+      "Muchas paredes y techos interiores se pintan con pinturas plásticas o acrílicas al agua. Su cobertura, resistencia al frote, rendimiento y acabado varían según la formulación; no todas funcionan igual ni sirven para todos los soportes.": "Many interior walls and ceilings are painted with water-based emulsion or acrylic paints. Coverage, scrub resistance, spread rate and finish vary by formulation; not every product performs the same or suits every substrate.",
+      "Mate, satinado o brillante": "Matt, satin or gloss",
+      "Mate": "Matt",
+      "Produce pocos reflejos y suele disimular mejor pequeñas irregularidades. La resistencia a la limpieza depende de la formulación.": "It produces little glare and usually hides small surface irregularities better. Cleanability depends on the formulation.",
+      "Satinado": "Satin",
+      "Refleja más luz y puede facilitar la limpieza en algunos productos, pero puede hacer más visibles los defectos.": "It reflects more light and may make cleaning easier with some products, but can make defects more visible.",
+      "Brillante": "Gloss",
+      "Refleja mucha luz y evidencia irregularidades. Es adecuado solo para superficies y sistemas concretos.": "It reflects a lot of light and highlights irregularities. It is suitable only for certain surfaces and systems.",
+      "Elegir según la estancia": "Choosing paint for each room",
+      "En dormitorios y salones se busca un acabado acorde a la luz. En zonas de más uso interesa revisar la resistencia al frote y las instrucciones de limpieza. En techos, un acabado con pocos reflejos suele limitar la visibilidad de pequeñas marcas.": "In bedrooms and living rooms, choose a finish that works with the lighting. In high-use areas, check scrub resistance and cleaning instructions. On ceilings, a low-sheen finish usually makes small marks less visible.",
+      "Preparación del soporte": "Surface preparation",
+      "Una buena pintura puede fallar si hay polvo, partes sueltas o reparaciones mal lijadas. La imprimación depende del material, la absorción y el estado. Consulta": "Even good paint can fail if there is dust, loose material or poorly sanded repairs. Primer depends on the material, absorbency and condition. See",
+      "cómo preparar paredes antes de pintar": "how to prepare walls before painting",
+      "¿Y si hay gotelé o daños?": "What if there is a textured finish or damage?",
+      "La pintura no elimina el relieve ni corrige agujeros. Para un acabado liso puede requerirse": "Paint does not remove texture or repair holes. A smooth finish may require",
+      "alisado de paredes": "wall smoothing",
+      "; para defectos localizados, revisa": "; for localised defects, see",
+      "reparación de paredes": "wall repairs",
+      "Qué comprobar en la ficha técnica": "What to check in the technical data sheet",
+      "Soportes y usos recomendados.": "Recommended substrates and uses.",
+      "Rendimiento orientativo y condiciones en que se mide.": "Indicative coverage and the conditions under which it is measured.",
+      "Tiempo entre manos y secado.": "Time between coats and drying time.",
+      "Resistencia al frote y forma de limpieza.": "Scrub resistance and cleaning method.",
+      "Compatibilidad con imprimaciones y pinturas anteriores.": "Compatibility with primers and existing paint.",
+      "No hay una única pintura mejor para todas las viviendas. Si necesitas renovar tus paredes en Málaga, consulta": "There is no single best paint for every home. If you want to refresh your walls in Málaga, see",
+      "nuestro servicio de pintura interior": "our interior painting service",
+      "o": "or",
+      "pintura de techos": "ceiling painting"
+    }
+  },
+  "/preparar-paredes-antes-de-pintar/": {
+    "titleEs": "Cómo preparar paredes antes de pintar | Guía práctica",
+    "titleEn": "How to prepare walls before painting | Practical guide",
+    "descriptionEs": "Guía para preparar paredes antes de pintar: limpieza, reparación de defectos, lijado, imprimación y comprobación del soporte.",
+    "descriptionEn": "A practical guide to preparing walls before painting: cleaning, repairs, sanding, primer and surface checks.",
+    "nodes": {
+      "Cómo preparar paredes antes de pintar": "How to prepare walls before painting",
+      "Guía práctica · Preparación": "Practical guide · Preparation",
+      "La preparación influye en la adherencia y en el aspecto final. Antes de empezar hay que revisar la capa existente y elegir los tratamientos según el soporte; no todas las paredes necesitan el mismo proceso.": "Preparation affects paint adhesion and the final appearance. Before starting, inspect the existing coating and choose treatments for the substrate; not every wall needs the same process.",
+      "1. Revisar la superficie": "1. Inspect the surface",
+      "Busca pintura que se desprende, golpes, agujeros, grietas, polvo, grasa y manchas. Si hay signos de humedad activa o daños que vuelven a aparecer, primero debe estudiarse la causa.": "Look for peeling paint, dents, holes, cracks, dust, grease and stains. If there are signs of active damp or recurring damage, investigate the cause first.",
+      "2. Limpiar y proteger": "2. Clean and protect",
+      "Retira polvo y suciedad con un método compatible con el soporte. Protege suelos, muebles y elementos que no deben mancharse. Los residuos que comprometen la adherencia deben tratarse antes de pintar.": "Remove dust and dirt using a method suitable for the substrate. Protect floors, furniture and anything that must stay clean. Contaminants that affect adhesion must be dealt with before painting.",
+      "3. Reparar defectos superficiales": "3. Repair surface defects",
+      "Los pequeños agujeros pueden necesitar relleno, secado y lijado. Los desconchados requieren retirar las partes sin adherencia. Las grietas deben evaluarse antes de elegir tratamiento. Consulta": "Small holes may need filling, drying and sanding. Flaking paint must be removed where it has lost adhesion. Cracks should be assessed before choosing a treatment. See",
+      "reparación de paredes en Málaga": "wall repairs in Málaga",
+      "4. Valorar si hay que alisar": "4. Assess whether smoothing is needed",
+      "Si existe gotelé o un relieve que se quiere eliminar, pintar directamente no producirá una pared lisa. Puede ser necesario estudiar el": "If there is a textured finish that you want to remove, painting directly over it will not create a smooth wall. It may be necessary to assess",
+      "alisado de paredes": "wall smoothing",
+      "5. Lijar y retirar el polvo": "5. Sand and remove dust",
+      "El lijado regulariza algunas superficies y transiciones entre reparaciones. Debe hacerse con las precauciones adecuadas al material y después retirar el polvo para no afectar al acabado.": "Sanding evens out some surfaces and transitions between repairs. Use precautions suited to the material, then remove the dust so it does not affect the finish.",
+      "6. Elegir imprimación y pintura": "6. Choose primer and paint",
+      "La imprimación depende del soporte y de la absorción. Después se elige la pintura según el uso y el acabado. Consulta": "Primer depends on the substrate and absorbency. Then choose paint according to room use and desired finish. See",
+      "la guía de tipos de pintura": "the paint types guide",
+      "Errores frecuentes": "Common mistakes",
+      "Pintar sobre polvo o grasa.": "Painting over dust or grease.",
+      "No dejar secar los materiales de reparación.": "Not allowing repair materials to dry.",
+      "Usar productos incompatibles con la superficie existente.": "Using products incompatible with the existing surface.",
+      "Omitir la protección del entorno.": "Failing to protect the surrounding area.",
+      "Intentar ocultar humedad activa o grietas sin valorar su origen.": "Trying to hide active damp or cracks without investigating their cause.",
+      "¿Se puede usar Airless sin preparar?": "Can Airless be used without preparation?",
+      "No. Airless cambia el método de aplicación, no las condiciones necesarias del soporte. Consulta": "No. Airless changes the application method, not the preparation requirements of the substrate. See",
+      "pintura Airless en Málaga": "Airless painting in Málaga",
+      "y nuestro servicio de": "and our",
+      "pintura interior": "interior painting service",
+      "¿Quieres preparar y pintar tus paredes?": "Would you like to prepare and paint your walls?",
+      "Podemos valorar el estado y concretar qué preparación necesita la superficie.": "We can assess the condition and define the preparation the surface needs.",
+      "Consultar el trabajo": "Discuss the job"
+    }
+  },
+  "/tipos-placas-pladur-malaga/": {
+    "titleEs": "Tipos de placas de pladur y sus usos | Málaga",
+    "titleEn": "Types of plasterboard and their uses | Málaga",
+    "descriptionEs": "Guía sobre tipos de placas de yeso laminado: estándar, resistentes a la humedad y sistemas con prestaciones específicas.",
+    "descriptionEn": "Guide to plasterboard types: standard boards, moisture-resistant boards and systems with specific performance requirements.",
+    "nodes": {
+      "Tipos de placas de pladur y para qué se utilizan": "Types of plasterboard and what they are used for",
+      "Guía de materiales · Pladur": "Materials guide · Plasterboard",
+      "La elección de placa de yeso laminado depende de las condiciones del recinto y de las prestaciones exigidas al sistema completo. El color no debe ser la única referencia: hay que revisar la denominación y las especificaciones del fabricante.": "Choosing plasterboard depends on the room conditions and the performance required of the complete system. Colour should not be the only guide: check the product name and manufacturer specifications.",
+      "Placa estándar": "Standard board",
+      "Se utiliza en muchas divisiones y revestimientos interiores en condiciones normales. La idoneidad depende del uso, soporte, sistema de montaje y requisitos del proyecto.": "It is used for many interior partitions and linings under normal conditions. Suitability depends on room use, substrate, installation system and project requirements.",
+      "Placas resistentes a la humedad": "Moisture-resistant boards",
+      "Están diseñadas para determinados ambientes interiores con mayor exposición a humedad que una estancia seca. No equivalen a una impermeabilización ni son aptas para cualquier contacto directo con agua; hay que definir correctamente juntas y acabados.": "They are designed for certain interior environments with greater moisture exposure than a dry room. They are not a waterproofing system and are not suitable for every type of direct water contact; joints and finishes must be specified correctly.",
+      "Placas con prestaciones frente al fuego": "Fire-performance boards",
+      "Algunas placas forman parte de sistemas diseñados para requisitos específicos de comportamiento frente al fuego. La prestación depende del conjunto —estructura, número y tipo de placas, juntas y demás componentes— y de su instalación; no se debe atribuir una clasificación al sistema basándose solo en una placa.": "Some boards form part of systems designed to meet specific fire-performance requirements. Performance depends on the complete assembly—framework, number and type of boards, joints and other components—and its installation. A system rating should not be inferred from a single board alone.",
+      "Soluciones acústicas": "Acoustic solutions",
+      "El rendimiento acústico depende también de estructura, cámaras, aislamiento, encuentros y transmisión por flancos. Si se exige una prestación concreta, hay que definir el sistema completo.": "Acoustic performance also depends on the framework, cavities, insulation, junctions and flanking transmission. If a specific performance level is required, define the complete system.",
+      "Qué sistema elegir": "Choosing a system",
+      "La selección varía según uso, humedad, cargas, requisitos técnicos y acabado. Para una división, consulta": "The choice depends on use, moisture, loads, technical requirements and finish. For a partition, see",
+      "tabiques de pladur": "plasterboard partition walls",
+      "; para techos,": "; for ceilings, see",
+      "falsos techos de pladur": "plasterboard suspended ceilings",
+      "Qué confirmar antes de instalar": "What to confirm before installation",
+      "Condiciones de humedad y uso del recinto.": "Moisture conditions and room use.",
+      "Cargas, fijaciones y elementos suspendidos.": "Loads, fixings and suspended items.",
+      "Prestaciones técnicas exigidas.": "Required technical performance.",
+      "Tipo de estructura, juntas, sellados y acabado.": "Framework type, joints, seals and finish.",
+      "Documentación del fabricante y normativa aplicable al caso.": "Manufacturer documentation and applicable regulations.",
+      "Elegir la placa adecuada es solo una parte del trabajo. La estructura, los encuentros y el tratamiento de juntas también importan. Consulta": "Choosing the right board is only one part of the job. The framework, junctions and joint treatment also matter. See",
+      "trabajos de pladur": "plasterboard services",
+      "y": "and",
+      "pintura interior": "interior painting"
+    }
+  },
+  "/guias-pintura-reformas-malaga/": {
+    "titleEs": "Guías de pintura y reformas en Málaga | Aravena Reformas",
+    "titleEn": "Painting and renovation guides in Málaga | Aravena Reformas",
+    "descriptionEs": "Guías prácticas sobre pintura, preparación de paredes, materiales, pladur y presupuestos para renovar interiores en Málaga.",
+    "descriptionEn": "Practical guides to painting, wall preparation, materials, plasterboard and renovation quotes in Málaga.",
+    "nodes": {
+      "Guías de pintura, materiales y reformas interiores": "Painting, materials and interior renovation guides",
+      "Recursos prácticos · Aravena Reformas": "Practical resources · Aravena Reformas",
+      "Información práctica para entender trabajos de pintura y acabados interiores, elegir materiales y preparar una solicitud de presupuesto. Las guías complementan las páginas de servicio y no sustituyen la valoración de una vivienda.": "Practical information to understand painting and interior finishing work, choose materials and prepare a quote request. These guides complement our service pages and do not replace an assessment of a home.",
+      "Presupuestos y planificación": "Quotes and planning",
+      "Cuánto cuesta pintar un piso": "How much does it cost to paint a flat?",
+      "Factores del precio, alcance y elementos que debe aclarar un presupuesto.": "Price factors, scope and details that a quote should clarify.",
+      "Reformas de interiores": "Interior renovations",
+      "Cómo definir una renovación parcial con pintura, alisado, pladur y acabados.": "How to define a partial renovation involving painting, wall smoothing, plasterboard and finishing.",
+      "Pintura y preparación": "Painting and preparation",
+      "Tipos de pintura para paredes y techos": "Types of paint for walls and ceilings",
+      "Acabados y criterios de elección según soporte y estancia.": "Finishes and selection criteria according to the surface and room.",
+      "Cómo preparar paredes antes de pintar": "How to prepare walls before painting",
+      "Limpieza, reparación, lijado e imprimación.": "Cleaning, repairs, sanding and primer.",
+      "Reparación de paredes": "Wall repairs",
+      "Defectos superficiales y cuándo investigar el origen del daño.": "Surface defects and when to investigate their cause.",
+      "Pladur y materiales": "Plasterboard and materials",
+      "Tipos de placas de pladur": "Types of plasterboard",
+      "Usos, límites y criterios para elegir materiales.": "Uses, limitations and criteria for choosing materials.",
+      "Tabiques de pladur": "Plasterboard partition walls",
+      "Qué definir antes de crear una división interior.": "What to define before creating an interior partition.",
+      "Falsos techos de pladur": "Plasterboard suspended ceilings",
+      "Altura, estructura, encuentros y acabado final.": "Height, framework, junctions and final finish.",
+      "Trabajos específicos": "Specific jobs",
+      "Pintar techos en Málaga": "Ceiling painting in Málaga",
+      "Preparación y selección del acabado.": "Preparation and finish selection.",
+      "Pintar puertas": "Door painting",
+      "Materiales, preparación y acabados interiores.": "Materials, preparation and interior finishes.",
+      "Pintar muebles de cocina": "Kitchen cabinet painting",
+      "Materiales, superficies y viabilidad de la renovación.": "Materials, surfaces and the feasibility of refreshing them.",
+      "Para solicitar una valoración, consulta": "To request an assessment, see",
+      "pintura interior": "interior painting",
+      ",": ",",
+      "alisado de paredes": "wall smoothing",
+      "pladur": "plasterboard",
+      "o": "or",
+      "pintura Airless en Málaga": "Airless painting in Málaga"
+    }
+  }
+};
+
+  const NEW_PAGE_ORIGINAL_TEXT = new WeakMap();
+  const applyNewPage = (lang) => {
+    const path = location.pathname.replace(/index\.html$/i, '').replace(/\/?$/, '/');
+    const page = NEW_PAGE_TRANSLATIONS[path];
+    if (!page) return;
+    const title = lang === 'en' ? page.titleEn : page.titleEs;
+    const description = lang === 'en' ? page.descriptionEn : page.descriptionEs;
+    document.title = title;
+    setMeta('meta[name="description"]', description);
+    setMeta('meta[property="og:title"]', title);
+    setMeta('meta[property="og:description"]', description);
+    setMeta('meta[name="twitter:title"]', title);
+    setMeta('meta[name="twitter:description"]', description);
+    setMeta('meta[property="og:locale"]', lang === 'en' ? 'en_GB' : 'es_ES');
+    const root = document.querySelector('main');
+    if (!root) return;
+    const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT);
+    const nodes = [];
+    while (walker.nextNode()) nodes.push(walker.currentNode);
+    nodes.forEach((node) => {
+      if (!NEW_PAGE_ORIGINAL_TEXT.has(node)) NEW_PAGE_ORIGINAL_TEXT.set(node, node.nodeValue);
+      const original = NEW_PAGE_ORIGINAL_TEXT.get(node);
+      const match = original.match(/^(\s*)([\s\S]*?)(\s*)$/);
+      if (!match) return;
+      const key = match[2].trim();
+      if (!key) return;
+      const translated = page.nodes[key] || NEW_PAGE_SHARED_TEXT_EN[key];
+      if (lang === 'en' && translated) node.nodeValue = match[1] + translated + match[3];
+      else node.nodeValue = original;
+    });
+  };
+
   const pageId = () => {
     // Only return an ID when this route has dedicated translations and metadata.
     // Unknown service pages must keep their own HTML instead of falling back to the homepage.
@@ -672,6 +1177,7 @@
         ['/', t.home],
         ['/reformas-malaga/', t.reforms],
         ['/pintura-malaga/', t.painting],
+        ['/guias-pintura-reformas-malaga/', t.guides],
         ['/pintura-airless-malaga/', t.airless],
         ['/alisado-paredes-malaga/', t.smoothing],
         ['/pladur-malaga/', t.pladur],
@@ -683,6 +1189,8 @@
       });
     }
 
+    setText('footer a[href="/contacto/"]', t.contact);
+    setText('footer a[href="/privacidad.html"]', t.privacy);
     setText('.theme-label', themeIsDark() ? t.themeLight : t.themeDark);
     setAttr('.theme-toggle', 'aria-label', themeIsDark() ? t.switchToLight : t.switchToDark);
     setAttr('.theme-toggle', 'title', themeIsDark() ? t.switchToLight : t.switchToDark);
@@ -866,6 +1374,7 @@
     else if (body.classList.contains('page-privacy')) applyPrivacy(lang);
 
     applyMeta(lang);
+    applyNewPage(lang);
     updateWhatsAppLinks(lang);
   };
 
