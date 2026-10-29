@@ -144,7 +144,7 @@ test('Airless is an equal-level service card on the homepage', () => {
 test('new service and guide routes have route-specific English translations', () => {
  const i18n=fs.readFileSync(path.join(ROOT,'i18n.js'),'utf8');
  const routes=['/pintar-techos-malaga/','/pintar-puertas-malaga/','/pintar-muebles-cocina-malaga/','/reparacion-paredes-malaga/','/falsos-techos-pladur-malaga/','/tabiques-pladur-malaga/','/cuanto-cuesta-pintar-piso-malaga/','/tipos-pintura-paredes-techos/','/preparar-paredes-antes-de-pintar/','/tipos-placas-pladur-malaga/','/guias-pintura-reformas-malaga/'];
- for(const route of routes)assert.ok(i18n.includes("'"+route+"': {"),'Missing translations for '+route);
+ for(const route of routes)assert.ok(i18n.includes(JSON.stringify(route)+': {'),'Missing translations for '+route);
  assert.match(i18n,/const applyNewPage = \\(lang\\) =>/);
 });
 
