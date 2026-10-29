@@ -67,18 +67,18 @@
         servicesEyebrow: 'Servicios',
         servicesTitle: 'Soluciones para renovar, reparar y terminar cada espacio.',
         servicesLead: 'Una selección clara de los trabajos que realizamos para viviendas y espacios interiores en Málaga.',
-        service1Title: 'Reformas de interiores',
-        service1Text: 'Mejoras y renovación de espacios para adaptar la vivienda a tus necesidades.',
-        service2Title: 'Pintura en Málaga',
-        service2Text: 'Paredes, techos, puertas, mobiliario y otras superficies con preparación previa.',
-        service3Title: 'Alisado y eliminación de gotelé',
-        service3Text: 'Preparación y alisado de paredes y techos para conseguir superficies uniformes.',
+        service1Title: 'Reformas parciales de interiores',
+        service1Text: 'Renovación coordinada de pintura, superficies, pladur y acabados dentro de un alcance definido.',
+        service2Title: 'Pintura de viviendas en Málaga',
+        service2Text: 'Paredes, techos y superficies interiores con preparación y revisión del acabado.',
+        service3Title: 'Alisado de paredes y eliminación de gotelé',
+        service3Text: 'Preparación y alisado para conseguir superficies uniformes antes de pintar.',
         service4Title: 'Pladur en Málaga',
-        service4Text: 'Soluciones de pladur para divisiones, trasdosados, techos y mejoras interiores.',
-        service5Title: 'Reparación y preparación',
-        service5Text: 'Masillado, reparación de superficies y trabajos previos antes del acabado.',
+        service4Text: 'Soluciones para tabiques, trasdosados y falsos techos según cada proyecto.',
+        service5Title: 'Reparación y preparación de paredes',
+        service5Text: 'Pequeñas reparaciones, lijado y preparación antes del acabado.',
         service6Title: 'Pintura Airless en Málaga',
-        service6Text: 'Aplicación de pintura por pulverización a alta presión en paredes y techos amplios, cuando el espacio lo permite.',
+        service6Text: 'Aplicación por pulverización en superficies amplias cuando el espacio y la preparación lo permiten.',
         whyEyebrow: 'Nuestra forma de trabajar',
         whyTitle: 'La tranquilidad de una obra bien organizada.',
         whyLead: 'No se trata solo de hacer el trabajo, sino de saber qué se hace en cada fase y cuidar el resultado final.',
@@ -255,8 +255,8 @@
         p15: 'La persona interesada puede solicitar acceso, rectificación, supresión, oposición, limitación del tratamiento y portabilidad, cuando proceda, y puede retirar un consentimiento previamente prestado.',
         p16: 'Para ejercer estos derechos puede escribir a <a href="mailto:info@aravenareformas.es">info@aravenareformas.es</a>, indicando el derecho que desea ejercer y aportando la información necesaria para identificar la solicitud.',
         p17: 'También puede presentar una reclamación ante la Agencia Española de Protección de Datos si considera que el tratamiento no se ajusta a la normativa aplicable.',
-        p18: 'La web puede utilizar Google Analytics 4 para obtener estadísticas sobre el uso del sitio, como visitas y determinadas interacciones con los medios de contacto. Esta analítica no se carga hasta que la persona usuaria acepta su uso mediante el aviso de preferencias.',
-        p19: 'La herramienta utilizada es Google Analytics 4, prestada por Google. La configuración y la información disponible en Analytics pueden cambiar conforme evolucionen el servicio y sus condiciones.',
+        p18: 'Si la persona usuaria acepta el aviso de preferencias, la web activa Google Analytics 4, el píxel de medición publicitaria de OpenAI y Vercel Web Analytics para medir visitas e interacciones con los medios de contacto.',
+        p19: 'Google, OpenAI y Vercel pueden tratar datos técnicos y de interacción conforme a sus respectivas políticas y condiciones. La analítica opcional no se activa si la persona usuaria rechaza el aviso.',
         p20: 'La persona usuaria puede rechazar la analítica desde el aviso de preferencias. Si la acepta, la preferencia se guarda en el navegador para evitar mostrar repetidamente el aviso.',
         p21: 'Se aplicarán medidas técnicas y organizativas adecuadas a los datos tratados, atendiendo a la naturaleza del tratamiento y a los riesgos que puedan existir.',
         p22: 'Esta política podrá actualizarse cuando cambien la actividad del sitio, los tratamientos realizados o la normativa aplicable. La fecha de actualización aparecerá al inicio de la página.'
@@ -510,8 +510,8 @@
         p15: 'The data subject may request access, rectification, erasure, objection, restriction of processing and portability where applicable, and may withdraw consent previously given.',
         p16: 'To exercise these rights, write to <a href="mailto:info@aravenareformas.es">info@aravenareformas.es</a>, stating which right you wish to exercise and providing the information needed to identify the request.',
         p17: 'You may also lodge a complaint with the Spanish Data Protection Agency if you consider that the processing does not comply with applicable law.',
-        p18: 'The website may use Google Analytics 4 to obtain statistics about site use, such as visits and certain interactions with contact methods. Analytics is not loaded until the user accepts it through the preferences notice.',
-        p19: 'The tool used is Google Analytics 4, provided by Google. The configuration and information available in Analytics may change as the service and its terms evolve.',
+        p18: 'If the user accepts the preferences notice, the website enables Google Analytics 4, the OpenAI advertising measurement pixel and Vercel Web Analytics to measure visits and interactions with contact methods.',
+        p19: 'Google, OpenAI and Vercel may process technical and interaction data under their respective policies and terms. Optional analytics remains inactive if the user rejects the notice.',
         p20: 'The user can reject analytics through the preferences notice. If accepted, the preference is stored in the browser so the notice is not shown repeatedly.',
         p21: 'Appropriate technical and organisational measures will be applied to the data processed, taking into account the nature of the processing and the risks involved.',
         p22: 'This policy may be updated when the website activity, processing operations or applicable law change. The update date will appear at the top of the page.'
@@ -563,18 +563,23 @@
   };
 
   const pageId = () => {
-    const path = location.pathname;
-    if (path === '/' || path === '/index.html') return 'home';
-    if (path.includes('/reformas-malaga')) return 'reformas';
-    if (path.includes('/pintura-airless-malaga')) return 'airless';
-    if (path.includes('/pintura-malaga')) return 'pintura';
-    if (path.includes('/alisado-paredes-malaga')) return 'alisado';
-    if (path.includes('/pladur-malaga')) return 'pladur';
-    if (path.includes('/pintura-muebles-malaga')) return 'muebles';
-    if (path.includes('/contacto')) return 'contacto';
-    if (path.includes('/proyectos')) return 'proyectos';
-    if (path.includes('/privacidad')) return 'privacidad';
-    return 'home';
+    // Only return an ID when this route has dedicated translations and metadata.
+    // Unknown service pages must keep their own HTML instead of falling back to the homepage.
+    const path = location.pathname.replace(/\/index\.html$/i, '/').replace(/\/+$/, '') || '/';
+    const routeIds = {
+      '/': 'home',
+      '/reformas-malaga': 'reformas',
+      '/pintura-airless-malaga': 'airless',
+      '/pintura-malaga': 'pintura',
+      '/alisado-paredes-malaga': 'alisado',
+      '/pladur-malaga': 'pladur',
+      '/pintura-muebles-malaga': 'muebles',
+      '/contacto': 'contacto',
+      '/proyectos': 'proyectos',
+      '/privacidad': 'privacidad',
+      '/privacidad.html': 'privacidad'
+    };
+    return routeIds[path] || null;
   };
 
   const safeGetLanguage = () => {
@@ -764,6 +769,7 @@
 
   const applyService = (lang) => {
     const t = getServiceData(lang);
+    if (!t) return; // No dedicated translation: preserve this page's original content.
     setText('main .eyebrow', t.eyebrow);
     setText('main h1', t.title);
     setText('main .lead', t.lead);
@@ -828,7 +834,10 @@
   };
 
   const applyMeta = (lang) => {
-    const data = META[pageId()][lang];
+    const id = pageId();
+    const pageMeta = id ? META[id] : null;
+    const data = pageMeta ? pageMeta[lang] : null;
+    if (!data) return; // Keep the static per-page metadata for untranslated routes.
     document.title = data[0];
     setMeta('meta[name="description"]', data[1]);
     setMeta('meta[property="og:title"]', data[0]);

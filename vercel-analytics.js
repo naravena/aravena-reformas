@@ -84,6 +84,18 @@
     document.head.appendChild(script);
   }
   
-  // Initialize analytics
-  inject({ mode: 'auto' });
+  // Load only after the visitor has accepted optional analytics.
+  // The main consent script calls this function when consent is granted.
+  var CONSENT_KEY = 'aravena_analytics_consent';
+  var enableIfConsented = function() {
+    var accepted = false;
+    try {
+      accepted = window.localStorage.getItem(CONSENT_KEY) === 'accepted';
+    } catch (e) {}
+    if (!accepted) return;
+    inject({ mode: 'auto' });
+  };
+
+  window.__aravenaEnableVercelAnalytics = enableIfConsented;
+  enableIfConsented();
 })();

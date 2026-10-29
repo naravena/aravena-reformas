@@ -1800,3 +1800,22 @@ html[data-theme="dark"] .footer a {
 html[data-theme="light"] .contact-info strong {
   color: #624900;
 }
+
+
+/* Service-page content grids: stack cards before tablet widths to avoid
+   cramped, visually unbalanced columns on phones and narrow browser windows. */
+body.page-service main .grid > .card {
+  min-width: 0;
+  box-sizing: border-box;
+}
+
+@media (max-width: 760px) {
+  body.page-service main .grid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 24px;
+  }
+
+  body.page-service main .grid > .card {
+    width: 100%;
+  }
+}

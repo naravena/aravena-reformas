@@ -104,6 +104,10 @@
     window.__aravenaAnalyticsLoaded = true;
 
     loadOpenAIPixel();
+    // Vercel Analytics is optional too and must respect the same consent choice.
+    if (typeof window.__aravenaEnableVercelAnalytics === 'function') {
+      window.__aravenaEnableVercelAnalytics();
+    }
 
     window.dataLayer = window.dataLayer || [];
     window.gtag = function () { window.dataLayer.push(arguments); };

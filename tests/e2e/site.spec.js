@@ -36,12 +36,12 @@ test('Airless remains one ordinary card among the homepage services', async ({ p
 
 test('language switching translates each service by its URL, not by card position', async ({ page }) => {
   const services = [
-    { path: '/pintura-malaga/', es: 'Pintura en Málaga', en: 'Painting in Málaga', esText: 'Paredes, techos, puertas, mobiliario y otras superficies con preparación previa.', enText: 'Walls, ceilings, doors, furniture and other surfaces with proper preparation.' },
-    { path: '/alisado-paredes-malaga/', es: 'Alisado y eliminación de gotelé', en: 'Wall smoothing and gotelé removal', esText: 'Preparación y alisado de paredes y techos para conseguir superficies uniformes.', enText: 'Wall and ceiling preparation and smoothing to achieve uniform surfaces.' },
-    { path: '/pladur-malaga/', es: 'Pladur en Málaga', en: 'Plasterboard in Málaga', esText: 'Soluciones de pladur para divisiones, trasdosados, techos y mejoras interiores.', enText: 'Plasterboard solutions for partitions, linings, ceilings and interior improvements.' },
+    { path: '/pintura-malaga/', es: 'Pintura de viviendas en Málaga', en: 'Painting in Málaga', esText: 'Paredes, techos y superficies interiores con preparación y revisión del acabado.', enText: 'Walls, ceilings, doors, furniture and other surfaces with proper preparation.' },
+    { path: '/alisado-paredes-malaga/', es: 'Alisado de paredes y eliminación de gotelé', en: 'Wall smoothing and gotelé removal', esText: 'Preparación y alisado para conseguir superficies uniformes antes de pintar.', enText: 'Wall and ceiling preparation and smoothing to achieve uniform surfaces.' },
+    { path: '/pladur-malaga/', es: 'Pladur en Málaga', en: 'Plasterboard in Málaga', esText: 'Soluciones para tabiques, trasdosados y falsos techos según cada proyecto.', enText: 'Plasterboard solutions for partitions, linings, ceilings and interior improvements.' },
     { path: '/pintura-airless-malaga/', es: 'Pintura Airless en Málaga', en: 'Airless painting in Málaga', esText: 'Aplicación de pintura por pulverización a alta presión en paredes y techos amplios, cuando el espacio lo permite.', enText: 'High-pressure spray application for broad wall and ceiling surfaces when suitable for the space.' },
-    { path: '/reparacion-paredes-malaga/', es: 'Reparación y preparación', en: 'Repair and preparation', esText: 'Masillado, reparación de superficies y trabajos previos antes del acabado.', enText: 'Filling, surface repairs and preliminary work before finishing.' },
-    { path: '/reformas-malaga/', es: 'Reformas de interiores', en: 'Interior renovations', esText: 'Mejoras y renovación de espacios para adaptar la vivienda a tus necesidades.', enText: 'Improvements and space renovation to adapt the home to your needs.' }
+    { path: '/reparacion-paredes-malaga/', es: 'Reparación y preparación de paredes', en: 'Repair and preparation', esText: 'Pequeñas reparaciones, lijado y preparación antes del acabado.', enText: 'Filling, surface repairs and preliminary work before finishing.' },
+    { path: '/reformas-malaga/', es: 'Reformas parciales de interiores', en: 'Interior renovations', esText: 'Renovación coordinada de pintura, superficies, pladur y acabados dentro de un alcance definido.', enText: 'Improvements and space renovation to adapt the home to your needs.' }
   ];
 
   await page.goto('/');
@@ -147,4 +147,53 @@ test('homepage and Airless page pass axe-core checks for serious and critical is
       .map(v => ({ id: v.id, impact: v.impact, description: v.description, targets: v.nodes.map(n => n.target) }));
     expect(failures, 'Accessibility violations on ' + route + ': ' + JSON.stringify(failures)).toEqual([]);
   }
+});
+
+
+test('new service and guide pages keep their own content when i18n runs', async ({ page }) => {
+  const routes = [
+    '/pintar-techos-malaga/',
+    '/pintar-puertas-malaga/',
+    '/pintar-muebles-cocina-malaga/',
+    '/reparacion-paredes-malaga/',
+    '/falsos-techos-pladur-malaga/',
+    '/tabiques-pladur-malaga/',
+    '/cuanto-cuesta-pintar-piso-malaga/',
+    '/tipos-pintura-paredes-techos/',
+    '/preparar-paredes-antes-de-pintar/',
+    '/tipos-placas-pladur-malaga/',
+    '/guias-pintura-reformas-malaga/'
+  ];
+
+  for (const route of routes) {
+    await page.goto(route);
+    const initialH1 = (await page.locator('main h1').innerText()).trim();
+    const initialTitle = await page.title();
+    expect(initialH1).not.toBe('Reformas y pintura en Málaga');
+    expect(initialTitle).not.toBe('Reformas y pintura en Málaga | Aravena Reformas');
+    await page.locator('[data-language="en"]').click();
+    await expect(page.locator('main h1')).toHaveText(initialH1);
+    await expect(page).toHaveTitle(initialTitle);
+  }
+});
+
+test('service-page cards stack in a single aligned column on mobile widths', async ({ page }) => {
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page.goto('/alisado-paredes-malaga/');
+  const grid = page.locator('body.page-service main .grid').first();
+  await expect(grid).toBeVisible();
+  const columns = await grid.evaluate((element) => {
+    const value = getComputedStyle(element).gridTemplateColumns.trim();
+    return value ? value.split(/\s+/).length : 0;
+  });
+  expect(columns).toBe(1);
+  const cards = grid.locator(':scope > .card');
+  const count = await cards.count();
+  expect(count).toBeGreaterThan(1);
+  const boxes = await cards.evaluateAll((elements) => elements.map((element) => {
+    const rect = element.getBoundingClientRect();
+    return { left: Math.round(rect.left), width: Math.round(rect.width) };
+  }));
+  expect(new Set(boxes.map((box) => box.left)).size).toBe(1);
+  expect(new Set(boxes.map((box) => box.width)).size).toBe(1);
 });

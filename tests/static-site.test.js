@@ -139,3 +139,16 @@ test('Airless is an equal-level service card on the homepage', () => {
   assert.doesNotMatch(html, /class="airless-featured"/);
   assert.equal((html.match(/<article class="service">/g) || []).length, 6);
 });
+
+
+test('untranslated routes are not silently assigned the homepage translation', () => {
+  const i18n = fs.readFileSync(path.join(ROOT, 'i18n.js'), 'utf8');
+  assert.match(i18n, /return routeIds\[path\] \|\| null;/);
+  assert.match(i18n, /if \(!t\) return;/);
+  assert.match(i18n, /if \(!data\) return;/);
+});
+
+test('robots.txt does not block paths that need a crawlable noindex directive', () => {
+  const robots = fs.readFileSync(path.join(ROOT, 'robots.txt'), 'utf8');
+  assert.doesNotMatch(robots, /^Disallow:\s*\/plantillas\/\s*$/m);
+});
