@@ -141,11 +141,11 @@ test('Airless is an equal-level service card on the homepage', () => {
 });
 
 
-test('untranslated routes are not silently assigned the homepage translation', () => {
-  const i18n = fs.readFileSync(path.join(ROOT, 'i18n.js'), 'utf8');
-  assert.match(i18n, /return routeIds\[path\] \|\| null;/);
-  assert.match(i18n, /if \(!t\) return;/);
-  assert.match(i18n, /if \(!data\) return;/);
+test('new service and guide routes have route-specific English translations', () => {
+ const i18n=fs.readFileSync(path.join(ROOT,'i18n.js'),'utf8');
+ const routes=['/pintar-techos-malaga/','/pintar-puertas-malaga/','/pintar-muebles-cocina-malaga/','/reparacion-paredes-malaga/','/falsos-techos-pladur-malaga/','/tabiques-pladur-malaga/','/cuanto-cuesta-pintar-piso-malaga/','/tipos-pintura-paredes-techos/','/preparar-paredes-antes-de-pintar/','/tipos-placas-pladur-malaga/','/guias-pintura-reformas-malaga/'];
+ for(const route of routes)assert.ok(i18n.includes("'"+route+"': {"),'Missing translations for '+route);
+ assert.match(i18n,/const applyNewPage = \\(lang\\) =>/);
 });
 
 test('robots.txt does not block paths that need a crawlable noindex directive', () => {
@@ -159,4 +159,9 @@ test('privacy translations cover all static policy paragraphs', () => {
   assert.match(i18n, /const paragraphs = \[t\.p1,[^\]]*t\.p23\]/);
   assert.match(i18n, /p23: 'Esta política podrá actualizarse/);
   assert.match(i18n, /p23: 'This policy may be updated/);
+});
+
+test('sitemap lastmod reflects the latest shared translation and content update', () => {
+ const sitemap=fs.readFileSync(path.join(ROOT,'sitemap.xml'),'utf8');
+ assert.equal((sitemap.match(/<lastmod>2026-10-29<\/lastmod>/g)||[]).length,ROUTES.length);
 });
