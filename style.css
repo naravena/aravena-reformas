@@ -1819,3 +1819,67 @@ body.page-service main .grid > .card {
     width: 100%;
   }
 }
+
+/* Featured work and planning links on the homepage */
+.resource-feature {
+  display: grid;
+  grid-template-columns: minmax(0, 2fr) minmax(0, 3fr);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  overflow: hidden;
+  background: var(--black-soft);
+}
+
+.resource-feature img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  max-height: 20rem;
+  object-fit: cover;
+  object-position: center 58%;
+}
+
+.resource-feature-copy {
+  align-self: center;
+  padding: clamp(1.25rem, 4vw, 3rem);
+}
+
+.resource-feature-copy p {
+  margin: .75rem 0 1.25rem;
+}
+
+.resource-groups {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+.resource-groups > div {
+  border-top: 1px solid var(--line);
+  padding-top: 1rem;
+}
+
+.resource-groups ul {
+  margin: .5rem 0 0;
+  padding-left: 1.25rem;
+}
+
+.resource-groups a {
+  display: inline-block;
+  padding-block: .3rem;
+  text-decoration: underline;
+  text-underline-offset: .2em;
+}
+
+@media (max-width: 650px) {
+  .resource-feature,
+  .resource-groups {
+    grid-template-columns: 1fr;
+  }
+
+  .resource-feature img {
+    height: auto;
+    aspect-ratio: 16 / 9;
+  }
+}

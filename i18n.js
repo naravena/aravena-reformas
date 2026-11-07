@@ -1207,7 +1207,15 @@
 
   const themeIsDark = () => document.documentElement.dataset.theme === 'dark';
 
+  const resourceTextEs = new WeakMap();
   const applyHome = (lang) => {
+    document.querySelectorAll('#guias-y-trabajos [data-resource-en]').forEach((element) => {
+      if (!resourceTextEs.has(element)) resourceTextEs.set(element, element.textContent);
+      element.textContent = lang === 'en' ? element.dataset.resourceEn : resourceTextEs.get(element);
+    });
+    setAttr('.resource-feature img', 'alt', lang === 'en'
+      ? 'Interior staircase with freshly painted walls'
+      : 'Escalera interior con paredes recién pintadas');
     const t = T[lang].home;
     setText('.hero .eyebrow', t.eyebrowHero);
     setText('.hero h1', t.title);
