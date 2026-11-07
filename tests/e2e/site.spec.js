@@ -159,7 +159,7 @@ test('new service and guide pages translate their content and metadata into Engl
   {path:'/falsos-techos-pladur-malaga/',h1:'Plasterboard suspended ceilings in Málaga',title:'Plasterboard suspended ceilings in Málaga | Aravena Reformas',lead:'A plasterboard suspended ceiling creates a new interior plane and can provide solutions for certain finishes. Before choosing a system, we check available height, framework, wall junctions and existing services.'},
   {path:'/tabiques-pladur-malaga/',h1:'Plasterboard partition walls in Málaga for interior reorganisation',title:'Plasterboard partition walls in Málaga | Aravena Reformas',lead:'A plasterboard partition can help reorganise a home without building a traditional masonry wall. The solution depends on room use, dimensions, substrate and the performance requirements of the project.'},
   {path:'/cuanto-cuesta-pintar-piso-malaga/',h1:'How much does it cost to paint a flat in Málaga?',title:'How much does it cost to paint a flat in Málaga? | Aravena Reformas',lead:'There is no single price that applies to every flat. Two homes of the same size may need different work if one has walls in good condition while the other needs repairs, smoothing or extra protection. This guide explains what to compare before accepting a quote.'},
-  {path:'/tipos-pintura-paredes-techos/',h1:'Types of paint for walls and ceilings: how to choose',title:'Types of paint for interior walls and ceilings | Aravena Reformas',lead:'The right paint is not chosen by colour alone. Consider the substrate, how the room is used, cleaning frequency, lighting and desired look. Always check the technical data sheet for the specific product.'},
+  {path:'/tipos-pintura-paredes-techos/',h1:'Types of paint for walls and ceilings: how to choose',title:'Types of paint for interior walls and ceilings | Aravena Reformas',lead:'The right paint is not chosen by colour alone. Consider the substrate, room use, cleaning frequency, lighting and desired look. Always check the technical data sheet for the specific product.'},
   {path:'/preparar-paredes-antes-de-pintar/',h1:'How to prepare walls before painting',title:'How to prepare walls before painting | Practical guide',lead:'Preparation affects paint adhesion and the final appearance. Before starting, inspect the existing coating and choose treatments for the substrate; not every wall needs the same process.'},
   {path:'/tipos-placas-pladur-malaga/',h1:'Types of plasterboard and what they are used for',title:'Types of plasterboard and their uses | Málaga',lead:'Choosing plasterboard depends on the room conditions and the performance required of the complete system. Colour should not be the only guide: check the product name and manufacturer specifications.'},
   {path:'/guias-pintura-reformas-malaga/',h1:'Painting, materials and interior renovation guides',title:'Painting and renovation guides in Málaga | Aravena Reformas',lead:'Practical information to understand painting and interior finishing work, choose materials and prepare a quote request. These guides complement our service pages and do not replace an assessment of a home.'}
@@ -214,4 +214,23 @@ test('privacy copy keeps analytics, consent, provider and security paragraphs al
   await page.locator('[data-language="en"]').click();
   await expect(analytics.locator('p').nth(1)).toContainText('A click on WhatsApp does not confirm');
   await expect(sections.nth(8).locator('p')).toContainText('Appropriate technical and organisational measures');
+});
+
+test('project gallery loads all photos and translates their descriptions', async ({ page }) => {
+  await page.goto('/proyectos/');
+  const photos = page.locator('img[data-gallery-alt]');
+  await expect(photos).toHaveCount(10);
+  const dimensions = await photos.evaluateAll(images => Promise.all(images.map(async image => {
+    image.loading = 'eager';
+    await image.decode();
+    return [image.naturalWidth, image.naturalHeight];
+  })));
+  expect(dimensions).toEqual(Array.from({ length: 10 }, () => [1086, 1448]));
+
+  const spanishAlt = await photos.first().getAttribute('alt');
+  await page.locator('[data-language="en"]').click();
+  await expect(page.locator('html')).toHaveAttribute('lang', 'en');
+  await expect(photos.first()).not.toHaveAttribute('alt', spanishAlt);
+  await page.locator('[data-language="es"]').click();
+  await expect(photos.first()).toHaveAttribute('alt', spanishAlt);
 });

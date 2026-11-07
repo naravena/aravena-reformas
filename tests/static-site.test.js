@@ -22,10 +22,10 @@ const ROUTES = [
   { url: '/tipos-pintura-paredes-techos/', file: 'tipos-pintura-paredes-techos/index.html' },
   { url: '/preparar-paredes-antes-de-pintar/', file: 'preparar-paredes-antes-de-pintar/index.html' },
   { url: '/tipos-placas-pladur-malaga/', file: 'tipos-placas-pladur-malaga/index.html' },
-  { url: '/guias-pintura-reformas-malaga/', file: 'guias-pintura-reformas-malaga/index.html' }
+  { url: '/guias-pintura-reformas-malaga/', file: 'guias-pintura-reformas-malaga/index.html' },
+  { url: '/proyectos/', file: 'proyectos/index.html' },
 ];
 const EXCLUDED_PAGES = [
-  { url: '/proyectos/', file: 'proyectos/index.html' },
   { url: '/privacidad.html', file: 'privacidad.html' }
 ];
 function walkHtml(dir = ROOT) {
@@ -145,7 +145,7 @@ test('new service and guide routes have route-specific English translations', ()
  const i18n=fs.readFileSync(path.join(ROOT,'i18n.js'),'utf8');
  const routes=['/pintar-techos-malaga/','/pintar-puertas-malaga/','/pintar-muebles-cocina-malaga/','/reparacion-paredes-malaga/','/falsos-techos-pladur-malaga/','/tabiques-pladur-malaga/','/cuanto-cuesta-pintar-piso-malaga/','/tipos-pintura-paredes-techos/','/preparar-paredes-antes-de-pintar/','/tipos-placas-pladur-malaga/','/guias-pintura-reformas-malaga/'];
  for(const route of routes)assert.ok(i18n.includes(JSON.stringify(route)+': {'),'Missing translations for '+route);
- assert.match(i18n,/const applyNewPage = \\(lang\\) =>/);
+ assert.match(i18n,/const applyNewPage = \(lang\) =>/);
 });
 
 test('robots.txt does not block paths that need a crawlable noindex directive', () => {
@@ -163,5 +163,10 @@ test('privacy translations cover all static policy paragraphs', () => {
 
 test('sitemap lastmod reflects the latest shared translation and content update', () => {
  const sitemap=fs.readFileSync(path.join(ROOT,'sitemap.xml'),'utf8');
- assert.equal((sitemap.match(/<lastmod>2026-10-29<\/lastmod>/g)||[]).length,ROUTES.length);
+ assert.equal((sitemap.match(/<lastmod>2026-10-29<\/lastmod>/g)||[]).length,ROUTES.length - 1);
+});
+
+test('project gallery has its own sitemap modification date', () => {
+  const xml = fs.readFileSync(path.join(ROOT, 'sitemap.xml'), 'utf8');
+  assert.ok(xml.includes('<loc>https://www.aravenareformas.es/proyectos/</loc><lastmod>2026-11-07</lastmod>'));
 });

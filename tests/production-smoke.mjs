@@ -18,7 +18,8 @@ const routes = [
   { path: '/tipos-pintura-paredes-techos/', canonical: 'https://www.aravenareformas.es/tipos-pintura-paredes-techos/' },
   { path: '/preparar-paredes-antes-de-pintar/', canonical: 'https://www.aravenareformas.es/preparar-paredes-antes-de-pintar/' },
   { path: '/tipos-placas-pladur-malaga/', canonical: 'https://www.aravenareformas.es/tipos-placas-pladur-malaga/' },
-  { path: '/guias-pintura-reformas-malaga/', canonical: 'https://www.aravenareformas.es/guias-pintura-reformas-malaga/' }
+  { path: '/guias-pintura-reformas-malaga/', canonical: 'https://www.aravenareformas.es/guias-pintura-reformas-malaga/' },
+  { path: '/proyectos/', canonical: 'https://www.aravenareformas.es/proyectos/' }
 ];
 const sitemapResponse = await fetch(new URL('/sitemap.xml', base), { signal: AbortSignal.timeout(20000) });
 assert.equal(sitemapResponse.status, 200, 'sitemap.xml unavailable');
@@ -46,7 +47,7 @@ for (const route of routes) {
   assert.ok(html.includes('<link rel="canonical" href="' + route.canonical + '"'), 'Canonical mismatch: ' + route.path);
   console.log('PASS ' + route.path + ' -> HTTP ' + response.status);
 }
-for (const path of ['/proyectos/', '/privacidad.html']) {
+for (const path of ['/privacidad.html']) {
   const response = await fetch(new URL(path, base), { signal: AbortSignal.timeout(20000) });
   assert.equal(response.status, 200, path + ' returned HTTP ' + response.status);
   const html = await response.text();

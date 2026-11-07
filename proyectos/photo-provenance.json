@@ -1,0 +1,55 @@
+{
+  "note": "Dates below are inferred only from the original upload filename, not from EXIF. Do not publish as project completion dates or before/after chronology without verification.",
+  "photos": [
+    {
+      "webp": "assets/proyectos/escalera-alisado-en-proceso.webp",
+      "source_filename": "20260922_174714.jpg",
+      "date_from_source_filename_unverified": "2026-09-22"
+    },
+    {
+      "webp": "assets/proyectos/preparacion-mezcla-yeso.webp",
+      "source_filename": "20261031_094824.jpg",
+      "date_from_source_filename_unverified": "2026-10-31"
+    },
+    {
+      "webp": "assets/proyectos/escalera-acabado-final-vista-general.webp",
+      "source_filename": "20260915_184221.jpg",
+      "date_from_source_filename_unverified": "2026-09-15"
+    },
+    {
+      "webp": "assets/proyectos/escalera-acabado-final-detalle.webp",
+      "source_filename": "20260915_184203.jpg",
+      "date_from_source_filename_unverified": "2026-09-15"
+    },
+    {
+      "webp": "assets/proyectos/pintura-habitacion-acabado.webp",
+      "source_filename": "20261102_134553.jpg",
+      "date_from_source_filename_unverified": "2026-11-02"
+    },
+    {
+      "webp": "assets/proyectos/pintura-techo-en-proceso.webp",
+      "source_filename": "20261102_113048.jpg",
+      "date_from_source_filename_unverified": "2026-11-02"
+    },
+    {
+      "webp": "assets/proyectos/reparacion-techo-cocina-proceso.webp",
+      "source_filename": "20261031_123341.jpg",
+      "date_from_source_filename_unverified": "2026-10-31"
+    },
+    {
+      "webp": "assets/proyectos/alisado-pared-aplicacion.webp",
+      "source_filename": "20261027_134300.jpg",
+      "date_from_source_filename_unverified": "2026-10-27"
+    },
+    {
+      "webp": "assets/proyectos/techo-cocina-antes-de-reparar.webp",
+      "source_filename": "20261025_192741.jpg",
+      "date_from_source_filename_unverified": "2026-10-25"
+    },
+    {
+      "webp": "assets/proyectos/pintura-escalera-rodillo.webp",
+      "source_filename": "20260918_145410.jpg",
+      "date_from_source_filename_unverified": "2026-09-18"
+    }
+  ]
+}
