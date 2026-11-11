@@ -1883,3 +1883,30 @@ body.page-service main .grid > .card {
     aspect-ratio: 16 / 9;
   }
 }
+
+/* Painting rates and documented work */
+.hero-price { margin-top: 1.25rem; max-width: 38rem; font-size: .9rem; line-height: 1.6; }
+.hero-price strong, .hero-price a { display: block; }
+.hero-price a, .service-price a, .service-work > a, .quote-example a { text-decoration: underline; text-underline-offset: .2em; }
+.service-price, .quote-example { margin: 2rem 0; padding: clamp(1.1rem, 3vw, 2rem); border: 1px solid var(--line); border-left: 4px solid #b27b16; border-radius: 12px; background: var(--black-soft); color: var(--text); }
+body.page-service .service-price h2, body.page-service .quote-example h2 { margin-top: 0; }
+.pricing-section { margin-top: 2.5rem; scroll-margin-top: 6rem; }
+.price-intro, .price-calculation { font-weight: 700; }
+.surface-note { padding: 1rem; border: 1px solid var(--line); border-radius: 8px; background: var(--black-soft); }
+.price-table { width: 100%; margin: 1.5rem 0; border-collapse: collapse; font-size: .95rem; }
+.price-table caption { text-align: left; padding-bottom: .75rem; color: var(--muted); }
+.price-table th, .price-table td { text-align: left; vertical-align: top; padding: 1rem; border-bottom: 1px solid var(--line); }
+.price-table thead { background: var(--black-soft); }
+.price-table th[scope="row"] { width: 64%; font-weight: 600; }
+.price-table small { display: block; margin-top: .4rem; font-size: .9rem; font-weight: 400; line-height: 1.55; }
+.price-table td strong { display: block; }
+.pricing-conditions { font-size: .95rem; }
+.service-photo-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.25rem; margin: 1.5rem 0; }
+.service-photo-grid figure { margin: 0; }
+.service-photo-grid img { display: block; width: 100%; height: auto; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 12px; }
+.service-photo-grid figcaption { margin-top: .6rem; font-size: .9rem; line-height: 1.5; color: var(--muted); }
+@media (max-width: 600px) {
+  .price-table th, .price-table td { padding: .8rem .4rem; overflow-wrap: anywhere; }
+  .price-table th[scope="row"] { width: 58%; }
+  .service-photo-grid { grid-template-columns: 1fr; }
+}

@@ -139,14 +139,57 @@ test('pages have no failed first-party resource requests', async ({ page }) => {
   expect(failures, 'First-party resource requests returned an error').toEqual([]);
 });
 
-test('homepage and Airless page pass axe-core checks for serious and critical issues', async ({ page }) => {
-  for (const route of ['/', '/pintura-airless-malaga/']) {
+test('homepage, painting services and price guide pass axe-core checks for serious and critical issues', async ({ page }) => {
+  for (const route of ['/', '/pintura-airless-malaga/', '/pintura-malaga/', '/cuanto-cuesta-pintar-piso-malaga/']) {
     await page.goto(route);
     const results = await new AxeBuilder({ page }).withTags(['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa']).analyze();
     const failures = results.violations.filter(v => ['serious', 'critical'].includes(v.impact))
       .map(v => ({ id: v.id, impact: v.impact, description: v.description, targets: v.nodes.map(n => n.target) }));
     expect(failures, 'Accessibility violations on ' + route + ': ' + JSON.stringify(failures)).toEqual([]);
   }
+});
+
+test('language switching preserves internal links and restores the published Spanish copy', async ({ page }) => {
+  for (const route of ['/', '/reformas-malaga/', '/pintura-malaga/', '/alisado-paredes-malaga/', '/pladur-malaga/', '/pintura-airless-malaga/']) {
+    await page.goto(route);
+    await page.locator('[data-language="es"]').click();
+    const html = await (await page.request.get(route)).text();
+    const main = html.match(/<main\b[^>]*>([\s\S]*?)<\/main>/i)[1];
+    const expectedLinks = [...main.matchAll(/<a\b[^>]*href="(\/[^\"]*)"/g)].map(match => match[1]).sort();
+    const expectedH1 = main.match(/<h1\b[^>]*>([^<]*)<\/h1>/i)[1];
+    const expectedTitle = html.match(/<title>([^<]*)<\/title>/i)[1];
+    const expectedDescription = html.match(/<meta name="description" content="([^\"]*)"/i)[1];
+    const links = () => page.locator('main a[href^="/"]').evaluateAll(elements => elements.map(element => element.getAttribute('href')).sort());
+    expect(await links(), route + ': initial links').toEqual(expectedLinks);
+    await expect(page.locator('main h1')).toHaveText(expectedH1);
+    await page.locator('[data-language="en"]').click();
+    expect(await links(), route + ': English links').toEqual(expectedLinks);
+    await page.locator('[data-language="es"]').click();
+    expect(await links(), route + ': restored links').toEqual(expectedLinks);
+    await expect(page.locator('main h1')).toHaveText(expectedH1);
+    await expect(page).toHaveTitle(expectedTitle);
+    await expect(page.locator('meta[name="description"]')).toHaveAttribute('content', expectedDescription);
+  }
+});
+
+test('approved prices keep VAT and actual surface conditions in both languages', async ({ page }) => {
+  await page.goto('/cuanto-cuesta-pintar-piso-malaga/');
+  const table = page.locator('.price-table');
+  await expect(table.locator('tbody tr')).toHaveCount(5);
+  await expect(table.locator('tbody td')).toHaveText([9, 11, 10, 21, 24].map(rate => 'Desde ' + rate + ' €/m² + IVA'));
+  await expect(page.locator('.surface-note')).toContainText('no por m² de superficie útil de la vivienda');
+  await expect(page.locator('.pricing-conditions')).toContainText('No incluyen grandes reparaciones, humedades ni tratamientos especiales');
+  await expect(page.locator('.price-calculation')).toHaveText('100 m² × 9 €/m² = desde 900 € + IVA');
+  await expect(page.locator('.quote-example')).toContainText('100 m² reales de paredes');
+  await page.locator('[data-language="en"]').click();
+  await expect(table.locator('tbody td')).toHaveText([9, 11, 10, 21, 24].map(rate => 'From €' + rate + '/m² + VAT'));
+  await expect(page.locator('.surface-note')).toContainText('not the floor area of the home');
+  await expect(page.locator('.quote-example')).toContainText('100 m² of actual wall surface');
+  await page.locator('[data-language="es"]').click();
+  await expect(table.locator('tbody td').first()).toHaveText('Desde 9 €/m² + IVA');
+  await page.setViewportSize({ width: 320, height: 800 });
+  const fits = await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth);
+  expect(fits, 'Price guide must fit a narrow mobile viewport').toBe(true);
 });
 
 

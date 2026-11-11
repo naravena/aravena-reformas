@@ -163,10 +163,10 @@ test('privacy translations cover all static policy paragraphs', () => {
 
 test('sitemap lastmod reflects the latest shared translation and content update', () => {
  const sitemap=fs.readFileSync(path.join(ROOT,'sitemap.xml'),'utf8');
- assert.equal((sitemap.match(/<lastmod>2026-10-29<\/lastmod>/g)||[]).length,ROUTES.length - 1);
+ assert.equal((sitemap.match(/<lastmod>2026-11-11<\/lastmod>/g)||[]).length,ROUTES.length);
 });
 
 test('project gallery has its own sitemap modification date', () => {
   const xml = fs.readFileSync(path.join(ROOT, 'sitemap.xml'), 'utf8');
-  assert.ok(xml.includes('<loc>https://www.aravenareformas.es/proyectos/</loc><lastmod>2026-11-07</lastmod>'));
+  assert.ok(xml.includes('<loc>https://www.aravenareformas.es/proyectos/</loc><lastmod>2026-11-11</lastmod>'));
 });
