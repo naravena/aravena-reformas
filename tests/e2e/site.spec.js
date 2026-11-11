@@ -11,6 +11,34 @@ const ROUTES = [
   '/guias-pintura-reformas-malaga/', '/proyectos/', '/privacidad.html'
 ];
 
+test('company logo stays visible at the top right of interior pages in both themes', async ({ page }) => {
+  test.setTimeout(60000);
+  for (const route of ROUTES) {
+    await page.goto(route);
+    const logo = page.locator('header .brand-mark');
+    await expect(logo, route + ': visible company logo').toBeVisible();
+    await expect(logo).toHaveAttribute('alt', /Aravena/);
+    await expect(page.locator('header .brand')).toHaveAttribute('href', '/');
+    for (let theme = 0; theme < 2; theme++) {
+      await expect.poll(() => logo.evaluate(image => image.complete && image.naturalWidth > 0), { message: route + ': logo image loads' }).toBe(true);
+      const currentTheme = await page.locator('html').getAttribute('data-theme');
+      await expect(logo).toHaveAttribute('src', currentTheme === 'dark' ? '/assets/icon/logo-icon.svg' : '/assets/icon/logo-icon-light.svg');
+      if (route !== '/') {
+        const logoBox = await logo.boundingBox();
+        const headerBox = await page.locator('header > .wrap').boundingBox();
+        expect(Math.abs(logoBox.x + logoBox.width - headerBox.x - headerBox.width), route + ': right-aligned logo').toBeLessThan(2);
+        const controls = await page.locator('header .theme-toggle').boundingBox();
+        const brand = await page.locator('header .brand').boundingBox();
+        expect(controls.x + controls.width, route + ': controls do not overlap brand').toBeLessThanOrEqual(brand.x);
+        expect(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth), route + ': no horizontal overflow').toBe(true);
+      }
+      if (theme === 0) await page.locator('header .theme-toggle').click();
+    }
+  }
+  await page.locator('header .brand').click();
+  await expect(page).toHaveURL(/\/$/);
+});
+
 test('all main pages render without JavaScript runtime errors', async ({ page }) => {
   const errors = [];
   page.on('pageerror', error => errors.push(error.message));

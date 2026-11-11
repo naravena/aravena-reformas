@@ -1910,3 +1910,39 @@ body.page-service .service-price h2, body.page-service .quote-example h2 { margi
   .price-table th[scope="row"] { width: 58%; }
   .service-photo-grid { grid-template-columns: 1fr; }
 }
+
+/* Consistent company logo at the top right of interior pages. */
+body:is(.page-service, .page-contact, .page-projects, .page-privacy) .site-header {
+  padding: 16px 0;
+}
+body:is(.page-service, .page-contact, .page-projects, .page-privacy) .site-header > .wrap {
+  display: block;
+}
+.site-header .header-top {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 44px;
+}
+.site-header .header-top .brand {
+  order: 3;
+  margin-left: auto;
+  flex-direction: row-reverse;
+  flex: 0 1 auto;
+  min-width: 0;
+  gap: 10px;
+  text-align: right;
+  overflow: visible;
+}
+.site-header .brand-mark { width: 44px; height: 44px; }
+.site-header .brand-name { min-width: 0; }
+.site-header .header-top .language-switcher { order: 1; flex: none; }
+.site-header .header-top .theme-toggle { order: 2; position: static; flex: none; }
+.site-header nav { margin-top: 16px; }
+@media (max-width: 600px) {
+  .site-header .header-top { gap: 7px; }
+  .site-header .header-top .brand { gap: 8px; }
+  .site-header .brand-mark { width: 38px; height: 38px; }
+  .site-header .brand-name { font-size: 12px; letter-spacing: .04em; }
+  .site-header .brand-name span { font-size: 8px; letter-spacing: .08em; }
+}
