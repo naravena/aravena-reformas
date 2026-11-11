@@ -1265,11 +1265,11 @@
   const applyCommon = (lang) => {
     const t = T[lang].common;
 
+    setText('.brand-name span', t.brandDescriptor);
     setText('.skip-link', t.skip);
 
     const body = document.body;
     if (body.classList.contains('page-home')) {
-      setText('.brand-name span', t.brandDescriptor);
       setText('#mainNav [data-nav="services"]', t.services);
       setText('#mainNav [data-nav="projects"]', t.projects);
       setText('#mainNav [data-nav="painting"]', t.painting);
