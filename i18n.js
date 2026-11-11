@@ -5,6 +5,8 @@
    * Las claves se reutilizan entre páginas para evitar duplicar traducciones.
    */
   const STORAGE_KEY = 'aravena-language';
+  const originalTitle = document.title;
+  const originalMeta = new Map(Array.from(document.querySelectorAll('meta[name="description"], meta[property^="og:"], meta[name^="twitter:"]'), (element) => [element, element.content]));
 
   const T = {
     es: {
@@ -534,7 +536,7 @@
     },
     pintura: {
       es: ['Pintores en Málaga | Aravena Reformas', 'Pintura de interiores en Málaga para viviendas y espacios. Preparación de superficies, paredes, techos y acabados. Solicita presupuesto.'],
-      en: ['Painters in Málaga | Aravena Reformas', 'Interior painting in Málaga for homes and spaces. Surface preparation, walls, ceilings and finishes. Request a quote.']
+      en: ['Painters in Málaga from €9/m² + VAT | Aravena', 'Interior painting in Málaga from €9/m² + VAT per actual wall or ceiling area. Materials, basic protection, light preparation and two coats for white paint.']
     },
     alisado: {
       es: ['Alisado de paredes y quitar gotelé en Málaga | Aravena Reformas', 'Alisado de paredes y techos y eliminación de gotelé en Málaga. Valoramos el estado de la superficie y definimos el proceso antes de empezar.'],
@@ -842,7 +844,7 @@
     "titleEs": "Cuánto cuesta pintar un piso en Málaga: factores",
     "titleEn": "How much does it cost to paint a flat in Málaga? | Aravena Reformas",
     "descriptionEs": "Qué influye en el precio de pintar un piso en Málaga: metros, preparación, materiales, mobiliario y qué debe incluir el presupuesto.",
-    "descriptionEn": "How much does it cost to paint a flat in Málaga? Key factors include surface area, preparation, materials, furniture and what the quote should include.",
+    "descriptionEn": "Aravena painting rates in Málaga from €9/m² + VAT. Compare colour, ceiling painting, smoothing and gotelé removal per actual treated surface area.",
     "nodes": {
       "Cuánto cuesta pintar un piso en Málaga": "How much does it cost to paint a flat in Málaga?",
       "Guía de presupuestos · Pintura": "Quote guide · Painting",
@@ -1044,8 +1046,8 @@
     const path = location.pathname.replace(/index\.html$/i, '').replace(/\/?$/, '/');
     const page = NEW_PAGE_TRANSLATIONS[path];
     if (!page) return;
-    const title = lang === 'en' ? page.titleEn : page.titleEs;
-    const description = lang === 'en' ? page.descriptionEn : page.descriptionEs;
+    const title = lang === 'en' ? page.titleEn : originalTitle;
+    const description = lang === 'en' ? page.descriptionEn : originalMeta.get(document.querySelector('meta[name="description"]'));
     document.title = title;
     setMeta('meta[name="description"]', description);
     setMeta('meta[property="og:title"]', title);
@@ -1129,6 +1131,108 @@
     if (el) el.setAttribute('content', value);
   };
 
+  // Translate text nodes rather than replacing containers that hold service links.
+  const originalTextNodes = new WeakMap();
+  const translateTextNodes = (root, translations, lang) => {
+    if (!root) return;
+    const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT);
+    while (walker.nextNode()) {
+      const node = walker.currentNode;
+      if (node.parentElement.closest('script, style, [data-copy-en]')) continue;
+      if (!originalTextNodes.has(node)) originalTextNodes.set(node, node.nodeValue);
+      const original = originalTextNodes.get(node);
+      const match = original.match(/^(\s*)([\s\S]*?)(\s*)$/);
+      const translated = match && translations[match[2]];
+      node.nodeValue = lang === 'en' && translated ? match[1] + translated + match[3] : original;
+    }
+  };
+
+  const inlineOriginalCopy = new WeakMap();
+  const inlineOriginalAlt = new WeakMap();
+  const applyInlineCopy = (lang) => {
+    document.querySelectorAll('[data-copy-en]').forEach((element) => {
+      if (!inlineOriginalCopy.has(element)) inlineOriginalCopy.set(element, element.textContent);
+      element.textContent = lang === 'en' ? element.dataset.copyEn : inlineOriginalCopy.get(element);
+    });
+    document.querySelectorAll('img[data-alt-en]').forEach((element) => {
+      if (!inlineOriginalAlt.has(element)) inlineOriginalAlt.set(element, element.alt);
+      element.alt = lang === 'en' ? element.dataset.altEn : inlineOriginalAlt.get(element);
+    });
+  };
+
+  const homeOriginalCopy = new WeakMap();
+  const setHomeText = (selector, value) => {
+    const element = document.querySelector(selector);
+    if (!element) return;
+    if (!homeOriginalCopy.has(element)) homeOriginalCopy.set(element, element.innerHTML);
+    if (document.documentElement.lang === 'en') element.textContent = value;
+    else element.innerHTML = homeOriginalCopy.get(element);
+  };
+  const setHomeTextAll = (selector, values) => {
+    document.querySelectorAll(selector).forEach((element, index) => {
+      if (values[index] == null) return;
+      if (!homeOriginalCopy.has(element)) homeOriginalCopy.set(element, element.innerHTML);
+      if (document.documentElement.lang === 'en') element.textContent = values[index];
+      else element.innerHTML = homeOriginalCopy.get(element);
+    });
+  };
+
+  const serviceTextEn = {
+    'Puertas y marcos': 'Doors and frames',
+    'Muebles de cocina': 'Kitchen cabinets',
+    'Renovación de estancias, cambios de color y pintura de superficies interiores. Consulta': 'Room refreshes, colour changes and interior surface painting. See',
+    'pintar techos en Málaga': 'ceiling painting in Málaga',
+    'Preparación y pintura de puertas interiores cuando el material lo permite. Ver': 'Preparation and painting of interior doors where the material allows. See',
+    'Renovación de frentes seleccionados mediante preparación y pintura. Consulta': 'Refreshing selected fronts through preparation and painting. See',
+    'pintar muebles de cocina': 'kitchen cabinet painting',
+    'Pequeñas reparaciones, masillado y lijado previos al acabado. Ver': 'Minor repairs, filling and sanding before the finish. See',
+    'reparación de paredes': 'wall repairs',
+    'Pintura de la vivienda': 'Home painting',
+    'Renovar paredes, techos y superficies seleccionadas. Ver': 'Refresh walls, ceilings and selected surfaces. See',
+    'pintura de interiores': 'interior painting',
+    'Mejora de paredes': 'Wall improvements',
+    'Reparar defectos superficiales o valorar la eliminación de gotelé. Ver': 'Repair surface defects or assess textured-finish removal. See',
+    'alisado de paredes': 'wall smoothing',
+    'Redistribución con pladur': 'Reorganising spaces with plasterboard',
+    'Valorar tabiques, trasdosados y falsos techos según el espacio. Ver': 'Assess partitions, wall linings and suspended ceilings for the space. See',
+    'trabajos de pladur': 'plasterboard services',
+    'Renovación de elementos': 'Refreshing interior features',
+    'Pintar puertas o muebles seleccionados cuando el material y el estado lo permitan. Ver': 'Paint selected doors or furniture where the material and condition allow. See',
+    'pintura de puertas': 'door painting',
+    'Gotelé con relieve': 'Textured wall finishes',
+    'Se valora el tipo de acabado y las capas existentes para decidir cómo reducir el relieve.': 'We assess the finish and existing layers to decide how to reduce the texture.',
+    'Marcas y agujeros': 'Marks and holes',
+    'Pueden necesitar reparación localizada antes de regularizar y lijar la superficie.': 'Local repairs may be needed before levelling and sanding the surface.',
+    'Pared lisa pero dañada': 'Smooth but damaged walls',
+    'En ocasiones basta masillar y lijar zonas concretas, sin alisar toda la estancia.': 'Sometimes filling and sanding specific areas is enough without smoothing the whole room.',
+    'Trabajos de pladur en Málaga para interiores': 'Interior plasterboard services in Málaga',
+    'Tabiques interiores': 'Interior partitions',
+    'Para dividir o reorganizar espacios. Ver': 'To divide or reorganise spaces. See',
+    'tabiques de pladur': 'plasterboard partition walls',
+    'Falsos techos': 'Suspended ceilings',
+    'Soluciones de techo según altura disponible, estructura y acabado. Ver': 'Ceiling solutions based on available height, framework and finish. See',
+    'falsos techos de pladur': 'plasterboard suspended ceilings',
+    'Sistemas frente a paredes existentes, elegidos según soporte y objetivo.': 'Systems installed in front of existing walls, selected for the substrate and purpose.',
+    'Juntas y acabado': 'Joints and finishing',
+    'Tratamiento de juntas y preparación para recibir el acabado previsto.': 'Joint treatment and preparation for the specified finish.',
+    'Superficies extensas': 'Broad surfaces',
+    'Puede ayudar a mantener una aplicación regular en paredes y techos amplios y despejados.': 'It can help maintain an even application on large, unobstructed walls and ceilings.',
+    'Renovación interior': 'Interior renovation',
+    'Puede encajar en viviendas vacías o trabajos con varias superficies continuas.': 'It can suit empty homes or jobs with several continuous surfaces.',
+    'Espacios con obstáculos': 'Spaces with obstacles',
+    'En viviendas amuebladas o con muchos detalles, proteger el entorno puede hacer más práctico usar rodillo, brocha o varios métodos.': 'In furnished homes or detailed spaces, protecting the surroundings may make rollers, brushes or a combination of methods more practical.',
+    '¿Quieres valorar pintura Airless?': 'Need an Airless painting quote?',
+    'Consultar por WhatsApp': 'Ask us on WhatsApp'
+  };
+
+  const collectTranslations = (spanish, english, result) => {
+    if (typeof spanish === 'string' && typeof english === 'string' && !spanish.includes('<')) result[spanish] = english;
+    else if (spanish && english && typeof spanish === 'object') {
+      Object.keys(spanish).forEach((key) => collectTranslations(spanish[key], english[key], result));
+    }
+    return result;
+  };
+
   const addLanguageSwitcher = () => {
     const themeButton = document.querySelector('.theme-toggle');
     if (!themeButton || document.querySelector('.language-switcher')) return;
@@ -1168,6 +1272,8 @@
       setText('.brand-name span', t.brandDescriptor);
       setText('#mainNav [data-nav="services"]', t.services);
       setText('#mainNav [data-nav="projects"]', t.projects);
+      setText('#mainNav [data-nav="painting"]', t.painting);
+      setText('#mainNav [data-nav="guides"]', t.guides);
       setText('#mainNav [data-nav="process"]', t.process);
       setText('#mainNav [data-nav="contact"]', t.contact);
       setText('.menu', t.menu);
@@ -1217,22 +1323,22 @@
       ? 'Interior staircase with freshly painted walls'
       : 'Escalera interior con paredes recién pintadas');
     const t = T[lang].home;
-    setText('.hero .eyebrow', t.eyebrowHero);
-    setText('.hero h1', t.title);
-    setText('.hero .lead', t.lead);
-    setText('.hero .btn-gold', t.ctaQuote);
-    setText('.hero .btn-outline', t.ctaServices);
+    setHomeText('.hero .eyebrow', t.eyebrowHero);
+    setHomeText('.hero h1', t.title);
+    setHomeText('.hero .lead', t.lead);
+    setHomeText('.hero .btn-gold', t.ctaQuote);
+    setHomeText('.hero .btn-outline', t.ctaServices);
     setAttr('.hero-brand', 'alt', t.brandingAlt);
 
-    setText('#quienes-somos .eyebrow', t.whoEyebrow);
-    setText('#quienes-somos h2', t.whoTitle);
-    setTextAll('#quienes-somos .intro-copy p', [t.whoP1, t.whoP2]);
-    setTextAll('#quienes-somos .point h3', [t.point1Title, t.point2Title, t.point3Title, t.point4Title]);
-    setTextAll('#quienes-somos .point p', [t.point1Text, t.point2Text, t.point3Text, t.point4Text]);
+    setHomeText('#quienes-somos .eyebrow', t.whoEyebrow);
+    setHomeText('#quienes-somos h2', t.whoTitle);
+    setHomeTextAll('#quienes-somos .intro-copy p', [t.whoP1, t.whoP2]);
+    setHomeTextAll('#quienes-somos .point h3', [t.point1Title, t.point2Title, t.point3Title, t.point4Title]);
+    setHomeTextAll('#quienes-somos .point p', [t.point1Text, t.point2Text, t.point3Text, t.point4Text]);
 
-    setText('#servicios .eyebrow', t.servicesEyebrow);
-    setText('#servicios h2', t.servicesTitle);
-    setText('#servicios .section-head p', t.servicesLead);
+    setHomeText('#servicios .eyebrow', t.servicesEyebrow);
+    setHomeText('#servicios h2', t.servicesTitle);
+    setHomeText('#servicios .section-head p', t.servicesLead);
     // Map translations to the service URL so content remains correct if cards are reordered.
     const serviceTranslationsByPath = {
       '/reformas-malaga/': [t.service1Title, t.service1Text],
@@ -1252,57 +1358,61 @@
       if (description) description.textContent = translation[1];
     });
 
-    setText('.why .eyebrow', t.whyEyebrow);
-    setText('.why h2', t.whyTitle);
-    setText('.why .section-head p', t.whyLead);
-    setTextAll('.why-item h3', [t.why1Title, t.why2Title, t.why3Title, t.why4Title]);
-    setTextAll('.why-item p', [t.why1Text, t.why2Text, t.why3Text, t.why4Text]);
+    setHomeText('.why .eyebrow', t.whyEyebrow);
+    setHomeText('.why h2', t.whyTitle);
+    setHomeText('.why .section-head p', t.whyLead);
+    setHomeTextAll('.why-item h3', [t.why1Title, t.why2Title, t.why3Title, t.why4Title]);
+    setHomeTextAll('.why-item p', [t.why1Text, t.why2Text, t.why3Text, t.why4Text]);
 
-    setText('.process .eyebrow', t.processEyebrow);
-    setText('.process h2', t.processTitle);
-    setText('.process .section-head p', t.processLead);
-    setTextAll('.step b', ['01 · ' + t.step1Title, '02 · ' + t.step2Title, '03 · ' + t.step3Title, '04 · ' + t.step4Title]);
-    setTextAll('.step h3', [t.step1Heading, t.step2Heading, t.step3Heading, t.step4Heading]);
-    setTextAll('.step p', [t.step1Text, t.step2Text, t.step3Text, t.step4Text]);
+    setHomeText('.process .eyebrow', t.processEyebrow);
+    setHomeText('.process h2', t.processTitle);
+    setHomeText('.process .section-head p', t.processLead);
+    setHomeTextAll('.step b', ['01 · ' + t.step1Title, '02 · ' + t.step2Title, '03 · ' + t.step3Title, '04 · ' + t.step4Title]);
+    setHomeTextAll('.step h3', [t.step1Heading, t.step2Heading, t.step3Heading, t.step4Heading]);
+    setHomeTextAll('.step p', [t.step1Text, t.step2Text, t.step3Text, t.step4Text]);
 
-    setText('.areas .eyebrow', t.areaEyebrow);
-    setText('.areas h2', t.areaTitle);
-    setText('.areas .section-head p', t.areaLead);
-    setText('.area-box p', t.areaText);
+    setHomeText('.areas .eyebrow', t.areaEyebrow);
+    setHomeText('.areas h2', t.areaTitle);
+    setHomeText('.areas .section-head p', t.areaLead);
+    translateTextNodes(document.querySelector('.area-box'), {
+      'Si buscas': 'If you are looking for', 'pintores en Málaga': 'painters in Málaga',
+      ', necesitas': ', need', 'alisar paredes o quitar gotelé': 'wall smoothing or textured-finish removal',
+      ', quieres instalar': ', want to install', 'pladur': 'plasterboard',
+      'o estás planteando una': 'or are planning an', 'reforma interior': 'interior renovation',
+      ', puedes enviarnos una descripción y fotografías para valorar el trabajo.': ', send us a description and photographs so we can assess the job.'
+    }, lang);
 
-    setText('#proyectos .eyebrow', t.projectsEyebrow);
-    setText('#proyectos h2', t.projectsTitle);
-    setText('#proyectos p', t.projectsText);
+    setHomeText('#proyectos .eyebrow', t.projectsEyebrow);
+    setHomeText('#proyectos h2', t.projectsTitle);
+    setHomeText('#proyectos p', t.projectsText);
 
-    setText('.contact .eyebrow', t.contactEyebrow);
-    setText('.contact h2', t.contactTitle);
-    setText('.contact-copy', t.contactLead);
-    setTextAll('.contact-info strong', [T[lang].common.phone, T[lang].common.email, T[lang].common.location]);
-    setText('.contact-info div:nth-child(3) span', T[lang].common.malagaSpain);
-    setText('.contact .btn-gold', T[lang].common.openWhatsApp);
-    setText('.contact .btn-outline', T[lang].common.call);
+    setHomeText('.contact .eyebrow', t.contactEyebrow);
+    setHomeText('.contact h2', t.contactTitle);
+    setHomeText('.contact-copy', t.contactLead);
+    setHomeTextAll('.contact-info strong', [T[lang].common.phone, T[lang].common.email, T[lang].common.location]);
+    setHomeText('.contact-info div:nth-child(3) span', T[lang].common.malagaSpain);
+    setHomeText('.contact .btn-gold', T[lang].common.openWhatsApp);
+    setHomeText('.contact .btn-outline', T[lang].common.call);
 
-    setText('footer a', t.footerPrivacy);
+    setHomeText('footer a', t.footerPrivacy);
   };
 
-  const getServiceData = (lang) => T[lang][pageId()];
-
+  const serviceDictionaries = new Map();
   const applyService = (lang) => {
-    const t = getServiceData(lang);
-    if (!t) return; // No dedicated translation: preserve this page's original content.
-    setText('main .eyebrow', t.eyebrow);
-    setText('main h1', t.title);
-    setText('main .lead', t.lead);
-    setTextAll('main .card h3', [t.card1Title, t.card2Title, t.card3Title, t.card4Title]);
-    setTextAll('main .card p', [t.card1Text, t.card2Text, t.card3Text, t.card4Text]);
-    if (Array.isArray(t.sectionTitles)) setTextAll('main h2', t.sectionTitles);
-    setText('main .cta strong', t.quoteTitle);
-    setText('main .cta .btn', T[lang].common.quoteButton);
-
-    const ctaTextNode = Array.from(document.querySelectorAll('.cta')).flatMap((cta) =>
-      Array.from(cta.childNodes)
-    ).find((node) => node.nodeType === Node.TEXT_NODE && node.textContent.trim());
-    if (ctaTextNode) ctaTextNode.textContent = t.quoteText || t.directQuote || T[lang].common.directQuote;
+    const id = pageId();
+    if (!serviceDictionaries.has(id)) {
+      const dictionary = collectTranslations(T.es.common, T.en.common, {});
+      collectTranslations(T.es[id], T.en[id], dictionary);
+      const english = T.en[id];
+      if (english) {
+        [['main .eyebrow', english.eyebrow], ['main h1', english.title], ['main .lead', english.lead]].forEach(([selector, value]) => {
+          const element = document.querySelector(selector);
+          if (element && value) dictionary[element.textContent.trim()] = value;
+        });
+      }
+      serviceDictionaries.set(id, { ...dictionary, ...serviceTextEn });
+    }
+    translateTextNodes(document.querySelector('main'), serviceDictionaries.get(id), lang);
   };
 
   const applyContact = (lang) => {
@@ -1354,6 +1464,11 @@
   };
 
   const applyMeta = (lang) => {
+    if (lang === 'es') {
+      document.title = originalTitle;
+      originalMeta.forEach((content, element) => { element.content = content; });
+      return;
+    }
     const id = pageId();
     const pageMeta = id ? META[id] : null;
     const data = pageMeta ? pageMeta[lang] : null;
@@ -1385,6 +1500,7 @@
 
     applyMeta(lang);
     applyNewPage(lang);
+    applyInlineCopy(lang);
     updateWhatsAppLinks(lang);
   };
 
